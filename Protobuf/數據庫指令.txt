@@ -1,0 +1,5 @@
+//插入值
+INSERT INTO 'lq'.'user' ('uname', 'upassword') VALUES ('admin', 'admin')
+
+//根據字段查詢數據
+SELECT * FROM lq.user where uname='admin'

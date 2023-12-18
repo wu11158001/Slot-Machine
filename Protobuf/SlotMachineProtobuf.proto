@@ -1,0 +1,40 @@
+syntax = "proto3";
+package SlotMachineProtobuf;
+
+enum RequestCode
+{
+	RequestNone = 0;
+	User = 1;		//用戶
+}
+
+//執行方法名稱
+enum ActionCode
+{
+	ActionNone = 0;
+	Logon = 1;		//註冊
+	Login = 2;		//登入
+}
+
+enum ReturnCode
+{
+	ReturnNone = 0;
+	Succeed = 1;			//成功
+	Fail = 2;				//失敗
+	DuplicateLogin = 3;		//重複登入
+}
+
+message MainPack
+{
+	RequestCode requestCode = 1;
+	ActionCode actionCode = 2;
+	ReturnCode returnCode = 3;
+	LoginPack loginPack = 4;
+	
+	string str = 5;
+}
+
+//註冊/登入包
+message LoginPack
+{
+	string userid = 1;		//用戶Id
+}
