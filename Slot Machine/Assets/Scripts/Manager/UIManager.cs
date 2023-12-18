@@ -15,11 +15,16 @@ public class UIManager : BaseManager
     private TipPanel tipPanel;
     public TipPanel SetTipPanel { set { tipPanel = value; } }
 
+    //開始面板
+    private StartPanel startPanel;
+    public StartPanel GetStartPanel { get { return startPanel; } }
+
     public override void OnInit()
     {
         base.OnInit();
 
         canvasTransform = GameObject.Find("Canvas").transform;
+        startPanel = PushPanel(PanelType.StartPanel).GetComponent<StartPanel>();
     }
 
     /// <summary>
@@ -97,14 +102,13 @@ public class UIManager : BaseManager
     /// 顯示提示文本
     /// </summary>
     /// <param name="str">文本內容</param>
-    /// <param name="isSync">是否為異步</param>
-    public void ShowTip(string str, bool isSync = false)
+    public void ShowTip(string str)
     {
         if (!panelDic.ContainsKey(PanelType.TipPanel))
         {
             tipPanel = PushPanel(PanelType.TipPanel).GetComponent<TipPanel>();
         }
         
-        tipPanel.ShowTip(str, isSync);
+        tipPanel.ShowTip(str);
     }
 }

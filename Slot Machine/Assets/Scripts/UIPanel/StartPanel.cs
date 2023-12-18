@@ -19,6 +19,14 @@ public class StartPanel : BasePanel
         InvokeRepeating(nameof(TipTxtEffect), 0, 0.5f);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            uiManager.ShowTip("ss");
+        }
+    }
+
     /// <summary>
     /// 提示文字效果
     /// </summary>

@@ -92,10 +92,9 @@ public class Entry : MonoBehaviour
     /// 顯示提示文本
     /// </summary>
     /// <param name="str">文本內容</param>
-    /// <param name="isSync">是否為異步</param>
-    public void ShowTip(string str, bool isSync = false)
+    public void ShowTip(string str)
     {
-        uIManager.ShowTip(str, isSync);
+        uIManager.ShowTip(str);
     }
 
     /// <summary>
@@ -111,9 +110,8 @@ public class Entry : MonoBehaviour
     /// </summary>
     public async void StartLogin()
     {
-        StartPanel startPanel = uIManager.PushPanel(PanelType.StartPanel).GetComponent<StartPanel>();
         await Task.Delay(500);
-        startPanel.Login();
+        uIManager.GetStartPanel.Login();
     }
 
     private void OnDestroy()

@@ -1,63 +1,59 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TipPanel : BasePanel
 {
-    public Image bg_Img;
-    public Text tipText;
-    string tip = null;
+    [SerializeField]
+    private GameObject tipSample;
+
+    [SerializeField]
+    private float sizeY;
+
+    private List<TipContent> tipList = new List<TipContent>();
 
     public override void OnEnter()
     {
         base.OnEnter();
-        tipText.CrossFadeAlpha(0, 0.1f, false);
         uiManager.SetTipPanel = this;
-    }
-
-    private void Update()
-    {
-        if (tip != null)
-        {
-            ShowText(tip);
-            tip = null;
-        }
+        tipSample.SetActive(false);
+        sizeY = GetComponent<RectTransform>().rect.height;
     }
 
     /// <summary>
     /// 顯示提示文本
     /// </summary>
     /// <param name="str">文本內容</param>
-    /// <param name="isSync">是否為異步</param>
-    public void ShowTip(string str, bool isSync = false)
+    public void ShowTip(string str)
     {
-        //異步顯示
-        if (isSync) tip = str;
-        else ShowText(str);
-    }
+        TipContent panel = null;
+        if (tipList.Count == 0)
+        {
+            panel = Instantiate(tipSample).GetComponent<TipContent>();
+            panel.transform.SetParent(transform);
+            panel.gameObject.SetActive(true);
+            panel.Show(str, sizeY);
+            tipList.Add(panel);
+        }
+        else
+        {
+            for (int i = 0; i < tipList.Count; i++)
+            {
+                if (!tipList[i].gameObject.activeSelf)
+                {
+                    panel = tipList[i];
+                    break;
+                }
+            }
 
-    /// <summary>
-    /// 顯示文本
-    /// </summary>
-    /// <param name="str">文本內容</param>
-    void ShowText(string str)
-    {
-        tipText.text = str;
-        bg_Img.enabled = true;
-        tipText.CrossFadeAlpha(1, 0.05f, false);
-        transform.SetSiblingIndex(100);
-
-        CancelInvoke(nameof(HodeTip));
-        Invoke(nameof(HodeTip), 2.5f);
-    }
-
-    /// <summary>
-    /// 隱藏提示
-    /// </summary>
-    void HodeTip()
-    {
-        tipText.CrossFadeAlpha(0, 0.05f, false);
-        bg_Img.enabled = false;
+            if (panel == null)
+            {
+                panel = Instantiate(tipSample).GetComponent<TipContent>();
+                panel.transform.SetParent(transform);
+                tipList.Add(panel);
+            }
+            panel.gameObject.SetActive(true);
+            panel.Show(str, sizeY);
+        }
     }
 }
