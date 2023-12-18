@@ -5,8 +5,6 @@ using UnityEngine.Advertisements;
 
 public class UnityAdsManager : BaseManager,  IUnityAdsInitializationListener, IUnityAdsLoadListener, IUnityAdsShowListener
 {
-    public UnityAdsManager(Entry entry) : base(entry) { }
-
     private const string androidAdUnitId = "Rewarded_Android";
     private const string androidGameId = "5502091";
     private bool testMode = true;

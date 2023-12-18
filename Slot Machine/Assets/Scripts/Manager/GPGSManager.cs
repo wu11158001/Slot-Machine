@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class GPGSManager : BaseManager
 {
-    public GPGSManager(Entry entry) : base(entry) { }
-
     public override void OnInit()
     {
         base.OnInit();
@@ -23,17 +21,18 @@ public class GPGSManager : BaseManager
     {
         if (status == SignInStatus.Success)
         {
-            entry.UserInfo.userId = PlayGamesPlatform.Instance.GetUserId();
-            entry.UserInfo.nickName = PlayGamesPlatform.Instance.GetUserDisplayName();
-            entry.UserInfo.imageUrl = PlayGamesPlatform.Instance.GetUserImageUrl();
+            entry.UserInfo.UserId = PlayGamesPlatform.Instance.GetUserId();
+            entry.UserInfo.NickName = PlayGamesPlatform.Instance.GetUserDisplayName();
+            entry.UserInfo.ImageUrl = PlayGamesPlatform.Instance.GetUserImageUrl();
             entry.StartLogin();
 
-            Debug.Log($"用戶登入:{entry.UserInfo.userId}");
+            Debug.Log($"用戶登入:{entry.UserInfo.UserId}");
         }
         else
         {
-            entry.UserInfo.userId = "123456";
+            /*entry.UserInfo.UserId = "123456";
             entry.StartLogin();
+            Debug.LogError("Google 登入失敗!!!");*/
             entry.ShowTip("Google 登入失敗!!!");
         }
     }

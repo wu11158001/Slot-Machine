@@ -108,11 +108,10 @@ namespace SlotMachineServer.Servers
         /// </summary>
         void Close()
         {
-            Console.WriteLine(this.UserInfo.userId + " => 已斷開連接");
-
             server.RemoveClient(this);
             socket.Close();
             mySqlConnection.Close();
+            Console.WriteLine(this.UserInfo.userId + " => 已斷開連接");
         }
     }
 }

@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class BaseManager
 {
-    protected Entry entry;
-
-    public BaseManager(Entry entry)
-    {
-        this.entry = entry;
-    }
+    protected Entry entry { get { return Entry.Instance; } }
 
     public virtual void OnInit()
     {

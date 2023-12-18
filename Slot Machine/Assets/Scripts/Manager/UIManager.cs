@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class UIManager : BaseManager
 {
-    public UIManager(Entry entry) : base(entry) { }
-
     private Transform canvasTransform;
 
     //紀錄已生成的UI

@@ -5,8 +5,6 @@ using SlotMachineProtobuf;
 
 public class RequestManager : BaseManager
 {
-    public RequestManager(Entry entry) : base(entry) { }
-
     private Dictionary<ActionCode, BaseRequest> requsetDic = new Dictionary<ActionCode, BaseRequest>();
 
     /// <summary>
@@ -23,6 +21,7 @@ public class RequestManager : BaseManager
     /// </summary>
     public void RemoveRequest(ActionCode action)
     {
+        Debug.Log("移除請求");
         requsetDic.Remove(action);
     }
 

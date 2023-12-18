@@ -12,8 +12,6 @@ public class ClientManager : BaseManager
     private const string ip = "192.168.1.172";
     private const int port = 5501;
 
-    public ClientManager(Entry entry) : base(entry) { }
-
     /// <summary>
     /// 初始化
     /// </summary>
@@ -50,6 +48,7 @@ public class ClientManager : BaseManager
     {
         if (socket.Connected && socket != null)
         {
+            Debug.Log("關閉連接");
             socket.Close();
         }
     }
@@ -74,7 +73,7 @@ public class ClientManager : BaseManager
             int len = socket.EndReceive(iar);
             if (len == 0)
             {
-                //關閉連接
+                //關閉連接                
                 CloseSocket();
                 return;
             }
@@ -112,7 +111,7 @@ public class ClientManager : BaseManager
         base.OnDestroy();
         message = null;
 
-        //關閉連接
+        //關閉連接        
         CloseSocket();
     }
 }

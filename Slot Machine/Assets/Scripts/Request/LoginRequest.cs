@@ -17,13 +17,22 @@ public class LoginRequest : BaseRequest
         base.Awake();
     }
 
+    private void Update()
+    {
+        if (pack != null)
+        {
+            startPanel.OnLoginResult(pack);
+            pack = null;
+        }
+    }
+
     /// <summary>
     /// 協議接收
     /// </summary>
     /// <param name="pack"></param>
     public override void OnResponse(MainPack pack)
     {
-        startPanel.OnLoginResult(pack);
+        this.pack = pack;
     }
 
     /// <summary>

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SlotMachineProtobuf;
+using System.Threading.Tasks;
 
 public class Entry : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class Entry : MonoBehaviour
     {
         get
         {
-            if (entry == null) entry = GameObject.FindObjectOfType<Entry>();
+            if (entry == null) entry = GameObject.Find("Entry").GetComponent<Entry>();
             return entry;
         }
     }
@@ -26,11 +27,11 @@ public class Entry : MonoBehaviour
     /// </summary>
     public class UserInfoData
     {
-        public string nickName { get; set; }
-        public string userId { get; set; }
-        public string level { get; set; }
-        public string imageUrl { get; set; }
-        public int coin { get; set; }
+        public string NickName { get; set; }
+        public string UserId { get; set; }
+        public string Level { get; set; }
+        public string ImageUrl { get; set; }
+        public int Coin { get; set; }
     }
     public UserInfoData UserInfo { get; set; }
 
@@ -38,11 +39,11 @@ public class Entry : MonoBehaviour
     {
         UserInfo = new UserInfoData();
 
-        uIManager = new UIManager(this);
-        clientManager = new ClientManager(this);
-        requestManager = new RequestManager(this);
-        gpgsManager = new GPGSManager(this);
-        unityAdsManager = new UnityAdsManager(this);
+        uIManager = new UIManager();
+        clientManager = new ClientManager();
+        requestManager = new RequestManager();
+        gpgsManager = new GPGSManager();
+        unityAdsManager = new UnityAdsManager();
 
         uIManager.OnInit();
         clientManager.OnInit();
@@ -108,9 +109,19 @@ public class Entry : MonoBehaviour
     /// <summary>
     /// 開始登入
     /// </summary>
-    public void StartLogin()
+    public async void StartLogin()
     {
         StartPanel startPanel = uIManager.PushPanel(PanelType.StartPanel).GetComponent<StartPanel>();
+        await Task.Delay(500);
         startPanel.Login();
+    }
+
+    private void OnDestroy()
+    {
+        clientManager.OnDestroy();
+        requestManager.OnDestroy();
+        uIManager.OnDestroy();
+        gpgsManager.OnDestroy();
+        unityAdsManager.OnDestroy();
     }
 }
