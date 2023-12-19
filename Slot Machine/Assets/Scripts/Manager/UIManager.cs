@@ -65,6 +65,9 @@ public class UIManager : BaseManager
             BasePanel panel = panelDic[panelType];
             panelStack.Push(panel);
             panel.OnEnter();
+
+            if(tipPanel) tipPanel.ChangePanel();
+
             return panel;
         }
         else
@@ -80,6 +83,9 @@ public class UIManager : BaseManager
 
             panelStack.Push(newPanel);
             newPanel.OnEnter();
+
+            if (tipPanel) tipPanel.ChangePanel();
+
             return newPanel;
         }
     }

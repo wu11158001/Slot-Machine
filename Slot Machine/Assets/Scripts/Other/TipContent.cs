@@ -18,35 +18,41 @@ public class TipContent : MonoBehaviour
     /// 顯示
     /// </summary>
     /// <param name="str"></param>
-    public async void Show(string str, float initY)
+    public async void Show(string str)
     {
+        float targetY = -50;
+
         tipText.text = str;
         float posY = rt.rect.height;   
         rt.offsetMin = Vector2.zero;
         rt.offsetMax = Vector2.zero;
-        rt.anchoredPosition = new Vector2(0, initY);
+        rt.anchoredPosition = new Vector2(0, 10);
         rt.localScale = Vector3.one;
         transform.SetSiblingIndex(100);
 
-        while (rt.anchoredPosition.y > 0)
+        while (rt.anchoredPosition.y > targetY)
         {
             float y = rt.anchoredPosition.y - Time.deltaTime * speed;
+            if (y <= targetY) y = targetY;
             rt.anchoredPosition = new Vector2(0, y);
             await Task.Delay(1);
         }
 
         await Task.Delay(2000);
-        Over(initY);
+        Over();
     }
 
     /// <summary>
     /// 結束
     /// </summary>
-    public async void Over(float initY)
+    public async void Over()
     {
-        while (rt.anchoredPosition.y < initY)
+        float targetY = 60;
+
+        while (rt.anchoredPosition.y < targetY)
         {
             float y = rt.anchoredPosition.y + Time.deltaTime * speed;
+            if (y >= targetY) y = targetY;
             rt.anchoredPosition = new Vector2(0, y);
             await Task.Delay(1);
         }

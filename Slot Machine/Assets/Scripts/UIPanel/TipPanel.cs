@@ -7,9 +7,6 @@ public class TipPanel : BasePanel
     [SerializeField]
     private GameObject tipSample;
 
-    [SerializeField]
-    private float sizeY;
-
     private List<TipContent> tipList = new List<TipContent>();
 
     public override void OnEnter()
@@ -17,7 +14,6 @@ public class TipPanel : BasePanel
         base.OnEnter();
         uiManager.SetTipPanel = this;
         tipSample.SetActive(false);
-        sizeY = GetComponent<RectTransform>().rect.height;
     }
 
     /// <summary>
@@ -32,7 +28,7 @@ public class TipPanel : BasePanel
             panel = Instantiate(tipSample).GetComponent<TipContent>();
             panel.transform.SetParent(transform);
             panel.gameObject.SetActive(true);
-            panel.Show(str, sizeY);
+            panel.Show(str);
             tipList.Add(panel);
         }
         else
@@ -53,7 +49,20 @@ public class TipPanel : BasePanel
                 tipList.Add(panel);
             }
             panel.gameObject.SetActive(true);
-            panel.Show(str, sizeY);
+            panel.Show(str);
+        }
+    }
+
+    /// <summary>
+    /// 面板更換
+    /// </summary>
+    public void ChangePanel()
+    {
+        transform.SetSiblingIndex(100);
+
+        foreach (var tip in tipList)
+        {
+            tip.Over();
         }
     }
 }

@@ -22,9 +22,6 @@ public class Entry : MonoBehaviour
     private GPGSManager gpgsManager;
     private UnityAdsManager unityAdsManager;
 
-    [SerializeField]
-    private bool isTestLogin;
-
     /// <summary>
     /// 客戶訊息
     /// </summary>
@@ -56,7 +53,9 @@ public class Entry : MonoBehaviour
         gpgsManager.OnInit();
         unityAdsManager.OnInit();
 
+#if UNITY_EDITOR_WIN
         TestLogin();
+#endif
     }
 
     /// <summary>
@@ -64,11 +63,8 @@ public class Entry : MonoBehaviour
     /// </summary>
     void TestLogin()
     {
-        if (isTestLogin)
-        {
-            UserInfo.UserId = "123456";
-            StartLogin();
-        }        
+        UserInfo.UserId = "123456";
+        StartLogin();
     }
 
     /// <summary>

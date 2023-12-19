@@ -19,14 +19,6 @@ public class StartPanel : BasePanel
         InvokeRepeating(nameof(TipTxtEffect), 0, 0.5f);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            uiManager.ShowTip("ss");
-        }
-    }
-
     /// <summary>
     /// 提示文字效果
     /// </summary>
@@ -54,7 +46,6 @@ public class StartPanel : BasePanel
     {
         if (pack.ReturnCode == ReturnCode.Succeed)
         {
-            uiManager.ShowTip("登入成功");
             Invoke(nameof(IntoHall), 1);
             Debug.Log("登入成功");
         }
