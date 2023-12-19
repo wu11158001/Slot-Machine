@@ -76,5 +76,14 @@ namespace SlotMachineServer.Controller
             server.RemoveClient(client);
             return null;
         }
+
+        /// <summary>
+        /// 獲取用戶訊息
+        /// </summary>
+        /// <returns></returns>
+        public MainPack GetUserInfo(Server server, Client client, MainPack pack)
+        {
+            return client.GetUserData.GetUserInfo(pack, client.GetMySqlConnection);
+        }
     }
 }

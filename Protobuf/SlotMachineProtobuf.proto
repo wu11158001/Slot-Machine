@@ -11,8 +11,9 @@ enum RequestCode
 enum ActionCode
 {
 	ActionNone = 0;
-	Logon = 1;		//註冊
-	Login = 2;		//登入
+	Logon = 1;			//註冊
+	Login = 2;			//登入
+	GetUserInfo = 3;	//獲取用戶訊息
 }
 
 enum ReturnCode
@@ -31,10 +32,20 @@ message MainPack
 	LoginPack loginPack = 4;
 	
 	string str = 5;
+	
+	UserInfoPack userInfoPack = 6;
 }
 
 //註冊/登入包
 message LoginPack
 {
 	string userid = 1;		//用戶Id
+}
+
+message UserInfoPack
+{
+	int32 level = 1;	//等級
+	int32 exp = 2;		//經驗值
+	int32 coin = 3;		//金幣
+	int32 loginDay = 4;	//登入天數
 }

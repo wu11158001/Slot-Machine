@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using SlotMachineProtobuf;
 
-public class LoginRequest : BaseRequest
+public class UserInfoRequset : BaseRequest
 {
     private MainPack pack;
 
     [SerializeField]
-    private StartPanel startPanel;
+    private HallPanel hallPanel;
 
     public override void Awake()
     {
         requestCode = RequestCode.User;
-        actionCode = ActionCode.Login;
+        actionCode = ActionCode.GetUserInfo;
         base.Awake();
     }
 
@@ -21,7 +21,8 @@ public class LoginRequest : BaseRequest
     {
         if (pack != null)
         {
-            startPanel.OnLoginResult(pack);
+            entry.SetUserInfo(pack);
+            hallPanel.SetUserInfo();
             pack = null;
         }
     }

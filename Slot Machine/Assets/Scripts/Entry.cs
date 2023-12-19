@@ -22,6 +22,9 @@ public class Entry : MonoBehaviour
     private GPGSManager gpgsManager;
     private UnityAdsManager unityAdsManager;
 
+    [SerializeField]
+    private bool isTestLogin;
+
     /// <summary>
     /// 客戶訊息
     /// </summary>
@@ -29,9 +32,11 @@ public class Entry : MonoBehaviour
     {
         public string NickName { get; set; }
         public string UserId { get; set; }
-        public string Level { get; set; }
+        public int Level { get; set; }
+        public int Exp { get; set; }
         public string ImageUrl { get; set; }
         public int Coin { get; set; }
+        public int LoginDay { get; set; }
     }
     public UserInfoData UserInfo { get; set; }
 
@@ -50,6 +55,20 @@ public class Entry : MonoBehaviour
         requestManager.OnInit();
         gpgsManager.OnInit();
         unityAdsManager.OnInit();
+
+        TestLogin();
+    }
+
+    /// <summary>
+    /// 測試登入
+    /// </summary>
+    void TestLogin()
+    {
+        if (isTestLogin)
+        {
+            UserInfo.UserId = "123456";
+            StartLogin();
+        }        
     }
 
     /// <summary>
@@ -113,6 +132,18 @@ public class Entry : MonoBehaviour
         await Task.Delay(500);
         uIManager.GetStartPanel.Login();
     }
+
+    /// <summary>
+    /// 設定用戶訊息
+    /// </summary>
+    /// <param name="pack"></param>
+    public void SetUserInfo(MainPack pack)
+    {
+        entry.UserInfo.Level = pack.UserInfoPack.Level;
+        entry.UserInfo.Exp = pack.UserInfoPack.Exp;
+        entry.UserInfo.Coin = pack.UserInfoPack.Coin;
+        entry.UserInfo.LoginDay = pack.UserInfoPack.LoginDay;
+    }    
 
     private void OnDestroy()
     {

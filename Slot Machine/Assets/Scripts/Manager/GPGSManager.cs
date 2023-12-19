@@ -30,9 +30,6 @@ public class GPGSManager : BaseManager
         }
         else
         {
-            /*entry.UserInfo.UserId = "123456";
-            entry.StartLogin();
-            Debug.LogError("Google 登入失敗!!!");*/
             entry.ShowTip("Google 登入失敗!!!");
         }
     }

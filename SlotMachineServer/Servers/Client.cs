@@ -90,7 +90,7 @@ namespace SlotMachineServer.Servers
         /// <param name="pack"></param>
         public void Send(MainPack pack)
         {
-            Console.WriteLine($"{this.UserInfo.userId} 發送消息:{ pack.ActionCode} Str:{pack.Str}");
+            Console.WriteLine($"{this.UserInfo.userId} 發送消息:{pack.ActionCode}");
 
             socket.Send(Message.PackData(pack));
         }
