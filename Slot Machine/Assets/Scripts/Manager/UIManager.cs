@@ -14,16 +14,21 @@ public class UIManager : BaseManager
     //提示框面板
     private TipPanel tipPanel;
     public TipPanel SetTipPanel { set { tipPanel = value; } }
-
     //開始面板
     private StartPanel startPanel;
     public StartPanel GetStartPanel { get { return startPanel; } }
+    //載入畫面
+    private LoadingPanel loadingPanel;
+    public LoadingPanel SetLoadingPanel { set { loadingPanel = value; } }
 
     public override void OnInit()
     {
         base.OnInit();
 
         canvasTransform = GameObject.Find("Canvas").transform;
+
+        PushPanel(PanelType.LoadingPanel);
+        PushPanel(PanelType.TipPanel);
         startPanel = PushPanel(PanelType.StartPanel).GetComponent<StartPanel>();
     }
 
@@ -116,5 +121,13 @@ public class UIManager : BaseManager
         }
         
         tipPanel.ShowTip(str);
+    }
+
+    /// <summary>
+    /// 顯示載入畫面
+    /// </summary>
+    public void ShowLoading()
+    {
+        loadingPanel.Loading();
     }
 }

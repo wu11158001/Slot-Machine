@@ -14,6 +14,11 @@ public class StartPanel : BasePanel
 
     private int tipEffectCount;//提示文字效果數量
 
+    public override void OnPause()
+    {
+        gameObject.SetActive(false);
+    }
+
     private void Start()
     {
         InvokeRepeating(nameof(TipTxtEffect), 0, 0.5f);
@@ -46,7 +51,7 @@ public class StartPanel : BasePanel
     {
         if (pack.ReturnCode == ReturnCode.Succeed)
         {
-            Invoke(nameof(IntoHall), 1);
+            Invoke(nameof(IntoHall), 2);
             Debug.Log("登入成功");
         }
         else if (pack.ReturnCode == ReturnCode.DuplicateLogin)

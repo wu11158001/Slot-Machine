@@ -11,24 +11,44 @@ public class HallPanel : BasePanel
     private UserInfoRequset userInfoRequset;
 
     [SerializeField]
-    private Text coin_Txt, level_Txt;
+    private Text nickName_Txt, coin_Txt, level_Txt;
 
     [SerializeField]
     private Image avatar_Img, lvProcess_Img;
 
+    [SerializeField]
+    private Button gameClassic_Btn;
+
+    public override void OnEnter()
+    {
+        gameObject.SetActive(true);
+        userInfoRequset.SendRequest(entry.UserInfo.UserId);
+    }
+
+    public override void OnPause()
+    {
+        gameObject.SetActive(false);
+    }
+
     private void Start()
     {
-        userInfoRequset.SendRequest(entry.UserInfo.UserId);
-        SetAvatar();
+        //遊戲_經典
+        gameClassic_Btn.onClick.AddListener(() =>
+        {
+            entry.EnterGame(PanelType.GameClassicPanel);
+        });
+
+        SetAvatarAndNickName();
     }
 
     /// <summary>
-    /// 設定頭像
+    /// 設定頭像與暱稱
     /// </summary>
-    private async void SetAvatar()
+    private async void SetAvatarAndNickName()
     {
         Sprite avatar = await Tools.ImageUrlToSprite(entry.UserInfo.ImageUrl);
         if (avatar != null) avatar_Img.sprite = avatar;
+        if (!string.IsNullOrEmpty(entry.UserInfo.NickName)) nickName_Txt.text = entry.UserInfo.NickName;
     }
 
     /// <summary>

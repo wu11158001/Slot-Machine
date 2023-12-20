@@ -139,7 +139,17 @@ public class Entry : MonoBehaviour
         entry.UserInfo.Exp = pack.UserInfoPack.Exp;
         entry.UserInfo.Coin = pack.UserInfoPack.Coin;
         entry.UserInfo.LoginDay = pack.UserInfoPack.LoginDay;
-    }    
+    }
+
+    /// <summary>
+    /// 進入遊戲
+    /// </summary>
+    /// <param name="gamePanel"></param>
+    public void EnterGame(PanelType gamePanel)
+    {
+        uIManager.PushPanel(gamePanel);
+        uIManager.ShowLoading();
+    }
 
     private void OnDestroy()
     {

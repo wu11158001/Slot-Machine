@@ -11,7 +11,6 @@ public class TipPanel : BasePanel
 
     public override void OnEnter()
     {
-        base.OnEnter();
         uiManager.SetTipPanel = this;
         tipSample.SetActive(false);
     }
