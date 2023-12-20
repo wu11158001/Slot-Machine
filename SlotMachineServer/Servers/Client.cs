@@ -25,6 +25,8 @@ namespace SlotMachineServer.Servers
         private MySqlConnection mySqlConnection;
         public MySqlConnection GetMySqlConnection { get { return mySqlConnection; } }
 
+        public Game game { get; set; }
+
         public class UserInfoData
         {
             public string userId { get; set; }
@@ -39,6 +41,8 @@ namespace SlotMachineServer.Servers
 
             mySqlConnection = new MySqlConnection(connStr);
             mySqlConnection.Open();
+
+            game = new Game();
 
             this.server = server;
             this.socket = socket;

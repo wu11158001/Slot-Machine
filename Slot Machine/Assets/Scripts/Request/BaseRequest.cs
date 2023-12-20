@@ -15,10 +15,6 @@ public class BaseRequest : MonoBehaviour
     public virtual void Awake()
     {
         entry = Entry.Instance;
-    }
-
-    public virtual void Start()
-    {
         entry.AddRequest(this);
         Debug.Log("添加:" + actionCode.ToString());
     }

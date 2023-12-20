@@ -1,0 +1,30 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using SlotMachineProtobuf;
+using SlotMachineServer.Servers;
+
+namespace SlotMachineServer.Controller
+{
+    class GameController : BaseController
+    {
+        public GameController()
+        {
+            requestCode = RequestCode.Game;
+        }
+
+        /// <summary>
+        /// 經典遊戲結果請求
+        /// </summary>
+        /// <param name="servers"></param>
+        /// <param name="client"></param>
+        /// <param name="pack"></param>
+        /// <returns></returns>
+        public MainPack ClassicResult(Server servers, Client client, MainPack pack)
+        {
+            return client.game.ClassicResult(pack);
+        }
+    }
+}

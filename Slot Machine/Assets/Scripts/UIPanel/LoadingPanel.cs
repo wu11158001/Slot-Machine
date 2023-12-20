@@ -49,7 +49,7 @@ public class LoadingPanel : BasePanel
             yield return new WaitForFixedUpdate();
         }
 
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
 
         gameObject.SetActive(false);
     }

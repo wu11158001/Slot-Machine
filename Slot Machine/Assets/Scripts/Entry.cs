@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SlotMachineProtobuf;
-using System.Threading.Tasks;
 
 public class Entry : MonoBehaviour
 {
@@ -123,9 +122,8 @@ public class Entry : MonoBehaviour
     /// <summary>
     /// 開始登入
     /// </summary>
-    public async void StartLogin()
+    public void StartLogin()
     {
-        await Task.Delay(500);
         uIManager.GetStartPanel.Login();
     }
 

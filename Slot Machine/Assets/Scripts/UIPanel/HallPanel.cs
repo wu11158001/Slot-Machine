@@ -37,7 +37,7 @@ public class HallPanel : BasePanel
         {
             entry.EnterGame(PanelType.GameClassicPanel);
         });
-
+   
         SetAvatarAndNickName();
     }
 

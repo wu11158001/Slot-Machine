@@ -25,26 +25,30 @@ namespace SlotMachineProtobuf {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChlTbG90TWFjaGluZVByb3RvYnVmLnByb3RvEhNTbG90TWFjaGluZVByb3Rv",
-            "YnVmIqQCCghNYWluUGFjaxI1CgtyZXF1ZXN0Q29kZRgBIAEoDjIgLlNsb3RN",
+            "YnVmItsCCghNYWluUGFjaxI1CgtyZXF1ZXN0Q29kZRgBIAEoDjIgLlNsb3RN",
             "YWNoaW5lUHJvdG9idWYuUmVxdWVzdENvZGUSMwoKYWN0aW9uQ29kZRgCIAEo",
             "DjIfLlNsb3RNYWNoaW5lUHJvdG9idWYuQWN0aW9uQ29kZRIzCgpyZXR1cm5D",
             "b2RlGAMgASgOMh8uU2xvdE1hY2hpbmVQcm90b2J1Zi5SZXR1cm5Db2RlEjEK",
             "CWxvZ2luUGFjaxgEIAEoCzIeLlNsb3RNYWNoaW5lUHJvdG9idWYuTG9naW5Q",
             "YWNrEgsKA3N0chgFIAEoCRI3Cgx1c2VySW5mb1BhY2sYBiABKAsyIS5TbG90",
-            "TWFjaGluZVByb3RvYnVmLlVzZXJJbmZvUGFjayIbCglMb2dpblBhY2sSDgoG",
-            "dXNlcmlkGAEgASgJIkoKDFVzZXJJbmZvUGFjaxINCgVsZXZlbBgBIAEoBRIL",
-            "CgNleHAYAiABKAUSDAoEY29pbhgDIAEoBRIQCghsb2dpbkRheRgEIAEoBSoo",
-            "CgtSZXF1ZXN0Q29kZRIPCgtSZXF1ZXN0Tm9uZRAAEggKBFVzZXIQASpDCgpB",
-            "Y3Rpb25Db2RlEg4KCkFjdGlvbk5vbmUQABIJCgVMb2dvbhABEgkKBUxvZ2lu",
-            "EAISDwoLR2V0VXNlckluZm8QAypHCgpSZXR1cm5Db2RlEg4KClJldHVybk5v",
-            "bmUQABILCgdTdWNjZWVkEAESCAoERmFpbBACEhIKDkR1cGxpY2F0ZUxvZ2lu",
-            "EANiBnByb3RvMw=="));
+            "TWFjaGluZVByb3RvYnVmLlVzZXJJbmZvUGFjaxI1CgtjbGFzc2ljUGFjaxgH",
+            "IAEoCzIgLlNsb3RNYWNoaW5lUHJvdG9idWYuQ2xhc3NpY1BhY2siGwoJTG9n",
+            "aW5QYWNrEg4KBnVzZXJpZBgBIAEoCSJKCgxVc2VySW5mb1BhY2sSDQoFbGV2",
+            "ZWwYASABKAUSCwoDZXhwGAIgASgFEgwKBGNvaW4YAyABKAUSEAoIbG9naW5E",
+            "YXkYBCABKAUiMgoLQ2xhc3NpY1BhY2sSEgoKcmVzdWx0TnVtcxgBIAMoBRIP",
+            "Cgd3aW5Db2luGAIgASgFKjIKC1JlcXVlc3RDb2RlEg8KC1JlcXVlc3ROb25l",
+            "EAASCAoEVXNlchABEggKBEdhbWUQAipWCgpBY3Rpb25Db2RlEg4KCkFjdGlv",
+            "bk5vbmUQABIJCgVMb2dvbhABEgkKBUxvZ2luEAISDwoLR2V0VXNlckluZm8Q",
+            "AxIRCg1DbGFzc2ljUmVzdWx0EAQqRwoKUmV0dXJuQ29kZRIOCgpSZXR1cm5O",
+            "b25lEAASCwoHU3VjY2VlZBABEggKBEZhaWwQAhISCg5EdXBsaWNhdGVMb2dp",
+            "bhADYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::SlotMachineProtobuf.RequestCode), typeof(global::SlotMachineProtobuf.ActionCode), typeof(global::SlotMachineProtobuf.ReturnCode), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.MainPack), global::SlotMachineProtobuf.MainPack.Parser, new[]{ "RequestCode", "ActionCode", "ReturnCode", "LoginPack", "Str", "UserInfoPack" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.MainPack), global::SlotMachineProtobuf.MainPack.Parser, new[]{ "RequestCode", "ActionCode", "ReturnCode", "LoginPack", "Str", "UserInfoPack", "ClassicPack" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.LoginPack), global::SlotMachineProtobuf.LoginPack.Parser, new[]{ "Userid" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.UserInfoPack), global::SlotMachineProtobuf.UserInfoPack.Parser, new[]{ "Level", "Exp", "Coin", "LoginDay" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.UserInfoPack), global::SlotMachineProtobuf.UserInfoPack.Parser, new[]{ "Level", "Exp", "Coin", "LoginDay" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.ClassicPack), global::SlotMachineProtobuf.ClassicPack.Parser, new[]{ "ResultNums", "WinCoin" }, null, null, null, null)
           }));
     }
     #endregion
@@ -57,6 +61,10 @@ namespace SlotMachineProtobuf {
     ///用戶
     /// </summary>
     [pbr::OriginalName("User")] User = 1,
+    /// <summary>
+    ///遊戲
+    /// </summary>
+    [pbr::OriginalName("Game")] Game = 2,
   }
 
   /// <summary>
@@ -76,6 +84,10 @@ namespace SlotMachineProtobuf {
     ///獲取用戶訊息
     /// </summary>
     [pbr::OriginalName("GetUserInfo")] GetUserInfo = 3,
+    /// <summary>
+    ///經典遊戲結果
+    /// </summary>
+    [pbr::OriginalName("ClassicResult")] ClassicResult = 4,
   }
 
   public enum ReturnCode {
@@ -128,6 +140,7 @@ namespace SlotMachineProtobuf {
       loginPack_ = other.loginPack_ != null ? other.loginPack_.Clone() : null;
       str_ = other.str_;
       userInfoPack_ = other.userInfoPack_ != null ? other.userInfoPack_.Clone() : null;
+      classicPack_ = other.classicPack_ != null ? other.classicPack_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -202,6 +215,17 @@ namespace SlotMachineProtobuf {
       }
     }
 
+    /// <summary>Field number for the "classicPack" field.</summary>
+    public const int ClassicPackFieldNumber = 7;
+    private global::SlotMachineProtobuf.ClassicPack classicPack_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::SlotMachineProtobuf.ClassicPack ClassicPack {
+      get { return classicPack_; }
+      set {
+        classicPack_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as MainPack);
@@ -221,6 +245,7 @@ namespace SlotMachineProtobuf {
       if (!object.Equals(LoginPack, other.LoginPack)) return false;
       if (Str != other.Str) return false;
       if (!object.Equals(UserInfoPack, other.UserInfoPack)) return false;
+      if (!object.Equals(ClassicPack, other.ClassicPack)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -233,6 +258,7 @@ namespace SlotMachineProtobuf {
       if (loginPack_ != null) hash ^= LoginPack.GetHashCode();
       if (Str.Length != 0) hash ^= Str.GetHashCode();
       if (userInfoPack_ != null) hash ^= UserInfoPack.GetHashCode();
+      if (classicPack_ != null) hash ^= ClassicPack.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -270,6 +296,10 @@ namespace SlotMachineProtobuf {
         output.WriteRawTag(50);
         output.WriteMessage(UserInfoPack);
       }
+      if (classicPack_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(ClassicPack);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -295,6 +325,9 @@ namespace SlotMachineProtobuf {
       }
       if (userInfoPack_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(UserInfoPack);
+      }
+      if (classicPack_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ClassicPack);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -330,6 +363,12 @@ namespace SlotMachineProtobuf {
           UserInfoPack = new global::SlotMachineProtobuf.UserInfoPack();
         }
         UserInfoPack.MergeFrom(other.UserInfoPack);
+      }
+      if (other.classicPack_ != null) {
+        if (classicPack_ == null) {
+          ClassicPack = new global::SlotMachineProtobuf.ClassicPack();
+        }
+        ClassicPack.MergeFrom(other.ClassicPack);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -370,6 +409,13 @@ namespace SlotMachineProtobuf {
               UserInfoPack = new global::SlotMachineProtobuf.UserInfoPack();
             }
             input.ReadMessage(UserInfoPack);
+            break;
+          }
+          case 58: {
+            if (classicPack_ == null) {
+              ClassicPack = new global::SlotMachineProtobuf.ClassicPack();
+            }
+            input.ReadMessage(ClassicPack);
             break;
           }
         }
@@ -513,6 +559,9 @@ namespace SlotMachineProtobuf {
 
   }
 
+  /// <summary>
+  ///用戶訊息包
+  /// </summary>
   public sealed partial class UserInfoPack : pb::IMessage<UserInfoPack> {
     private static readonly pb::MessageParser<UserInfoPack> _parser = new pb::MessageParser<UserInfoPack>(() => new UserInfoPack());
     private pb::UnknownFieldSet _unknownFields;
@@ -730,6 +779,165 @@ namespace SlotMachineProtobuf {
           }
           case 32: {
             LoginDay = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  ///經典模式包
+  /// </summary>
+  public sealed partial class ClassicPack : pb::IMessage<ClassicPack> {
+    private static readonly pb::MessageParser<ClassicPack> _parser = new pb::MessageParser<ClassicPack>(() => new ClassicPack());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ClassicPack> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::SlotMachineProtobuf.SlotMachineProtobufReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ClassicPack() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ClassicPack(ClassicPack other) : this() {
+      resultNums_ = other.resultNums_.Clone();
+      winCoin_ = other.winCoin_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ClassicPack Clone() {
+      return new ClassicPack(this);
+    }
+
+    /// <summary>Field number for the "resultNums" field.</summary>
+    public const int ResultNumsFieldNumber = 1;
+    private static readonly pb::FieldCodec<int> _repeated_resultNums_codec
+        = pb::FieldCodec.ForInt32(10);
+    private readonly pbc::RepeatedField<int> resultNums_ = new pbc::RepeatedField<int>();
+    /// <summary>
+    ///結果編號
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<int> ResultNums {
+      get { return resultNums_; }
+    }
+
+    /// <summary>Field number for the "winCoin" field.</summary>
+    public const int WinCoinFieldNumber = 2;
+    private int winCoin_;
+    /// <summary>
+    ///贏得的金幣
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int WinCoin {
+      get { return winCoin_; }
+      set {
+        winCoin_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ClassicPack);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ClassicPack other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!resultNums_.Equals(other.resultNums_)) return false;
+      if (WinCoin != other.WinCoin) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= resultNums_.GetHashCode();
+      if (WinCoin != 0) hash ^= WinCoin.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      resultNums_.WriteTo(output, _repeated_resultNums_codec);
+      if (WinCoin != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(WinCoin);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += resultNums_.CalculateSize(_repeated_resultNums_codec);
+      if (WinCoin != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(WinCoin);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ClassicPack other) {
+      if (other == null) {
+        return;
+      }
+      resultNums_.Add(other.resultNums_);
+      if (other.WinCoin != 0) {
+        WinCoin = other.WinCoin;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10:
+          case 8: {
+            resultNums_.AddEntriesFrom(input, _repeated_resultNums_codec);
+            break;
+          }
+          case 16: {
+            WinCoin = input.ReadInt32();
             break;
           }
         }

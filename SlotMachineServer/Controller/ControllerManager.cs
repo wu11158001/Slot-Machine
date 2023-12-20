@@ -21,6 +21,8 @@ namespace SlotMachineServer.Controller
             UserController userController = new UserController();
             controllDic.Add(userController.GetRequestCode, userController);
 
+            GameController gameController = new GameController();
+            controllDic.Add(gameController.GetRequestCode, gameController);
         }
 
         /// <summary>
