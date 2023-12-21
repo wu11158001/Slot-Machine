@@ -16,6 +16,18 @@ namespace SlotMachineServer.Controller
         }
 
         /// <summary>
+        /// 獲取經典玩法賠率
+        /// </summary>
+        /// <param name="servers"></param>
+        /// <param name="client"></param>
+        /// <param name="pack"></param>
+        /// <returns></returns>
+        public MainPack GetClassicRate(Server servers, Client client, MainPack pack)
+        {
+            return client.GetClassicRate(pack);
+        }
+
+        /// <summary>
         /// 經典遊戲結果請求
         /// </summary>
         /// <param name="servers"></param>

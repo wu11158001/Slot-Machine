@@ -38,8 +38,7 @@ public class GameClassicRequest : BaseRequest
     /// <summary>
     /// 發送請求
     /// </summary>
-    /// <param name="id"></param>
-    public void SendRequest(string id)
+    public void SendRequest()
     {
         MainPack pack = new MainPack();
         pack.RequestCode = requestCode;

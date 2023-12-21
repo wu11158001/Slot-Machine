@@ -25,4 +25,17 @@ public class GameBasePanel : BasePanel
 
         obj.SetActive(false);
     }
+
+    /// <summary>
+    /// 移除轉盤
+    /// </summary>
+    protected virtual void RemoveBroad()
+    {
+        foreach (var item in resultDic.Values)
+        {
+            Destroy(item.gameObject);
+        }
+
+        resultDic.Clear();
+    }
 }

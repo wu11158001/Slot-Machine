@@ -12,10 +12,12 @@ enum RequestCode
 enum ActionCode
 {
 	ActionNone = 0;
-	Logon = 1;			//註冊
-	Login = 2;			//登入
-	GetUserInfo = 3;	//獲取用戶訊息
-	ClassicResult = 4;	//經典遊戲結果
+	Logon = 1;				//註冊
+	Login = 2;				//登入
+	GetUserInfo = 3;		//獲取用戶訊息
+	
+	GetClassicRate = 4;		//獲取經典遊戲賠率
+	ClassicResult = 5;		//經典遊戲結果
 }
 
 enum ReturnCode
@@ -36,7 +38,9 @@ message MainPack
 	string str = 5;
 	
 	UserInfoPack userInfoPack = 6;
+	
 	ClassicPack classicPack = 7;
+	ClassicRatePack classicRatePack = 8;
 }
 
 //註冊/登入包
@@ -59,4 +63,24 @@ message ClassicPack
 {
 	repeated int32 resultNums = 1;	//結果編號
 	int32 winCoin = 2;				//贏得的金幣
+}
+
+//Dictionary<int, int>
+message KeyIntValue
+{
+	int32 key = 1;
+	int32 value = 2;
+}
+
+//Dictionary<int, List<int>>
+message IntList {
+  repeated int32 values = 1;
+}
+
+
+//經典模式賠率包
+message ClassicRatePack
+{
+	repeated KeyIntValue line = 1;
+	map<int32, IntList> appear = 2;
 }

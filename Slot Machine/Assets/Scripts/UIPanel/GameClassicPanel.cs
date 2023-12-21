@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using SlotMachineProtobuf;
 using System.Threading.Tasks;
+using System.Linq;
 
 public class GameClassicPanel : GameBasePanel
 {
@@ -11,11 +12,11 @@ public class GameClassicPanel : GameBasePanel
     private GameClassicRequest classicRequest;
 
     [SerializeField]
-    private Button home_Btn, spin_Btn;
+    private Button home_Btn, spin_Btn, rate_Btn;
     [SerializeField]
     private Transform broadParent;
     [SerializeField]
-    private GameObject broadSample;
+    private GameObject broadSample, rateObj;
 
     private bool isSpin;
 
@@ -27,6 +28,7 @@ public class GameClassicPanel : GameBasePanel
 
     public override void OnPause()
     {
+        RemoveBroad();
         gameObject.SetActive(false);
     }
 
@@ -51,6 +53,14 @@ public class GameClassicPanel : GameBasePanel
                 StartSpinning();
             }
         });
+
+        //賠率按鈕
+        rate_Btn.onClick.AddListener(()=>
+        {
+            rateObj.SetActive(true);
+        });
+
+        rateObj.SetActive(false);
     }
 
     /// <summary>
@@ -69,7 +79,7 @@ public class GameClassicPanel : GameBasePanel
     /// </summary>
     private void StartSpinning()
     {
-        classicRequest.SendRequest(entry.UserInfo.UserId);
+        classicRequest.SendRequest();
 
         for (int i = 0; i < resultDic.Count; i++)
         {
