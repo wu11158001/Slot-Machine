@@ -58,29 +58,28 @@ message UserInfoPack
 	int32 loginDay = 4;	//登入天數
 }
 
-//經典模式包
-message ClassicPack
-{
-	repeated int32 resultNums = 1;	//結果編號
-	int32 winCoin = 2;				//贏得的金幣
-}
-
 //Dictionary<int, int>
 message KeyIntValue
 {
 	int32 key = 1;
 	int32 value = 2;
 }
-
 //Dictionary<int, List<int>>
 message IntList {
   repeated int32 values = 1;
 }
-
 
 //經典模式賠率包
 message ClassicRatePack
 {
 	repeated KeyIntValue line = 1;
 	map<int32, IntList> appear = 2;
+}
+
+//經典模式包
+message ClassicPack
+{
+	repeated int32 resultNums = 1;	//結果編號
+	int32 winRate = 2;				//贏得賠率
+	repeated int32 winNums = 3;		//獲獎編號
 }

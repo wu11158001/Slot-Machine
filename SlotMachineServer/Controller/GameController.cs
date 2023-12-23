@@ -24,7 +24,7 @@ namespace SlotMachineServer.Controller
         /// <returns></returns>
         public MainPack GetClassicRate(Server servers, Client client, MainPack pack)
         {
-            return client.GetClassicRate(pack);
+            return client.game.GetClassicRate(pack);
         }
 
         /// <summary>

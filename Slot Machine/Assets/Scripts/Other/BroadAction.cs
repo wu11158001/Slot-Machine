@@ -8,18 +8,23 @@ using SlotMachineProtobuf;
 
 public class BroadAction : MonoBehaviour
 {
+    private Animator animator;
+
     [SerializeField]
     private RectTransform resultParent;
     [SerializeField]
     private GameObject result_Img;
+    [SerializeField]
+    private GameObject frameEffect;
 
     [SerializeField]
     private Sprite[] resultSprites;
 
-    private bool isSpin;        //旋轉控制
+    private bool isAction;      //旋轉控制
     private float size;         //結果圖片大小
-    private DateTime startTime; //開始旋轉時間
-    private int resultNum;      //服務端回傳結果編號
+    public int resultNum;       //服務端回傳結果編號
+
+    private int hashId_IsShow;
 
     //編號,(轉盤物件,結果圖片)
     [SerializeField]
@@ -29,6 +34,9 @@ public class BroadAction : MonoBehaviour
 
     private void Start()
     {
+        hashId_IsShow = Animator.StringToHash("IsShow");
+        frameEffect.SetActive(false);
+
         Initializer();
     }
 
@@ -37,7 +45,7 @@ public class BroadAction : MonoBehaviour
     /// </summary>
     private void Initializer()
     {
-        size = resultParent.rect.height;
+        size = result_Img.GetComponent<RectTransform>().rect.height + 18;
 
         //產生轉盤內容
         for (int i = -1; i <= 1; i++)
@@ -50,6 +58,8 @@ public class BroadAction : MonoBehaviour
             Image img = obj.GetComponent<Image>();
             img.sprite = resultSprites[GetResultNum()];
             resultDic.Add(i, (obj,img));
+
+            if (i == 0) animator = obj.GetComponent<Animator>();
         }
         result_Img.SetActive(false);
     }
@@ -86,24 +96,16 @@ public class BroadAction : MonoBehaviour
     }
 
     /// <summary>
-    /// 服務端回傳結果
-    /// </summary>
-    /// <param name="num"></param>
-    public void SetResultNum(int num)
-    {
-        resultNum = num;
-    }
-
-    /// <summary>
     /// 開始旋轉
     /// </summary>
     public void StartSpinning()
     {
-        isSpin = true;
-        startTime = DateTime.Now ;
+        isAction = true;
         usingResult.Clear();
         resultNum = 1;
-        
+        animator.SetBool(hashId_IsShow, false);
+        frameEffect.SetActive(false);
+
         Spinning();
     }
 
@@ -112,14 +114,14 @@ public class BroadAction : MonoBehaviour
     /// </summary>
     private async void Spinning()
     {
-        while (isSpin)
+        while (isAction)
         {
             foreach (var result in resultDic)
             {
-                float posY = result.Value.Item1.anchoredPosition.y - 1000 * Time.deltaTime;
+                float posY = result.Value.Item1.anchoredPosition.y - 2000 * Time.deltaTime;
                 result.Value.Item1.anchoredPosition = new Vector2(0, posY);
 
-                if (result.Value.Item1.anchoredPosition.y <= -size)
+                if (result.Value.Item1.anchoredPosition.y < -size * 2)
                 {
                     result.Value.Item1.anchoredPosition = new Vector2(0, size);
                     result.Value.Item2.sprite = resultSprites[UnityEngine.Random.Range(0, resultSprites.Length)];
@@ -135,7 +137,7 @@ public class BroadAction : MonoBehaviour
     public async void StopSpin()
     {
         //設定結果
-        isSpin = false;
+        isAction = false;
         int index = GetResultNum(resultNum);
         resultDic[0].Item2.sprite = resultSprites[index];       
         
@@ -159,7 +161,7 @@ public class BroadAction : MonoBehaviour
             await Task.Delay(1);
         }
 
-        await Task.Delay(150);
+        await Task.Delay(100);
 
         while (resultDic[0].Item1.anchoredPosition.y < 0)
         {
@@ -175,5 +177,14 @@ public class BroadAction : MonoBehaviour
         {
             resultDic[i].Item1.anchoredPosition = new Vector2(0, size * i);
         }
+    }
+
+    /// <summary>
+    /// 顯示效果
+    /// </summary>
+    public void ShowEffect()
+    {
+        frameEffect.SetActive(true);
+        animator.SetBool(hashId_IsShow, true);
     }
 }

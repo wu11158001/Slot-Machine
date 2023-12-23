@@ -12,13 +12,23 @@ public class GameClassicPanel : GameBasePanel
     private GameClassicRequest classicRequest;
 
     [SerializeField]
-    private Button home_Btn, spin_Btn, rate_Btn;
+    private Button home_Btn, spin_Btn, rateAndRule_Btn;
+    [SerializeField]
+    private Text spin_Txt, winScore_Txt;
     [SerializeField]
     private Transform broadParent;
     [SerializeField]
     private GameObject broadSample, rateObj;
 
+    //紀錄贏的編號
+    private List<int> winNums = new List<int>();
+    //贏得賠率
+    private float winRate;
+
+    private const int initDelayTime = 200;
+    private int delayTime;
     private bool isSpin;
+    private bool isStoping;
 
     public override void OnEnter()
     {
@@ -43,23 +53,17 @@ public class GameClassicPanel : GameBasePanel
         //旋轉按鈕
         spin_Btn.onClick.AddListener(() =>
         {
-            if (isSpin)
-            {
-
-            }
-            else
-            {
-                //isSpin = true;
-                StartSpinning();
-            }
+            if (isSpin) StopSpin();
+            else StartSpinning();
         });
 
-        //賠率按鈕
-        rate_Btn.onClick.AddListener(()=>
+        //賠率與規則按鈕
+        rateAndRule_Btn.onClick.AddListener(()=>
         {
             rateObj.SetActive(true);
         });
 
+        delayTime = initDelayTime;
         rateObj.SetActive(false);
     }
 
@@ -81,6 +85,12 @@ public class GameClassicPanel : GameBasePanel
     {
         classicRequest.SendRequest();
 
+        isSpin = true;
+        spin_Txt.text = "停止";
+        spin_Btn.interactable = false;
+        winScore_Txt.text = "";
+        winNums.Clear();
+
         for (int i = 0; i < resultDic.Count; i++)
         {
             resultDic[i].StartSpinning();
@@ -93,16 +103,33 @@ public class GameClassicPanel : GameBasePanel
     /// <param name="pack"></param>
     public void GetResult(MainPack pack)
     {
+        //結果編號
         int i = 0;
         foreach (var resultNum in pack.ClassicPack.ResultNums)
         {
-            resultDic[i].SetResultNum(resultNum);
+            resultDic[i].resultNum = resultNum;
             i++;
         }
 
-        Debug.Log($"經典遊戲獲得金幣{pack.ClassicPack.WinCoin}");
+        //贏的編號
+        foreach (var num in pack.ClassicPack.WinNums)
+        {
+            winNums.Add(num);
+        }
 
+        //贏得賠率
+        winRate = (float)pack.ClassicPack.WinRate / 100;
+
+        Invoke(nameof(SetSpinBtn), 1);
         Invoke(nameof(DelayStopSpin), 2);
+    }
+
+    /// <summary>
+    /// 設定旋轉按鈕
+    /// </summary>
+    private void SetSpinBtn()
+    {
+        spin_Btn.interactable = true;
     }
 
     /// <summary>
@@ -110,10 +137,59 @@ public class GameClassicPanel : GameBasePanel
     /// </summary>
     private async void DelayStopSpin()
     {
+        isStoping = true;
         foreach (var result in resultDic.Values)
         {
             result.StopSpin();
-            await Task.Delay(200);
+            await Task.Delay(delayTime);
         }
+
+        isSpin = false;
+        isStoping = false;
+        spin_Txt.text = "開始";
+        spin_Btn.interactable = true;        
+        delayTime = initDelayTime;
+
+        //顯示效果
+        if (winNums.Count > 0)
+        {
+            foreach (var broadAction in resultDic.Values)
+            {
+                if(winNums.Contains(broadAction.resultNum))
+                {
+                    broadAction.ShowEffect();
+                }
+            }
+
+            WinScoreEffect();
+        }
+    }
+
+    /// <summary>
+    /// 停止旋轉
+    /// </summary>
+    private void StopSpin()
+    {
+        if (isStoping)
+        {
+            delayTime = 0;
+        }
+        else
+        {
+            delayTime = 0;
+            CancelInvoke();
+            DelayStopSpin();
+        }       
+
+        isSpin = false;
+        spin_Txt.text = "開始";
+    }
+
+    /// <summary>
+    /// 贏分效果
+    /// </summary>
+    private void WinScoreEffect()
+    {
+
     }
 }

@@ -35,7 +35,7 @@ public class UnityAdsManager : BaseManager,  IUnityAdsInitializationListener, IU
     /// <param name="message"></param>
     public void OnInitializationFailed(UnityAdsInitializationError error, string message)
     {
-        Debug.Log($"Unity Ads 初始化失敗: {error.ToString()} - {message}");
+        Debug.Log($"Unity Ads 初始化失敗: {error} - {message}");
     }
 
     /// <summary>

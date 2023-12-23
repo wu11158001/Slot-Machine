@@ -21,17 +21,11 @@ namespace SlotMachineServer.Servers
 
         private UserData userData;
         public UserData GetUserData { get { return userData; } }
-        private RuleData ruleleData;
 
         private MySqlConnection mySqlConnection;
         public MySqlConnection GetMySqlConnection { get { return mySqlConnection; } }
 
         public Game game { get; set; }
-
-        //經典玩法賠率_出現數量(編號,賠率List)
-        private Dictionary<int, List<int>> classicAppearRate = new Dictionary<int, List<int>>();
-        //經典玩法賠率_連線(編號,賠率)
-        private Dictionary<int, int> classicLineRate = new Dictionary<int, int>();
 
         public class UserInfoData
         {
@@ -44,15 +38,11 @@ namespace SlotMachineServer.Servers
             message = new Message();
             UserInfo = new UserInfoData();
             userData = new UserData();
-            ruleleData = new RuleData();
-            game = new Game();
 
             mySqlConnection = new MySqlConnection(connStr);
             mySqlConnection.Open();
 
-            //獲取賠率
-            classicAppearRate = ruleleData.GetClassicAppearRate(mySqlConnection);
-            classicLineRate = ruleleData.GetClassicLineRate(mySqlConnection);
+            game = new Game(mySqlConnection);
 
             this.server = server;
             this.socket = socket;
@@ -115,37 +105,6 @@ namespace SlotMachineServer.Servers
         void HandleRequest(MainPack pack)
         {
             server.HandleRequest(pack, this);
-        }
-
-        /// <summary>
-        /// 獲取賠率_經典
-        /// </summary>
-        /// <returns></returns>
-        public MainPack GetClassicRate(MainPack pack)
-        {
-            ClassicRatePack ratePack = new ClassicRatePack();
-            //連線
-            foreach (var rate in classicLineRate)
-            {
-                KeyIntValue keyValue = new KeyIntValue
-                {
-                    Key = rate.Key,
-                    Value = rate.Value
-                };
-                ratePack.Line.Add(keyValue);
-            }
-            //出現數量
-            foreach (var rate in classicAppearRate)
-            {
-                IntList intList = new IntList
-                {
-                    Values = { rate.Value }
-                };
-                ratePack.Appear.Add(rate.Key, intList);
-            }
-
-            pack.ClassicRatePack = ratePack;
-            return pack;
         }
 
         /// <summary>
