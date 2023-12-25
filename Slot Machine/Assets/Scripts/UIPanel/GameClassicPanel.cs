@@ -11,11 +11,13 @@ public class GameClassicPanel : GameBasePanel
 {
     [SerializeField]
     private GameClassicRequest gameClassicRequest;
+    [SerializeField]
+    private ClassicBonusPoolRequest classicBonusPoolRequest;
 
     [SerializeField]
     private Button home_Btn, spin_Btn, rateAndRule_Btn, betMax_Btn, betPlus_Btn, betMinus_Btn;
     [SerializeField]
-    private Text spin_Txt, winScore_Txt, bet_Txt;
+    private Text spin_Txt, winScore_Txt, bet_Txt, bonus_Txt;
     [SerializeField]
     private Transform broadParent;
     [SerializeField]
@@ -48,6 +50,8 @@ public class GameClassicPanel : GameBasePanel
 
     public override void OnEnter()
     {
+        classicBonusPoolRequest.SendRequest();
+
         gameObject.SetActive(true);
         winScore_Txt.text = "";
         SetBroad(9, broadParent, broadSample);
@@ -108,6 +112,15 @@ public class GameClassicPanel : GameBasePanel
         spin_Txt.text = "開始";
         delayTime = initDelayTime;
         rateObj.SetActive(false);
+    }
+
+    /// <summary>
+    /// 設定獎池內容
+    /// </summary>
+    /// <param name="pack"></param>
+    public void SetBonusPool(MainPack pack)
+    {
+        bonus_Txt.text = $"{pack.BonusPack.BonusValue}";
     }
 
     /// <summary>

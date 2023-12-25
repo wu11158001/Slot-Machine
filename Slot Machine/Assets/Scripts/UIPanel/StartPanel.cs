@@ -7,9 +7,6 @@ using SlotMachineProtobuf;
 public class StartPanel : BasePanel
 {
     [SerializeField]
-    private UserInfoRequset userInfoRequset;
-
-    [SerializeField]
     private LoginRequest loginRequest;
 
     [SerializeField]
@@ -24,7 +21,6 @@ public class StartPanel : BasePanel
 
     private void Start()
     {
-        userInfoRequset.SendRequest(entry.UserInfo.UserId);
         InvokeRepeating(nameof(TipTxtEffect), 0, 0.5f);
     }
 

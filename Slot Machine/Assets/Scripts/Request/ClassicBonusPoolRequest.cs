@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using SlotMachineProtobuf;
 
-public class UserInfoRequset : BaseRequest
+public class ClassicBonusPoolRequest : BaseRequest
 {
     private MainPack pack;
 
     [SerializeField]
-    private HallPanel hallPanel;
+    private GameClassicPanel gameClassicPanel;
 
     public override void Awake()
     {
-        requestCode = RequestCode.User;
-        actionCode = ActionCode.GetUserInfo;
+        requestCode = RequestCode.Game;
+        actionCode = ActionCode.BonusInfo;
         base.Awake();
     }
 
@@ -21,8 +21,7 @@ public class UserInfoRequset : BaseRequest
     {
         if (pack != null)
         {
-            entry.SetUserInfo(pack);
-            hallPanel.UpdateUserInfo();
+            gameClassicPanel.SetBonusPool(pack);
             pack = null;
         }
     }
@@ -39,17 +38,16 @@ public class UserInfoRequset : BaseRequest
     /// <summary>
     /// 發送請求
     /// </summary>
-    /// <param name="id"></param>
-    public void SendRequest(string id)
+    public void SendRequest()
     {
         MainPack pack = new MainPack();
         pack.RequestCode = requestCode;
         pack.ActionCode = actionCode;
 
-        LoginPack loginPack = new LoginPack();
-        loginPack.Userid = id;
-        pack.LoginPack = loginPack;
+        BonusPack bonusPack = new BonusPack();
+        bonusPack.GameName = "classic";
 
+        pack.BonusPack = bonusPack;
         base.SendRequest(pack);
     }
 }

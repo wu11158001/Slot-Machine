@@ -20,7 +20,7 @@ public class UserCoin : BasePanel
     /// <summary>
     /// 更新
     /// </summary>
-    private void UpdateValue()
+    public void UpdateValue()
     {
         tempVal = entry.UserInfo.Coin;
         coin_Txt.text = Tools.SetCoinStr(entry.UserInfo.Coin);

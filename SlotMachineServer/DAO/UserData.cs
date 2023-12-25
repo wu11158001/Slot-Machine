@@ -127,7 +127,9 @@ namespace SlotMachineServer.DAO
             //取資料庫值
             string getSql = $"SELECT {dataKey} FROM {this.tableName} WHERE userid = @id";
             MySqlCommand cmd = new MySqlCommand(getSql, mySqlConnection);
+
             cmd.Parameters.AddWithValue("@id", id);
+
             // 執行查詢並獲取查詢結果
             long getVal = 0;
             using (MySqlDataReader reader = cmd.ExecuteReader())
@@ -158,12 +160,13 @@ namespace SlotMachineServer.DAO
         /// <param name="val">更換的值</param>
         public void WriteUserInfo(MySqlConnection mySqlConnection, string id, string dataKey, long val)
         {
-            //寫入
             string writeSql = $"UPDATE {this.tableName} SET {dataKey} = @newValue WHERE userid = @id";
             MySqlCommand cmd = new MySqlCommand(writeSql, mySqlConnection);
+
             // 使用参数化查询以防止 SQL 注入
             cmd.Parameters.AddWithValue("@newValue", val);
             cmd.Parameters.AddWithValue("@id", id);
+
             int rowsAffected = cmd.ExecuteNonQuery();
             if (rowsAffected == 0)
             {

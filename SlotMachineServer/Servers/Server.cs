@@ -7,6 +7,8 @@ using System.Net;
 using System.Net.Sockets;
 using SlotMachineServer.Controller;
 using SlotMachineProtobuf;
+using SlotMachineServer.DAO;
+using MySql.Data.MySqlClient;
 
 namespace SlotMachineServer.Servers
 {
@@ -19,10 +21,13 @@ namespace SlotMachineServer.Servers
         public List<Client> GetClientList { get { return clientList; } }
 
         private ControllerManager controllerManager;
+        private GameData gameData;
+        public GameData GetGameData { get { return gameData; } }
 
         public Server(int port)
         {
             controllerManager = new ControllerManager(this);
+            gameData = new GameData();
 
             //Socket初始化
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -68,6 +73,23 @@ namespace SlotMachineServer.Servers
         public void RemoveClient(Client client)
         {
             clientList.Remove(client);
+        }
+
+        /// <summary>
+        /// 更新獎池
+        /// </summary>
+        /// <param name="pack"></param>
+        /// <param name="mySqlConnection"></param>
+        public void UpdateBonusPool(MainPack pack, MySqlConnection mySqlConnection)
+        {
+            string poolName = pack.BonusPack.GameName;
+            long changeVal = pack.BonusPack.BonusValue;
+            gameData.UpdateBonusPool(poolName, changeVal, mySqlConnection);
+
+            foreach (var c in clientList)
+            {
+                c.Send(pack);
+            }
         }
     }
 }

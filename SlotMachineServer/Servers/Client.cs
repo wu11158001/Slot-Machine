@@ -19,13 +19,13 @@ namespace SlotMachineServer.Servers
         private Server server;
         private Message message;
 
-        private UserData userData;
-        public UserData GetUserData { get { return userData; } }
-
         private MySqlConnection mySqlConnection;
         public MySqlConnection GetMySqlConnection { get { return mySqlConnection; } }
 
-        public Game game { get; set; }
+        private UserData userData;
+        public UserData GetUserData { get { return userData; } }
+        private Game game;
+        public Game GetGame { get { return game; } }
 
         public class UserInfoData
         {

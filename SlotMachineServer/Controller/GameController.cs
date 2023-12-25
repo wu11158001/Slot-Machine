@@ -24,7 +24,7 @@ namespace SlotMachineServer.Controller
         /// <returns></returns>
         public MainPack GetClassicRate(Server servers, Client client, MainPack pack)
         {
-            return client.game.GetClassicRate(pack);
+            return client.GetGame.GetClassicRate(pack);
         }
 
         /// <summary>
@@ -36,7 +36,20 @@ namespace SlotMachineServer.Controller
         /// <returns></returns>
         public MainPack ClassicResult(Server servers, Client client, MainPack pack)
         {
-            return client.game.ClassicResult(pack, client);
+            return client.GetGame.ClassicResult(pack, client, servers);
+        }
+
+        /// <summary>
+        /// 獎池訊息請求
+        /// </summary>
+        /// <param name="servers"></param>
+        /// <param name="client"></param>
+        /// <param name="pack"></param>
+        /// <returns></returns>
+        public MainPack BonusInfo(Server servers, Client client, MainPack pack)
+        {
+            pack.BonusPack.BonusValue = servers.GetGameData.GetBonusInfo(pack.BonusPack.GameName, client.GetMySqlConnection); ;
+            return pack;
         }
     }
 }

@@ -90,7 +90,6 @@ GameObject:
   - component: {fileID: 2161857599601873795}
   - component: {fileID: -8358452721018182182}
   - component: {fileID: 8301988011970362146}
-  - component: {fileID: 1035125905939547851}
   m_Layer: 5
   m_Name: StartPanel
   m_TagString: Untagged
@@ -133,7 +132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff6e28d1afdb5b048bf9274a8cb44e44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  userInfoRequset: {fileID: 1035125905939547851}
   loginRequest: {fileID: 8301988011970362146}
   tip_Txt: {fileID: 577326018512051932}
 --- !u!114 &8301988011970362146
@@ -149,18 +147,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPanel: {fileID: -8358452721018182182}
---- !u!114 &1035125905939547851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2227089276652856190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8eec79442a3593647b4aae3d695db966, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4082448864064922533
 GameObject:
   m_ObjectHideFlags: 0

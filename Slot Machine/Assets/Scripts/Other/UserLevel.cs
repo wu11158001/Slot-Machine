@@ -31,7 +31,7 @@ public class UserLevel : BasePanel
     /// <summary>
     /// 更新
     /// </summary>
-    private void UpdateValue()
+    public void UpdateValue()
     {
         tempLv = entry.UserInfo.Level;
         tempExp = entry.UserInfo.Exp;

@@ -69,13 +69,30 @@ namespace SlotMachineServer.Servers
             return pack;
         }
 
+
         /// <summary>
         /// 遊戲結果_經典
         /// </summary>
         /// <param name="pack"></param>
+        /// <param name="client"></param>
+        /// <param name="server"></param>
         /// <returns></returns>
-        public MainPack ClassicResult(MainPack pack, Client client)
+        public MainPack ClassicResult(MainPack pack, Client client, Server server)
         {
+            //提取部分賭注到獎池
+            string poolName = "classic";
+            long takeVal = Convert.ToInt64(pack.ClassicPack.BetValue * 0.05f);
+            long curPoolVal = server.GetGameData.GetBonusInfo(poolName, client.GetMySqlConnection);
+
+            MainPack mainPack = new MainPack();
+            mainPack.ActionCode = ActionCode.BonusInfo;
+            mainPack.RequestCode = RequestCode.Game;
+            BonusPack bonusPack = new BonusPack();
+            bonusPack.GameName = poolName;
+            bonusPack.BonusValue = curPoolVal + takeVal;
+            mainPack.BonusPack = bonusPack;
+            server.UpdateBonusPool(mainPack, client.GetMySqlConnection);
+
             //設定結果
             ClassicPack classicPack = new ClassicPack();
             Random random = new Random();
@@ -114,6 +131,7 @@ namespace SlotMachineServer.Servers
             }
             client.GetUserData.WriteUserInfo(client.GetMySqlConnection, client.UserInfo.UserId, "level", lvUpdate);
 
+            //回傳
             UserInfoPack userInfoPack = new UserInfoPack();
             userInfoPack.Coin = coinUpdate;
             userInfoPack.Exp = (int)expUpdate;
