@@ -8,9 +8,6 @@ using System.Threading.Tasks;
 public class HallPanel : BasePanel
 {
     [SerializeField]
-    private UserInfoRequset userInfoRequset;
-
-    [SerializeField]
     private Text nickName_Txt, coin_Txt, level_Txt;
 
     [SerializeField]
@@ -22,7 +19,6 @@ public class HallPanel : BasePanel
     public override void OnEnter()
     {
         gameObject.SetActive(true);
-        userInfoRequset.SendRequest(entry.UserInfo.UserId);
     }
 
     public override void OnPause()
@@ -49,15 +45,5 @@ public class HallPanel : BasePanel
         Sprite avatar = await Tools.ImageUrlToSprite(entry.UserInfo.ImageUrl);
         if (avatar != null) avatar_Img.sprite = avatar;
         if (!string.IsNullOrEmpty(entry.UserInfo.NickName)) nickName_Txt.text = entry.UserInfo.NickName;
-    }
-
-    /// <summary>
-    /// 設定用戶訊息
-    /// </summary>
-    public void SetUserInfo()
-    {
-        coin_Txt.text = $"{entry.UserInfo.Coin}";
-        level_Txt.text = $"LV.{entry.UserInfo.Level}";
-        lvProcess_Img.fillAmount = entry.UserInfo.Exp / (2 * entry.UserInfo.Level);
     }
 }

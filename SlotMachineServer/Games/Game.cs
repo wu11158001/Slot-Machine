@@ -74,7 +74,7 @@ namespace SlotMachineServer.Servers
         /// </summary>
         /// <param name="pack"></param>
         /// <returns></returns>
-        public MainPack ClassicResult(MainPack pack)
+        public MainPack ClassicResult(MainPack pack, Client client)
         {
             //設定結果
             ClassicPack classicPack = new ClassicPack();
@@ -85,20 +85,43 @@ namespace SlotMachineServer.Servers
                 resultList.Add(random.Next(0, 8));
             }*/
             resultList.Add(7);
-            resultList.Add(0);
-            resultList.Add(0);
+            resultList.Add(2);
             resultList.Add(7);
+            resultList.Add(7);
+            resultList.Add(2);
             resultList.Add(3);
             resultList.Add(4);
-            resultList.Add(7);
-            resultList.Add(7);
-            resultList.Add(7);
+            resultList.Add(4);
+            resultList.Add(6);
 
+            //判斷結果
             int winRate = 0;
             List<int> winNumList = JudgeWinNums(resultList, ref winRate);
+            long winCoin = (long)(pack.ClassicPack.BetValue * ((float)winRate / 100));
+
+            //資料庫更新
+            long coinUpdate = winCoin - pack.ClassicPack.BetValue;
+            coinUpdate = client.GetUserData.AddUserInfo(client.GetMySqlConnection, client.UserInfo.UserId, "coin", coinUpdate);
+            long expUpdate = pack.ClassicPack.BetValue / 100000;
+            if (expUpdate < 1) expUpdate = 1;
+            expUpdate = client.GetUserData.AddUserInfo(client.GetMySqlConnection, client.UserInfo.UserId, "exp", expUpdate);
+            long lvUpdate = 1;
+            long expTemp = 2;
+            while (expTemp <= expUpdate)
+            {
+                expTemp *= 2;
+                lvUpdate++;
+            }
+            client.GetUserData.WriteUserInfo(client.GetMySqlConnection, client.UserInfo.UserId, "level", lvUpdate);
+
+            UserInfoPack userInfoPack = new UserInfoPack();
+            userInfoPack.Coin = coinUpdate;
+            userInfoPack.Exp = (int)expUpdate;
+            userInfoPack.Level = (int)lvUpdate;
+            pack.UserInfoPack = userInfoPack;
 
             classicPack.ResultNums.AddRange(resultList);
-            classicPack.WinRate = winRate;
+            classicPack.WinCoin = winCoin;
             classicPack.WinNums.AddRange(winNumList);
             pack.ClassicPack = classicPack;
 
@@ -109,9 +132,9 @@ namespace SlotMachineServer.Servers
         /// 判斷贏得編號_經典
         /// </summary>
         /// <param name="resultNums">結果編號</param>
-        /// <param name="winCoin">用戶贏得賠率</param>
+        /// <param name="winRate">用戶贏得賠率</param>
         /// <returns></returns>
-        private List<int> JudgeWinNums(List<int> resultNums, ref int winCoin)
+        private List<int> JudgeWinNums(List<int> resultNums, ref int winRate)
         {
             HashSet<int> winHs = new();
 
@@ -136,7 +159,7 @@ namespace SlotMachineServer.Servers
                     int rate = classicAppearRateDic[dic.Key][dic.Value.Item1 - 3];
                     if (rate > 0)
                     {
-                        winCoin += rate;
+                        winRate += rate;
                         winHs.Add(dic.Key);
                     }                    
                 }
@@ -151,7 +174,7 @@ namespace SlotMachineServer.Servers
                     {
                         if (classicLineRuleList[i].All(item => dic.Value.Item2.Contains(item)))
                         {
-                            winCoin += classicLineRateDic[dic.Key];
+                            winRate += classicLineRateDic[dic.Key];
                             winHs.Add(dic.Key);
                         }
                     }

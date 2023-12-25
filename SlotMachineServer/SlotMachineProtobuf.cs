@@ -36,20 +36,21 @@ namespace SlotMachineProtobuf {
             "c3NpY1JhdGVQYWNrGAggASgLMiQuU2xvdE1hY2hpbmVQcm90b2J1Zi5DbGFz",
             "c2ljUmF0ZVBhY2siGwoJTG9naW5QYWNrEg4KBnVzZXJpZBgBIAEoCSJKCgxV",
             "c2VySW5mb1BhY2sSDQoFbGV2ZWwYASABKAUSCwoDZXhwGAIgASgFEgwKBGNv",
-            "aW4YAyABKAUSEAoIbG9naW5EYXkYBCABKAUiKQoLS2V5SW50VmFsdWUSCwoD",
+            "aW4YAyABKAMSEAoIbG9naW5EYXkYBCABKAUiKQoLS2V5SW50VmFsdWUSCwoD",
             "a2V5GAEgASgFEg0KBXZhbHVlGAIgASgFIhkKB0ludExpc3QSDgoGdmFsdWVz",
             "GAEgAygFItABCg9DbGFzc2ljUmF0ZVBhY2sSLgoEbGluZRgBIAMoCzIgLlNs",
             "b3RNYWNoaW5lUHJvdG9idWYuS2V5SW50VmFsdWUSQAoGYXBwZWFyGAIgAygL",
             "MjAuU2xvdE1hY2hpbmVQcm90b2J1Zi5DbGFzc2ljUmF0ZVBhY2suQXBwZWFy",
             "RW50cnkaSwoLQXBwZWFyRW50cnkSCwoDa2V5GAEgASgFEisKBXZhbHVlGAIg",
-            "ASgLMhwuU2xvdE1hY2hpbmVQcm90b2J1Zi5JbnRMaXN0OgI4ASJDCgtDbGFz",
-            "c2ljUGFjaxISCgpyZXN1bHROdW1zGAEgAygFEg8KB3dpblJhdGUYAiABKAUS",
-            "DwoHd2luTnVtcxgDIAMoBSoyCgtSZXF1ZXN0Q29kZRIPCgtSZXF1ZXN0Tm9u",
-            "ZRAAEggKBFVzZXIQARIICgRHYW1lEAIqagoKQWN0aW9uQ29kZRIOCgpBY3Rp",
-            "b25Ob25lEAASCQoFTG9nb24QARIJCgVMb2dpbhACEg8KC0dldFVzZXJJbmZv",
-            "EAMSEgoOR2V0Q2xhc3NpY1JhdGUQBBIRCg1DbGFzc2ljUmVzdWx0EAUqRwoK",
-            "UmV0dXJuQ29kZRIOCgpSZXR1cm5Ob25lEAASCwoHU3VjY2VlZBABEggKBEZh",
-            "aWwQAhISCg5EdXBsaWNhdGVMb2dpbhADYgZwcm90bzM="));
+            "ASgLMhwuU2xvdE1hY2hpbmVQcm90b2J1Zi5JbnRMaXN0OgI4ASJiCgtDbGFz",
+            "c2ljUGFjaxIQCghiZXRWYWx1ZRgBIAEoAxISCgpyZXN1bHROdW1zGAIgAygF",
+            "Eg8KB3dpbkNvaW4YAyABKAMSDwoHd2luTnVtcxgEIAMoBRILCgNleHAYBSAB",
+            "KAUqMgoLUmVxdWVzdENvZGUSDwoLUmVxdWVzdE5vbmUQABIICgRVc2VyEAES",
+            "CAoER2FtZRACKmoKCkFjdGlvbkNvZGUSDgoKQWN0aW9uTm9uZRAAEgkKBUxv",
+            "Z29uEAESCQoFTG9naW4QAhIPCgtHZXRVc2VySW5mbxADEhIKDkdldENsYXNz",
+            "aWNSYXRlEAQSEQoNQ2xhc3NpY1Jlc3VsdBAFKkcKClJldHVybkNvZGUSDgoK",
+            "UmV0dXJuTm9uZRAAEgsKB1N1Y2NlZWQQARIICgRGYWlsEAISEgoORHVwbGlj",
+            "YXRlTG9naW4QA2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::SlotMachineProtobuf.RequestCode), typeof(global::SlotMachineProtobuf.ActionCode), typeof(global::SlotMachineProtobuf.ReturnCode), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -59,7 +60,7 @@ namespace SlotMachineProtobuf {
             new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.KeyIntValue), global::SlotMachineProtobuf.KeyIntValue.Parser, new[]{ "Key", "Value" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.IntList), global::SlotMachineProtobuf.IntList.Parser, new[]{ "Values" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.ClassicRatePack), global::SlotMachineProtobuf.ClassicRatePack.Parser, new[]{ "Line", "Appear" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.ClassicPack), global::SlotMachineProtobuf.ClassicPack.Parser, new[]{ "ResultNums", "WinRate", "WinNums" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.ClassicPack), global::SlotMachineProtobuf.ClassicPack.Parser, new[]{ "BetValue", "ResultNums", "WinCoin", "WinNums", "Exp" }, null, null, null, null)
           }));
     }
     #endregion
@@ -678,12 +679,12 @@ namespace SlotMachineProtobuf {
 
     /// <summary>Field number for the "coin" field.</summary>
     public const int CoinFieldNumber = 3;
-    private int coin_;
+    private long coin_;
     /// <summary>
     ///金幣
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Coin {
+    public long Coin {
       get { return coin_; }
       set {
         coin_ = value;
@@ -729,7 +730,7 @@ namespace SlotMachineProtobuf {
       int hash = 1;
       if (Level != 0) hash ^= Level.GetHashCode();
       if (Exp != 0) hash ^= Exp.GetHashCode();
-      if (Coin != 0) hash ^= Coin.GetHashCode();
+      if (Coin != 0L) hash ^= Coin.GetHashCode();
       if (LoginDay != 0) hash ^= LoginDay.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -752,9 +753,9 @@ namespace SlotMachineProtobuf {
         output.WriteRawTag(16);
         output.WriteInt32(Exp);
       }
-      if (Coin != 0) {
+      if (Coin != 0L) {
         output.WriteRawTag(24);
-        output.WriteInt32(Coin);
+        output.WriteInt64(Coin);
       }
       if (LoginDay != 0) {
         output.WriteRawTag(32);
@@ -774,8 +775,8 @@ namespace SlotMachineProtobuf {
       if (Exp != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Exp);
       }
-      if (Coin != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Coin);
+      if (Coin != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Coin);
       }
       if (LoginDay != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(LoginDay);
@@ -797,7 +798,7 @@ namespace SlotMachineProtobuf {
       if (other.Exp != 0) {
         Exp = other.Exp;
       }
-      if (other.Coin != 0) {
+      if (other.Coin != 0L) {
         Coin = other.Coin;
       }
       if (other.LoginDay != 0) {
@@ -823,7 +824,7 @@ namespace SlotMachineProtobuf {
             break;
           }
           case 24: {
-            Coin = input.ReadInt32();
+            Coin = input.ReadInt64();
             break;
           }
           case 32: {
@@ -1293,9 +1294,11 @@ namespace SlotMachineProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public ClassicPack(ClassicPack other) : this() {
+      betValue_ = other.betValue_;
       resultNums_ = other.resultNums_.Clone();
-      winRate_ = other.winRate_;
+      winCoin_ = other.winCoin_;
       winNums_ = other.winNums_.Clone();
+      exp_ = other.exp_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1304,10 +1307,24 @@ namespace SlotMachineProtobuf {
       return new ClassicPack(this);
     }
 
+    /// <summary>Field number for the "betValue" field.</summary>
+    public const int BetValueFieldNumber = 1;
+    private long betValue_;
+    /// <summary>
+    ///押注金額
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long BetValue {
+      get { return betValue_; }
+      set {
+        betValue_ = value;
+      }
+    }
+
     /// <summary>Field number for the "resultNums" field.</summary>
-    public const int ResultNumsFieldNumber = 1;
+    public const int ResultNumsFieldNumber = 2;
     private static readonly pb::FieldCodec<int> _repeated_resultNums_codec
-        = pb::FieldCodec.ForInt32(10);
+        = pb::FieldCodec.ForInt32(18);
     private readonly pbc::RepeatedField<int> resultNums_ = new pbc::RepeatedField<int>();
     /// <summary>
     ///結果編號
@@ -1317,24 +1334,24 @@ namespace SlotMachineProtobuf {
       get { return resultNums_; }
     }
 
-    /// <summary>Field number for the "winRate" field.</summary>
-    public const int WinRateFieldNumber = 2;
-    private int winRate_;
+    /// <summary>Field number for the "winCoin" field.</summary>
+    public const int WinCoinFieldNumber = 3;
+    private long winCoin_;
     /// <summary>
-    ///贏得賠率
+    ///贏得金幣
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int WinRate {
-      get { return winRate_; }
+    public long WinCoin {
+      get { return winCoin_; }
       set {
-        winRate_ = value;
+        winCoin_ = value;
       }
     }
 
     /// <summary>Field number for the "winNums" field.</summary>
-    public const int WinNumsFieldNumber = 3;
+    public const int WinNumsFieldNumber = 4;
     private static readonly pb::FieldCodec<int> _repeated_winNums_codec
-        = pb::FieldCodec.ForInt32(26);
+        = pb::FieldCodec.ForInt32(34);
     private readonly pbc::RepeatedField<int> winNums_ = new pbc::RepeatedField<int>();
     /// <summary>
     ///獲獎編號
@@ -1342,6 +1359,20 @@ namespace SlotMachineProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<int> WinNums {
       get { return winNums_; }
+    }
+
+    /// <summary>Field number for the "exp" field.</summary>
+    public const int ExpFieldNumber = 5;
+    private int exp_;
+    /// <summary>
+    ///經驗值
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Exp {
+      get { return exp_; }
+      set {
+        exp_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1357,18 +1388,22 @@ namespace SlotMachineProtobuf {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (BetValue != other.BetValue) return false;
       if(!resultNums_.Equals(other.resultNums_)) return false;
-      if (WinRate != other.WinRate) return false;
+      if (WinCoin != other.WinCoin) return false;
       if(!winNums_.Equals(other.winNums_)) return false;
+      if (Exp != other.Exp) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (BetValue != 0L) hash ^= BetValue.GetHashCode();
       hash ^= resultNums_.GetHashCode();
-      if (WinRate != 0) hash ^= WinRate.GetHashCode();
+      if (WinCoin != 0L) hash ^= WinCoin.GetHashCode();
       hash ^= winNums_.GetHashCode();
+      if (Exp != 0) hash ^= Exp.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1382,12 +1417,20 @@ namespace SlotMachineProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      if (BetValue != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(BetValue);
+      }
       resultNums_.WriteTo(output, _repeated_resultNums_codec);
-      if (WinRate != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(WinRate);
+      if (WinCoin != 0L) {
+        output.WriteRawTag(24);
+        output.WriteInt64(WinCoin);
       }
       winNums_.WriteTo(output, _repeated_winNums_codec);
+      if (Exp != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(Exp);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1396,11 +1439,17 @@ namespace SlotMachineProtobuf {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (BetValue != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(BetValue);
+      }
       size += resultNums_.CalculateSize(_repeated_resultNums_codec);
-      if (WinRate != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(WinRate);
+      if (WinCoin != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(WinCoin);
       }
       size += winNums_.CalculateSize(_repeated_winNums_codec);
+      if (Exp != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Exp);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -1412,11 +1461,17 @@ namespace SlotMachineProtobuf {
       if (other == null) {
         return;
       }
+      if (other.BetValue != 0L) {
+        BetValue = other.BetValue;
+      }
       resultNums_.Add(other.resultNums_);
-      if (other.WinRate != 0) {
-        WinRate = other.WinRate;
+      if (other.WinCoin != 0L) {
+        WinCoin = other.WinCoin;
       }
       winNums_.Add(other.winNums_);
+      if (other.Exp != 0) {
+        Exp = other.Exp;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1428,18 +1483,26 @@ namespace SlotMachineProtobuf {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10:
           case 8: {
+            BetValue = input.ReadInt64();
+            break;
+          }
+          case 18:
+          case 16: {
             resultNums_.AddEntriesFrom(input, _repeated_resultNums_codec);
             break;
           }
-          case 16: {
-            WinRate = input.ReadInt32();
+          case 24: {
+            WinCoin = input.ReadInt64();
             break;
           }
-          case 26:
-          case 24: {
+          case 34:
+          case 32: {
             winNums_.AddEntriesFrom(input, _repeated_winNums_codec);
+            break;
+          }
+          case 40: {
+            Exp = input.ReadInt32();
             break;
           }
         }

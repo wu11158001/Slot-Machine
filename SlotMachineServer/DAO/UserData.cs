@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using SlotMachineProtobuf;
+using SlotMachineServer.Servers;
 
 namespace SlotMachineServer.DAO
 {
@@ -99,7 +100,7 @@ namespace SlotMachineServer.DAO
                     UserInfoPack infoPack = new UserInfoPack();
                     infoPack.Level = Convert.ToInt32(reader["level"]);
                     infoPack.Exp = Convert.ToInt32(reader["exp"]);
-                    infoPack.Coin = Convert.ToInt32(reader["coin"]);
+                    infoPack.Coin = Convert.ToInt64(reader["coin"]);
                     infoPack.LoginDay = Convert.ToInt32(reader["loginday"]);
 
                     pack.UserInfoPack = infoPack;
@@ -111,6 +112,62 @@ namespace SlotMachineServer.DAO
                     Console.WriteLine($"{userId} => 搜索獲取用戶訊息錯誤");
                     return null;
                 }
+            }
+        }
+
+        /// <summary>
+        /// 用戶訊息增減
+        /// </summary>
+        /// <param name="mySqlConnection"></param>
+        /// <param name="id">用戶ID</param>
+        /// <param name="dataKey">更換的key</param>
+        /// <param name="val">增減的值</param>
+        public long AddUserInfo(MySqlConnection mySqlConnection, string id, string dataKey, long val)
+        {
+            //取資料庫值
+            string getSql = $"SELECT {dataKey} FROM {this.tableName} WHERE userid = @id";
+            MySqlCommand cmd = new MySqlCommand(getSql, mySqlConnection);
+            cmd.Parameters.AddWithValue("@id", id);
+            // 執行查詢並獲取查詢結果
+            long getVal = 0;
+            using (MySqlDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    getVal = reader.GetInt64(0);
+                }
+                else
+                {
+                    Console.WriteLine($"沒有找到對應的ID: {id}");
+                }
+            }
+
+            //寫入
+            long updateVal = getVal + val;
+            WriteUserInfo(mySqlConnection, id, dataKey, updateVal);
+
+            return updateVal;
+        }
+
+        /// <summary>
+        /// 寫入用戶訊息
+        /// </summary>
+        /// <param name="mySqlConnection"></param>
+        /// <param name="id">用戶ID</param>
+        /// <param name="dataKey">更換的key</param>
+        /// <param name="val">更換的值</param>
+        public void WriteUserInfo(MySqlConnection mySqlConnection, string id, string dataKey, long val)
+        {
+            //寫入
+            string writeSql = $"UPDATE {this.tableName} SET {dataKey} = @newValue WHERE userid = @id";
+            MySqlCommand cmd = new MySqlCommand(writeSql, mySqlConnection);
+            // 使用参数化查询以防止 SQL 注入
+            cmd.Parameters.AddWithValue("@newValue", val);
+            cmd.Parameters.AddWithValue("@id", id);
+            int rowsAffected = cmd.ExecuteNonQuery();
+            if (rowsAffected == 0)
+            {
+                Console.WriteLine($"{id} => Sql寫入 {dataKey} 錯誤");
             }
         }
     }

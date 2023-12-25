@@ -31,7 +31,7 @@ public class Entry : MonoBehaviour
         public int Level { get; set; }
         public int Exp { get; set; }
         public string ImageUrl { get; set; }
-        public int Coin { get; set; }
+        public long Coin { get; set; }
         public int LoginDay { get; set; }
     }
     public UserInfoData UserInfo { get; set; }

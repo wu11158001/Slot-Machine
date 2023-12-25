@@ -7,9 +7,6 @@ public class UserInfoRequset : BaseRequest
 {
     private MainPack pack;
 
-    [SerializeField]
-    private HallPanel hallPanel;
-
     public override void Awake()
     {
         requestCode = RequestCode.User;
@@ -22,7 +19,6 @@ public class UserInfoRequset : BaseRequest
         if (pack != null)
         {
             entry.SetUserInfo(pack);
-            hallPanel.SetUserInfo();
             pack = null;
         }
     }

@@ -5,35 +5,54 @@ using UnityEngine.UI;
 using SlotMachineProtobuf;
 using System.Threading.Tasks;
 using System.Linq;
+using System;
 
 public class GameClassicPanel : GameBasePanel
 {
     [SerializeField]
-    private GameClassicRequest classicRequest;
+    private GameClassicRequest gameClassicRequest;
 
     [SerializeField]
-    private Button home_Btn, spin_Btn, rateAndRule_Btn;
+    private Button home_Btn, spin_Btn, rateAndRule_Btn, betMax_Btn, betPlus_Btn, betMinus_Btn;
     [SerializeField]
-    private Text spin_Txt, winScore_Txt;
+    private Text spin_Txt, winScore_Txt, bet_Txt;
     [SerializeField]
     private Transform broadParent;
     [SerializeField]
     private GameObject broadSample, rateObj;
 
+    [SerializeField]
+    private UserCoin userCoin;
+    [SerializeField]
+    private UserLevel userLevel;
+
     //紀錄贏的編號
     private List<int> winNums = new List<int>();
-    //贏得賠率
-    private float winRate;
+    //贏得金幣
+    private long winCoin;
 
+    //贏分效果時間
+    private const float coinEffecDur = 1.0f;
+
+    //轉盤參數
     private const int initDelayTime = 200;
     private int delayTime;
     private bool isSpin;
     private bool isStoping;
 
+    //押注參數
+    private int betLevel = 1;
+    private long betValue;
+
+    private Coroutine usingCoroutine;
+
     public override void OnEnter()
     {
         gameObject.SetActive(true);
+        winScore_Txt.text = "";
         SetBroad(9, broadParent, broadSample);
+
+        SetBetVal();
     }
 
     public override void OnPause()
@@ -63,8 +82,41 @@ public class GameClassicPanel : GameBasePanel
             rateObj.SetActive(true);
         });
 
+        //押注+按鈕
+        betPlus_Btn.onClick.AddListener(() =>
+        {
+            betLevel++;
+            SetBetVal();
+        });
+
+        //押注-按鈕
+        betMinus_Btn.onClick.AddListener(() =>
+        {
+            betLevel--;
+            SetBetVal();
+        });
+
+        //押注最大按鈕
+        betMax_Btn.onClick.AddListener(() =>
+        {
+            betLevel = 10;
+            SetBetVal();
+        });
+
+        //轉盤參數
+        isSpin = false;
+        spin_Txt.text = "開始";
         delayTime = initDelayTime;
         rateObj.SetActive(false);
+    }
+
+    /// <summary>
+    /// 設定押注值
+    /// </summary>
+    private void SetBetVal()
+    {
+        betValue = Tools.JudgeBetValue(betLevel, entry.UserInfo.Coin);
+        bet_Txt.text = Tools.SetCoinStr(betValue);
     }
 
     /// <summary>
@@ -83,13 +135,21 @@ public class GameClassicPanel : GameBasePanel
     /// </summary>
     private void StartSpinning()
     {
-        classicRequest.SendRequest();
+        if(entry.UserInfo.Coin - betValue < 0)
+        {
+            uiManager.ShowTip("金幣數不足!!!");
+            return;
+        }
 
+        userCoin.ChangeCoin(entry.UserInfo.Coin - betValue);
+        gameClassicRequest.SendRequest(betValue);
+
+        if (usingCoroutine != null) StopCoroutine(usingCoroutine);
         isSpin = true;
         spin_Txt.text = "停止";
-        spin_Btn.interactable = false;
         winScore_Txt.text = "";
         winNums.Clear();
+        spin_Btn.interactable = false;
 
         for (int i = 0; i < resultDic.Count; i++)
         {
@@ -117,11 +177,16 @@ public class GameClassicPanel : GameBasePanel
             winNums.Add(num);
         }
 
-        //贏得賠率
-        winRate = (float)pack.ClassicPack.WinRate / 100;
+        //贏得金幣
+        winCoin = pack.ClassicPack.WinCoin;
 
-        Invoke(nameof(SetSpinBtn), 1);
-        Invoke(nameof(DelayStopSpin), 2);
+        //更新用戶訊息
+        entry.UserInfo.Coin = pack.UserInfoPack.Coin;
+        entry.UserInfo.Exp = pack.UserInfoPack.Exp;
+        entry.UserInfo.Level = pack.UserInfoPack.Level;
+
+        Invoke(nameof(SetSpinBtn), 0.7f);
+        Invoke(nameof(DelayStopSpin), 2.0f);
     }
 
     /// <summary>
@@ -146,9 +211,9 @@ public class GameClassicPanel : GameBasePanel
 
         isSpin = false;
         isStoping = false;
-        spin_Txt.text = "開始";
-        spin_Btn.interactable = true;        
+        spin_Txt.text = "開始"; 
         delayTime = initDelayTime;
+        SetSpinBtn();
 
         //顯示效果
         if (winNums.Count > 0)
@@ -161,8 +226,12 @@ public class GameClassicPanel : GameBasePanel
                 }
             }
 
-            WinScoreEffect();
+            usingCoroutine = StartCoroutine(nameof(IScoreEffect));
         }
+
+        //更新用戶訊息
+        userCoin.ChangeCoin(entry.UserInfo.Coin);
+        userLevel.ExpIncrease();
     }
 
     /// <summary>
@@ -188,8 +257,26 @@ public class GameClassicPanel : GameBasePanel
     /// <summary>
     /// 贏分效果
     /// </summary>
-    private void WinScoreEffect()
+    /// <returns></returns>
+    private IEnumerator IScoreEffect()
     {
+        float startTime = Time.time;
+        int num = 0;
 
+        while (Time.time - startTime < coinEffecDur)
+        {
+            float progress = (Time.time - startTime) / coinEffecDur;
+            num = (int)(winCoin * progress);
+            winScore_Txt.text = Tools.SetCoinStr(num);
+            yield return null;
+        }
+
+        winScore_Txt.text = Tools.SetCoinStr(winCoin);
+    }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
+        CancelInvoke();
     }
 }

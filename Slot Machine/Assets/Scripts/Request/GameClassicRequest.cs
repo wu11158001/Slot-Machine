@@ -38,11 +38,16 @@ public class GameClassicRequest : BaseRequest
     /// <summary>
     /// 發送請求
     /// </summary>
-    public void SendRequest()
+    /// <param name="betVal">押注金額</param>
+    public void SendRequest(long betVal)
     {
         MainPack pack = new MainPack();
         pack.RequestCode = requestCode;
         pack.ActionCode = actionCode;
+
+        ClassicPack classicPack = new ClassicPack();
+        classicPack.BetValue = betVal;
+        pack.ClassicPack = classicPack;
 
         base.SendRequest(pack);
     }

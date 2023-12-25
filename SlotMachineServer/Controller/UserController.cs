@@ -24,7 +24,7 @@ namespace SlotMachineServer.Controller
             if (client.GetUserData.Logon(pack, client.GetMySqlConnection))
             {
                 pack.ReturnCode = ReturnCode.Succeed;
-                client.UserInfo.userId = pack.LoginPack.Userid;
+                client.UserInfo.UserId = pack.LoginPack.Userid;
 
                 Console.WriteLine($"{pack.LoginPack.Userid} : 註冊成功,進入遊戲");
             }
@@ -43,7 +43,7 @@ namespace SlotMachineServer.Controller
         /// <returns></returns>
         public MainPack Login(Server server, Client client, MainPack pack)
         {
-            if (server.GetClientList.Any(list => list.UserInfo.userId == pack.LoginPack.Userid))
+            if (server.GetClientList.Any(list => list.UserInfo.UserId == pack.LoginPack.Userid))
             {
                 pack.ReturnCode = ReturnCode.DuplicateLogin;
                 Console.WriteLine(pack.LoginPack.Userid + " => 重複登入");
@@ -53,7 +53,7 @@ namespace SlotMachineServer.Controller
             if (client.GetUserData.Login(pack, client.GetMySqlConnection))
             {
                 pack.ReturnCode = ReturnCode.Succeed;
-                client.UserInfo.userId = pack.LoginPack.Userid;
+                client.UserInfo.UserId = pack.LoginPack.Userid;
 
                 Console.WriteLine($"{pack.LoginPack.Userid} => 進入遊戲");
             }
@@ -72,7 +72,7 @@ namespace SlotMachineServer.Controller
         /// <returns></returns>
         public MainPack Logout(Server server, Client client, MainPack pack)
         {
-            Console.WriteLine(client.UserInfo.userId + " => 用戶登出");
+            Console.WriteLine(client.UserInfo.UserId + " => 用戶登出");
             server.RemoveClient(client);
             return null;
         }

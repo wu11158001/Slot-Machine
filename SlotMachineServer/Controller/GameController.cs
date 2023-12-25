@@ -36,7 +36,7 @@ namespace SlotMachineServer.Controller
         /// <returns></returns>
         public MainPack ClassicResult(Server servers, Client client, MainPack pack)
         {
-            return client.game.ClassicResult(pack);
+            return client.game.ClassicResult(pack, client);
         }
     }
 }

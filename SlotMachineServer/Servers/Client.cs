@@ -29,7 +29,7 @@ namespace SlotMachineServer.Servers
 
         public class UserInfoData
         {
-            public string userId { get; set; }
+            public string UserId { get; set; }
         }
         public UserInfoData UserInfo { get; set; }
 
@@ -94,7 +94,7 @@ namespace SlotMachineServer.Servers
         /// <param name="pack"></param>
         public void Send(MainPack pack)
         {
-            Console.WriteLine($"{this.UserInfo.userId} 發送消息:{pack.ActionCode}");
+            Console.WriteLine($"{this.UserInfo.UserId} 發送消息:{pack.ActionCode}");
 
             socket.Send(Message.PackData(pack));
         }
@@ -115,7 +115,7 @@ namespace SlotMachineServer.Servers
             server.RemoveClient(this);
             socket.Close();
             mySqlConnection.Close();
-            Console.WriteLine(this.UserInfo.userId + " => 已斷開連接");
+            Console.WriteLine(this.UserInfo.UserId + " => 已斷開連接");
         }
     }
 }

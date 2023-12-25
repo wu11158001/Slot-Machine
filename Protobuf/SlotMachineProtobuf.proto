@@ -54,7 +54,7 @@ message UserInfoPack
 {
 	int32 level = 1;	//等級
 	int32 exp = 2;		//經驗值
-	int32 coin = 3;		//金幣
+	int64 coin = 3;		//金幣
 	int32 loginDay = 4;	//登入天數
 }
 
@@ -65,10 +65,10 @@ message KeyIntValue
 	int32 value = 2;
 }
 //Dictionary<int, List<int>>
-message IntList {
+message IntList 
+{
   repeated int32 values = 1;
 }
-
 //經典模式賠率包
 message ClassicRatePack
 {
@@ -79,7 +79,8 @@ message ClassicRatePack
 //經典模式包
 message ClassicPack
 {
-	repeated int32 resultNums = 1;	//結果編號
-	int32 winRate = 2;				//贏得賠率
-	repeated int32 winNums = 3;		//獲獎編號
+	int64 betValue = 1;				//押注金額
+	repeated int32 resultNums = 2;	//結果編號
+	int64 winCoin = 3;				//贏得金幣
+	repeated int32 winNums = 4;		//獲獎編號
 }
