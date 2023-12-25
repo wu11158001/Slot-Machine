@@ -203,10 +203,24 @@ public class GameClassicPanel : GameBasePanel
     private async void DelayStopSpin()
     {
         isStoping = true;
-        foreach (var result in resultDic.Values)
+
+        //單獨延遲停止事件
+        bool isEven = UnityEngine.Random.Range(0, 100) < 100;
+        int evenNum = UnityEngine.Random.Range(0, resultDic.Count);
+
+        //停止旋轉
+        foreach (var result in resultDic)
         {
-            result.StopSpin();
-            await Task.Delay(delayTime);
+            //觸發事件
+            if (isEven && result.Key == evenNum)
+            {
+                EvenEffecf(result.Value);
+            }
+            else
+            {
+                result.Value.StopSpin();
+                await Task.Delay(delayTime);
+            }            
         }
 
         isSpin = false;
@@ -215,12 +229,34 @@ public class GameClassicPanel : GameBasePanel
         delayTime = initDelayTime;
         SetSpinBtn();
 
-        //顯示效果
+        if (!isEven) TurnTableOver();
+    }
+
+    /// <summary>
+    /// 事件效果
+    /// </summary>
+    /// <param name="evenBroad"></param>
+    private async void EvenEffecf(BroadAction evenBroad)
+    {
+        await Task.Delay(delayTime * 10);
+        evenBroad.StopSpin();
+        TurnTableOver();
+    }
+
+    /// <summary>
+    /// 轉盤結束
+    /// </summary>
+    private void TurnTableOver()
+    {
+        userCoin.ChangeCoin(entry.UserInfo.Coin);
+        userLevel.ExpIncrease();
+
+        //顯示贏分效果
         if (winNums.Count > 0)
         {
             foreach (var broadAction in resultDic.Values)
             {
-                if(winNums.Contains(broadAction.resultNum))
+                if (winNums.Contains(broadAction.resultNum))
                 {
                     broadAction.ShowEffect();
                 }
@@ -228,10 +264,6 @@ public class GameClassicPanel : GameBasePanel
 
             usingCoroutine = StartCoroutine(nameof(IScoreEffect));
         }
-
-        //更新用戶訊息
-        userCoin.ChangeCoin(entry.UserInfo.Coin);
-        userLevel.ExpIncrease();
     }
 
     /// <summary>

@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameBasePanel : BasePanel
 {
     [SerializeField]
+    //(結果編號,腳本)
     protected Dictionary<int, BroadAction> resultDic = new Dictionary<int, BroadAction>();
 
     /// <summary>
