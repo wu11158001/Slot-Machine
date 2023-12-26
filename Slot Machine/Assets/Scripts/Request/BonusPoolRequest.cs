@@ -31,21 +31,4 @@ public class BonusPoolRequest : BaseRequest
     {
         this.pack = pack;
     }
-
-    /// <summary>
-    /// 發送請求
-    /// </summary>
-    /// <param name="gameName">模式名稱</param>
-    public void SendRequest(string gameName)
-    {
-        MainPack pack = new MainPack();
-        pack.RequestCode = requestCode;
-        pack.ActionCode = actionCode;
-
-        BonusPoolPack bonusPoolPack = new BonusPoolPack();
-        bonusPoolPack.GameName = gameName;
-
-        pack.BonusPoolPack = bonusPoolPack;
-        base.SendRequest(pack);
-    }
 }

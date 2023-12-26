@@ -40,7 +40,7 @@ public class StartPanel : BasePanel
     /// </summary>
     public void Login()
     {
-        loginRequest.SendRequest(entry.UserInfo.UserId);
+        loginRequest.SendRequest();
     }
 
     /// <summary>

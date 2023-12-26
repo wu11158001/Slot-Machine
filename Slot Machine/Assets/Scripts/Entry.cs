@@ -31,7 +31,7 @@ public class Entry : MonoBehaviour
         public string UserId { get; set; }
         public int Level { get; set; }
         public int Exp { get; set; }
-        public string ImageUrl { get; set; }
+        public string ImgUrl { get; set; }
         public long Coin { get; set; }
         public int LoginDay { get; set; }
     }
@@ -68,6 +68,8 @@ public class Entry : MonoBehaviour
     void TestLogin()
     {
         UserInfo.UserId = "123456";
+        UserInfo.NickName = "Test Account";
+        UserInfo.ImgUrl = "222";
         StartLogin();
     }
 
@@ -170,6 +172,15 @@ public class Entry : MonoBehaviour
     public void AddBonusPool(GameBonusPool baseBonus)
     {
         bonusPoolManager.AddBonusPool(baseBonus);
+    }
+
+    /// <summary>
+    /// 設定廣播贏家
+    /// </summary>
+    /// <param name="pack"></param>
+    public void SetBroadcastWinner(MainPack pack)
+    {
+        uIManager.SetBroadcastWinner(pack);
     }
 
     private void OnDestroy()

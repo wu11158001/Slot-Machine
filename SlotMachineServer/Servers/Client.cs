@@ -30,6 +30,8 @@ namespace SlotMachineServer.Servers
         public class UserInfoData
         {
             public string UserId { get; set; }
+            public string NickName { get; set; }
+            public string ImgUrl { get; set; }
         }
         public UserInfoData UserInfo { get; set; }
 

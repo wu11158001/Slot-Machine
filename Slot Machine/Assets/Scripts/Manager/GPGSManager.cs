@@ -23,7 +23,7 @@ public class GPGSManager : BaseManager
         {
             entry.UserInfo.UserId = PlayGamesPlatform.Instance.GetUserId();
             entry.UserInfo.NickName = PlayGamesPlatform.Instance.GetUserDisplayName();
-            entry.UserInfo.ImageUrl = PlayGamesPlatform.Instance.GetUserImageUrl();
+            entry.UserInfo.ImgUrl = PlayGamesPlatform.Instance.GetUserImageUrl();
             entry.StartLogin();
 
             Debug.Log($"用戶登入:{entry.UserInfo.UserId}");

@@ -55,7 +55,7 @@ public class HallPanel : BasePanel
     /// </summary>
     private async void SetAvatarAndNickName()
     {
-        Sprite avatar = await Tools.ImageUrlToSprite(entry.UserInfo.ImageUrl);
+        Sprite avatar = await Tools.ImageUrlToSprite(entry.UserInfo.ImgUrl);
         if (avatar != null) avatar_Img.sprite = avatar;
         if (!string.IsNullOrEmpty(entry.UserInfo.NickName)) nickName_Txt.text = entry.UserInfo.NickName;
     }

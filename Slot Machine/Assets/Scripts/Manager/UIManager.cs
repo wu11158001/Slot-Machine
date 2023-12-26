@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SlotMachineProtobuf;
 
 public class UIManager : BaseManager
 {
@@ -31,7 +32,7 @@ public class UIManager : BaseManager
 
         PushPanel(PanelType.LoadingPanel);
         PushPanel(PanelType.TipPanel);
-        PushPanel(PanelType.BonusPoolPanel);
+        bonusPoolPanel = PushPanel(PanelType.BonusPoolPanel).GetComponent<BonusPoolPanel>();
         startPanel = PushPanel(PanelType.StartPanel).GetComponent<StartPanel>();
     }
 
@@ -132,5 +133,14 @@ public class UIManager : BaseManager
     public void ShowLoading()
     {
         loadingPanel.Loading();
+    }
+
+    /// <summary>
+    /// 設定廣播贏家
+    /// </summary>
+    /// <param name="pack"></param>
+    public void SetBroadcastWinner(MainPack pack)
+    {
+        bonusPoolPanel.SetBroadcastWinner(pack);
     }
 }

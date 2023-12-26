@@ -38,15 +38,16 @@ public class LoginRequest : BaseRequest
     /// <summary>
     /// 發送請求
     /// </summary>
-    /// <param name="id"></param>
-    public void SendRequest(string id)
+    public void SendRequest()
     {
         MainPack pack = new MainPack();
         pack.RequestCode = requestCode;
         pack.ActionCode = actionCode;
 
         LoginPack loginPack = new LoginPack();
-        loginPack.Userid = id;
+        loginPack.Userid = entry.UserInfo.UserId;
+        loginPack.NickName = entry.UserInfo.NickName;
+        loginPack.ImgUrl = entry.UserInfo.ImgUrl;
         pack.LoginPack = loginPack;
 
         base.SendRequest(pack);

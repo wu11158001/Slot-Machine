@@ -79,20 +79,6 @@ namespace SlotMachineServer.Servers
         /// <returns></returns>
         public MainPack ClassicResult(MainPack pack, Client client, Server server)
         {
-            //提取部分賭注到獎池
-            string poolName = "classic";
-            long takeVal = Convert.ToInt64(pack.ClassicPack.BetValue * 0.05f);
-            long curPoolVal = server.GetGameData.GetBonusInfo(poolName, client.GetMySqlConnection);
-
-            MainPack mainPack = new MainPack();
-            mainPack.ActionCode = ActionCode.BonusPoolInfo;
-            mainPack.RequestCode = RequestCode.Game;
-            BonusPoolPack bonusPoolPack = new BonusPoolPack();
-            bonusPoolPack.GameName = poolName;
-            bonusPoolPack.BonusValue = curPoolVal + takeVal;
-            mainPack.BonusPoolPack = bonusPoolPack;
-            server.UpdateBonusPool(mainPack, client.GetMySqlConnection);
-
             //設定結果
             ClassicPack classicPack = new ClassicPack();
             Random random = new Random();
@@ -102,23 +88,52 @@ namespace SlotMachineServer.Servers
                 resultList.Add(random.Next(0, 8));
             }*/
             resultList.Add(7);
-            resultList.Add(2);
             resultList.Add(7);
             resultList.Add(7);
-            resultList.Add(2);
-            resultList.Add(3);
-            resultList.Add(4);
-            resultList.Add(4);
-            resultList.Add(6);
+            resultList.Add(7);
+            resultList.Add(7);
+            resultList.Add(7);
+            resultList.Add(7);
+            resultList.Add(7);
+            resultList.Add(7);
+
+            //獎池更新
+            string poolName = "classic";
+            long curPoolVal = server.GetGameData.GetBonusInfo(poolName, client.GetMySqlConnection);
+            bool isBigWin = false;
+            MainPack bonusMainPack = new MainPack();
+            bonusMainPack.ActionCode = ActionCode.BonusPoolInfo;
+            bonusMainPack.RequestCode = RequestCode.Game;
+            BonusPoolPack bonusPoolPack = new BonusPoolPack();
+            bonusPoolPack.GameName = poolName;
+            if (resultList.Where(x => x == 7).Count() == resultList.Count)
+            {
+                //獲得全盤7大獎                
+                bonusPoolPack.BonusValue = 0;
+                bonusPoolPack.WinId = client.UserInfo.UserId;
+                bonusPoolPack.WinNickName = client.UserInfo.NickName;
+                bonusPoolPack.WinImgUrl = client.UserInfo.ImgUrl;
+                bonusPoolPack.WinValue = curPoolVal;
+                isBigWin = true;
+            }
+            else
+            {
+                //提取部分賭注到獎池                
+                long takeVal = Convert.ToInt64(pack.ClassicPack.BetValue * 0.05f);
+                bonusPoolPack.BonusValue = curPoolVal + takeVal;
+            }
+            bonusMainPack.BonusPoolPack = bonusPoolPack;
+            server.UpdateBonusPool(bonusMainPack, client.GetMySqlConnection);
 
             //判斷結果
             int winRate = 0;
             List<int> winNumList = JudgeWinNums(resultList, ref winRate);
             long winCoin = (long)(pack.ClassicPack.BetValue * ((float)winRate / 100));
 
-            //資料庫更新
+            //用戶訊息資料庫更新
             long coinUpdate = winCoin - pack.ClassicPack.BetValue;
-            coinUpdate = client.GetUserData.AddUserInfo(client.GetMySqlConnection, client.UserInfo.UserId, "coin", coinUpdate);
+            long bigCoin = isBigWin ? curPoolVal : 0;
+            coinUpdate = client.GetUserData.AddUserInfo(client.GetMySqlConnection, client.UserInfo.UserId, "coin", coinUpdate + bigCoin);
             long expUpdate = pack.ClassicPack.BetValue / 100000;
             if (expUpdate < 1) expUpdate = 1;
             expUpdate = client.GetUserData.AddUserInfo(client.GetMySqlConnection, client.UserInfo.UserId, "exp", expUpdate);

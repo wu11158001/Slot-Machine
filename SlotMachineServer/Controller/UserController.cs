@@ -16,6 +16,16 @@ namespace SlotMachineServer.Controller
         }
 
         /// <summary>
+        /// 設定用戶訊息
+        /// </summary>
+        private void SetUserInfo(Client client, MainPack pack)
+        {
+            client.UserInfo.UserId = pack.LoginPack.Userid;
+            client.UserInfo.NickName = pack.LoginPack.NickName;
+            client.UserInfo.ImgUrl = pack.LoginPack.ImgUrl;
+        }
+
+        /// <summary>
         /// 註冊
         /// </summary>
         /// <returns></returns>
@@ -24,7 +34,7 @@ namespace SlotMachineServer.Controller
             if (client.GetUserData.Logon(pack, client.GetMySqlConnection))
             {
                 pack.ReturnCode = ReturnCode.Succeed;
-                client.UserInfo.UserId = pack.LoginPack.Userid;
+                SetUserInfo(client, pack);
 
                 Console.WriteLine($"{pack.LoginPack.Userid} : 註冊成功,進入遊戲");
             }
@@ -53,7 +63,7 @@ namespace SlotMachineServer.Controller
             if (client.GetUserData.Login(pack, client.GetMySqlConnection))
             {
                 pack.ReturnCode = ReturnCode.Succeed;
-                client.UserInfo.UserId = pack.LoginPack.Userid;
+                SetUserInfo(client, pack);
 
                 client.Send(server.GetGameData.GetAllBonus(client.GetMySqlConnection));
 

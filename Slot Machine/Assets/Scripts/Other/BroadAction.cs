@@ -114,20 +114,27 @@ public class BroadAction : MonoBehaviour
     /// </summary>
     private async void Spinning()
     {
-        while (isAction)
+        try
         {
-            foreach (var result in resultDic)
+            while (isAction)
             {
-                float posY = result.Value.Item1.anchoredPosition.y - 2000 * Time.deltaTime;
-                result.Value.Item1.anchoredPosition = new Vector2(0, posY);
-
-                if (result.Value.Item1.anchoredPosition.y < -size * 2)
+                foreach (var result in resultDic)
                 {
-                    result.Value.Item1.anchoredPosition = new Vector2(0, size);
-                    result.Value.Item2.sprite = resultSprites[UnityEngine.Random.Range(0, resultSprites.Length)];
+                    float posY = result.Value.Item1.anchoredPosition.y - 2000 * Time.deltaTime;
+                    result.Value.Item1.anchoredPosition = new Vector2(0, posY);
+
+                    if (result.Value.Item1.anchoredPosition.y < -size * 2)
+                    {
+                        result.Value.Item1.anchoredPosition = new Vector2(0, size);
+                        result.Value.Item2.sprite = resultSprites[UnityEngine.Random.Range(0, resultSprites.Length)];
+                    }
                 }
+                await Task.Delay(1);
             }
-            await Task.Delay(1);
+        }        
+        catch
+        {
+
         }
     }
 
@@ -136,46 +143,53 @@ public class BroadAction : MonoBehaviour
     /// </summary>
     public async void StopSpin()
     {
-        //設定結果
-        isAction = false;
-        int index = GetResultNum(resultNum);
-        resultDic[0].Item2.sprite = resultSprites[index];       
-        
-        for (int i = -1; i <= 1; i++)
+        try
         {
-            resultDic[i].Item1.anchoredPosition = new Vector2(0, size * i);
-            if(i != 0)
+            //設定結果
+            isAction = false;
+            int index = GetResultNum(resultNum);
+            resultDic[0].Item2.sprite = resultSprites[index];
+
+            for (int i = -1; i <= 1; i++)
             {
-                resultDic[i].Item2.sprite = resultSprites[GetResultNum()];
+                resultDic[i].Item1.anchoredPosition = new Vector2(0, size * i);
+                if (i != 0)
+                {
+                    resultDic[i].Item2.sprite = resultSprites[GetResultNum()];
+                }
+            }
+
+            //煞車效果
+            while (resultDic[0].Item1.anchoredPosition.y > -30)
+            {
+                foreach (var result in resultDic.Values)
+                {
+                    float posY = result.Item1.anchoredPosition.y - 200 * Time.deltaTime;
+                    result.Item1.anchoredPosition = new Vector2(0, posY);
+                }
+                await Task.Delay(1);
+            }
+
+            await Task.Delay(100);
+
+            while (resultDic[0].Item1.anchoredPosition.y < 0)
+            {
+                foreach (var result in resultDic.Values)
+                {
+                    float posY = result.Item1.anchoredPosition.y + 200 * Time.deltaTime;
+                    result.Item1.anchoredPosition = new Vector2(0, posY);
+                }
+                await Task.Delay(1);
+            }
+
+            for (int i = -1; i <= 1; i++)
+            {
+                resultDic[i].Item1.anchoredPosition = new Vector2(0, size * i);
             }
         }
-
-        //煞車效果
-        while (resultDic[0].Item1.anchoredPosition.y > -30)
+        catch (Exception)
         {
-            foreach (var result in resultDic.Values)
-            {
-                float posY = result.Item1.anchoredPosition.y - 200 * Time.deltaTime;
-                result.Item1.anchoredPosition = new Vector2(0, posY);
-            }
-            await Task.Delay(1);
-        }
 
-        await Task.Delay(100);
-
-        while (resultDic[0].Item1.anchoredPosition.y < 0)
-        {
-            foreach (var result in resultDic.Values)
-            {
-                float posY = result.Item1.anchoredPosition.y + 200 * Time.deltaTime;
-                result.Item1.anchoredPosition = new Vector2(0, posY);
-            }
-            await Task.Delay(1);
-        }
-
-        for (int i = -1; i <= 1; i++)
-        {
-            resultDic[i].Item1.anchoredPosition = new Vector2(0, size * i);
         }
     }
 

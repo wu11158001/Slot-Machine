@@ -55,6 +55,12 @@ public class BonusPoolManager : BaseManager
                 }
             }
         }
+
+        //設定廣播贏家
+        if (!string.IsNullOrEmpty(pack.BonusPoolPack.WinNickName))
+        {
+            entry.SetBroadcastWinner(pack);
+        }
     }
 
     /// <summary>

@@ -80,6 +80,8 @@ namespace SlotMachineServer.Servers
         /// </summary>
         /// <param name="pack"></param>
         /// <param name="mySqlConnection"></param>
+        /// <param name="isAll">是否全體廣播</param>
+        /// <param name="client"></param>
         public void UpdateBonusPool(MainPack pack, MySqlConnection mySqlConnection)
         {
             string poolName = pack.BonusPoolPack.GameName;
