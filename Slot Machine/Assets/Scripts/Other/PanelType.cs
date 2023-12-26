@@ -7,4 +7,5 @@ public enum PanelType
     HallPanel,          //大廳
     LoadingPanel,       //載入畫面
     GameClassicPanel,   //遊戲_經典模式
+    BonusPoolPanel,      //獎池
 }

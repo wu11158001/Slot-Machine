@@ -25,7 +25,7 @@ namespace SlotMachineProtobuf {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChlTbG90TWFjaGluZVByb3RvYnVmLnByb3RvEhNTbG90TWFjaGluZVByb3Rv",
-            "YnVmIs0DCghNYWluUGFjaxI1CgtyZXF1ZXN0Q29kZRgBIAEoDjIgLlNsb3RN",
+            "YnVmItUDCghNYWluUGFjaxI1CgtyZXF1ZXN0Q29kZRgBIAEoDjIgLlNsb3RN",
             "YWNoaW5lUHJvdG9idWYuUmVxdWVzdENvZGUSMwoKYWN0aW9uQ29kZRgCIAEo",
             "DjIfLlNsb3RNYWNoaW5lUHJvdG9idWYuQWN0aW9uQ29kZRIzCgpyZXR1cm5D",
             "b2RlGAMgASgOMh8uU2xvdE1hY2hpbmVQcm90b2J1Zi5SZXR1cm5Db2RlEjEK",
@@ -34,37 +34,41 @@ namespace SlotMachineProtobuf {
             "TWFjaGluZVByb3RvYnVmLlVzZXJJbmZvUGFjaxI1CgtjbGFzc2ljUGFjaxgH",
             "IAEoCzIgLlNsb3RNYWNoaW5lUHJvdG9idWYuQ2xhc3NpY1BhY2sSPQoPY2xh",
             "c3NpY1JhdGVQYWNrGAggASgLMiQuU2xvdE1hY2hpbmVQcm90b2J1Zi5DbGFz",
-            "c2ljUmF0ZVBhY2sSMQoJYm9udXNQYWNrGAkgASgLMh4uU2xvdE1hY2hpbmVQ",
-            "cm90b2J1Zi5Cb251c1BhY2siGwoJTG9naW5QYWNrEg4KBnVzZXJpZBgBIAEo",
-            "CSJKCgxVc2VySW5mb1BhY2sSDQoFbGV2ZWwYASABKAUSCwoDZXhwGAIgASgF",
-            "EgwKBGNvaW4YAyABKAMSEAoIbG9naW5EYXkYBCABKAUiKQoLS2V5SW50VmFs",
-            "dWUSCwoDa2V5GAEgASgFEg0KBXZhbHVlGAIgASgFIhkKB0ludExpc3QSDgoG",
-            "dmFsdWVzGAEgAygFItABCg9DbGFzc2ljUmF0ZVBhY2sSLgoEbGluZRgBIAMo",
-            "CzIgLlNsb3RNYWNoaW5lUHJvdG9idWYuS2V5SW50VmFsdWUSQAoGYXBwZWFy",
-            "GAIgAygLMjAuU2xvdE1hY2hpbmVQcm90b2J1Zi5DbGFzc2ljUmF0ZVBhY2su",
-            "QXBwZWFyRW50cnkaSwoLQXBwZWFyRW50cnkSCwoDa2V5GAEgASgFEisKBXZh",
-            "bHVlGAIgASgLMhwuU2xvdE1hY2hpbmVQcm90b2J1Zi5JbnRMaXN0OgI4ASJV",
-            "CgtDbGFzc2ljUGFjaxIQCghiZXRWYWx1ZRgBIAEoAxISCgpyZXN1bHROdW1z",
-            "GAIgAygFEg8KB3dpbkNvaW4YAyABKAMSDwoHd2luTnVtcxgEIAMoBSJrCglC",
-            "b251c1BhY2sSEAoIZ2FtZU5hbWUYASABKAkSEgoKYm9udXNWYWx1ZRgCIAEo",
-            "AxITCgt3aW5OaWNrTmFtZRgDIAEoCRIRCgl3aW5JbWdVcmwYBCABKAkSEAoI",
-            "d2luVmFsdWUYBSABKAMqMgoLUmVxdWVzdENvZGUSDwoLUmVxdWVzdE5vbmUQ",
-            "ABIICgRVc2VyEAESCAoER2FtZRACKnkKCkFjdGlvbkNvZGUSDgoKQWN0aW9u",
-            "Tm9uZRAAEgkKBUxvZ29uEAESCQoFTG9naW4QAhIPCgtHZXRVc2VySW5mbxAD",
-            "EhIKDkdldENsYXNzaWNSYXRlEAQSEQoNQ2xhc3NpY1Jlc3VsdBAFEg0KCUJv",
-            "bnVzSW5mbxAGKkcKClJldHVybkNvZGUSDgoKUmV0dXJuTm9uZRAAEgsKB1N1",
-            "Y2NlZWQQARIICgRGYWlsEAISEgoORHVwbGljYXRlTG9naW4QA2IGcHJvdG8z"));
+            "c2ljUmF0ZVBhY2sSOQoNYm9udXNQb29sUGFjaxgJIAEoCzIiLlNsb3RNYWNo",
+            "aW5lUHJvdG9idWYuQm9udXNQb29sUGFjayIbCglMb2dpblBhY2sSDgoGdXNl",
+            "cmlkGAEgASgJIkoKDFVzZXJJbmZvUGFjaxINCgVsZXZlbBgBIAEoBRILCgNl",
+            "eHAYAiABKAUSDAoEY29pbhgDIAEoAxIQCghsb2dpbkRheRgEIAEoBSLQAQoP",
+            "Q2xhc3NpY1JhdGVQYWNrEi4KBGxpbmUYASADKAsyIC5TbG90TWFjaGluZVBy",
+            "b3RvYnVmLktleUludFZhbHVlEkAKBmFwcGVhchgCIAMoCzIwLlNsb3RNYWNo",
+            "aW5lUHJvdG9idWYuQ2xhc3NpY1JhdGVQYWNrLkFwcGVhckVudHJ5GksKC0Fw",
+            "cGVhckVudHJ5EgsKA2tleRgBIAEoBRIrCgV2YWx1ZRgCIAEoCzIcLlNsb3RN",
+            "YWNoaW5lUHJvdG9idWYuSW50TGlzdDoCOAEiVQoLQ2xhc3NpY1BhY2sSEAoI",
+            "YmV0VmFsdWUYASABKAMSEgoKcmVzdWx0TnVtcxgCIAMoBRIPCgd3aW5Db2lu",
+            "GAMgASgDEg8KB3dpbk51bXMYBCADKAUiogEKDUJvbnVzUG9vbFBhY2sSEAoI",
+            "Z2FtZU5hbWUYASABKAkSEgoKYm9udXNWYWx1ZRgCIAEoAxITCgt3aW5OaWNr",
+            "TmFtZRgDIAEoCRIRCgl3aW5JbWdVcmwYBCABKAkSEAoId2luVmFsdWUYBSAB",
+            "KAMSMQoHYWxsUG9vbBgGIAMoCzIgLlNsb3RNYWNoaW5lUHJvdG9idWYuS2V5",
+            "U3RyVmFsdWUiKQoLS2V5SW50VmFsdWUSCwoDa2V5GAEgASgFEg0KBXZhbHVl",
+            "GAIgASgFIikKC0tleVN0clZhbHVlEgsKA2tleRgBIAEoCRINCgV2YWx1ZRgC",
+            "IAEoAyIZCgdJbnRMaXN0Eg4KBnZhbHVlcxgBIAMoBSoyCgtSZXF1ZXN0Q29k",
+            "ZRIPCgtSZXF1ZXN0Tm9uZRAAEggKBFVzZXIQARIICgRHYW1lEAIqfQoKQWN0",
+            "aW9uQ29kZRIOCgpBY3Rpb25Ob25lEAASCQoFTG9nb24QARIJCgVMb2dpbhAC",
+            "Eg8KC0dldFVzZXJJbmZvEAMSEgoOR2V0Q2xhc3NpY1JhdGUQBBIRCg1DbGFz",
+            "c2ljUmVzdWx0EAUSEQoNQm9udXNQb29sSW5mbxAGKkcKClJldHVybkNvZGUS",
+            "DgoKUmV0dXJuTm9uZRAAEgsKB1N1Y2NlZWQQARIICgRGYWlsEAISEgoORHVw",
+            "bGljYXRlTG9naW4QA2IGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::SlotMachineProtobuf.RequestCode), typeof(global::SlotMachineProtobuf.ActionCode), typeof(global::SlotMachineProtobuf.ReturnCode), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.MainPack), global::SlotMachineProtobuf.MainPack.Parser, new[]{ "RequestCode", "ActionCode", "ReturnCode", "LoginPack", "Str", "UserInfoPack", "ClassicPack", "ClassicRatePack", "BonusPack" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.MainPack), global::SlotMachineProtobuf.MainPack.Parser, new[]{ "RequestCode", "ActionCode", "ReturnCode", "LoginPack", "Str", "UserInfoPack", "ClassicPack", "ClassicRatePack", "BonusPoolPack" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.LoginPack), global::SlotMachineProtobuf.LoginPack.Parser, new[]{ "Userid" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.UserInfoPack), global::SlotMachineProtobuf.UserInfoPack.Parser, new[]{ "Level", "Exp", "Coin", "LoginDay" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.KeyIntValue), global::SlotMachineProtobuf.KeyIntValue.Parser, new[]{ "Key", "Value" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.IntList), global::SlotMachineProtobuf.IntList.Parser, new[]{ "Values" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.ClassicRatePack), global::SlotMachineProtobuf.ClassicRatePack.Parser, new[]{ "Line", "Appear" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.ClassicPack), global::SlotMachineProtobuf.ClassicPack.Parser, new[]{ "BetValue", "ResultNums", "WinCoin", "WinNums" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.BonusPack), global::SlotMachineProtobuf.BonusPack.Parser, new[]{ "GameName", "BonusValue", "WinNickName", "WinImgUrl", "WinValue" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.BonusPoolPack), global::SlotMachineProtobuf.BonusPoolPack.Parser, new[]{ "GameName", "BonusValue", "WinNickName", "WinImgUrl", "WinValue", "AllPool" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.KeyIntValue), global::SlotMachineProtobuf.KeyIntValue.Parser, new[]{ "Key", "Value" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.KeyStrValue), global::SlotMachineProtobuf.KeyStrValue.Parser, new[]{ "Key", "Value" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.IntList), global::SlotMachineProtobuf.IntList.Parser, new[]{ "Values" }, null, null, null, null)
           }));
     }
     #endregion
@@ -111,7 +115,7 @@ namespace SlotMachineProtobuf {
     /// <summary>
     ///獎池訊息
     /// </summary>
-    [pbr::OriginalName("BonusInfo")] BonusInfo = 6,
+    [pbr::OriginalName("BonusPoolInfo")] BonusPoolInfo = 6,
   }
 
   public enum ReturnCode {
@@ -166,7 +170,7 @@ namespace SlotMachineProtobuf {
       userInfoPack_ = other.userInfoPack_ != null ? other.userInfoPack_.Clone() : null;
       classicPack_ = other.classicPack_ != null ? other.classicPack_.Clone() : null;
       classicRatePack_ = other.classicRatePack_ != null ? other.classicRatePack_.Clone() : null;
-      bonusPack_ = other.bonusPack_ != null ? other.bonusPack_.Clone() : null;
+      bonusPoolPack_ = other.bonusPoolPack_ != null ? other.bonusPoolPack_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -263,14 +267,14 @@ namespace SlotMachineProtobuf {
       }
     }
 
-    /// <summary>Field number for the "bonusPack" field.</summary>
-    public const int BonusPackFieldNumber = 9;
-    private global::SlotMachineProtobuf.BonusPack bonusPack_;
+    /// <summary>Field number for the "bonusPoolPack" field.</summary>
+    public const int BonusPoolPackFieldNumber = 9;
+    private global::SlotMachineProtobuf.BonusPoolPack bonusPoolPack_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::SlotMachineProtobuf.BonusPack BonusPack {
-      get { return bonusPack_; }
+    public global::SlotMachineProtobuf.BonusPoolPack BonusPoolPack {
+      get { return bonusPoolPack_; }
       set {
-        bonusPack_ = value;
+        bonusPoolPack_ = value;
       }
     }
 
@@ -295,7 +299,7 @@ namespace SlotMachineProtobuf {
       if (!object.Equals(UserInfoPack, other.UserInfoPack)) return false;
       if (!object.Equals(ClassicPack, other.ClassicPack)) return false;
       if (!object.Equals(ClassicRatePack, other.ClassicRatePack)) return false;
-      if (!object.Equals(BonusPack, other.BonusPack)) return false;
+      if (!object.Equals(BonusPoolPack, other.BonusPoolPack)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -310,7 +314,7 @@ namespace SlotMachineProtobuf {
       if (userInfoPack_ != null) hash ^= UserInfoPack.GetHashCode();
       if (classicPack_ != null) hash ^= ClassicPack.GetHashCode();
       if (classicRatePack_ != null) hash ^= ClassicRatePack.GetHashCode();
-      if (bonusPack_ != null) hash ^= BonusPack.GetHashCode();
+      if (bonusPoolPack_ != null) hash ^= BonusPoolPack.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -356,9 +360,9 @@ namespace SlotMachineProtobuf {
         output.WriteRawTag(66);
         output.WriteMessage(ClassicRatePack);
       }
-      if (bonusPack_ != null) {
+      if (bonusPoolPack_ != null) {
         output.WriteRawTag(74);
-        output.WriteMessage(BonusPack);
+        output.WriteMessage(BonusPoolPack);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -392,8 +396,8 @@ namespace SlotMachineProtobuf {
       if (classicRatePack_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(ClassicRatePack);
       }
-      if (bonusPack_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(BonusPack);
+      if (bonusPoolPack_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(BonusPoolPack);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -442,11 +446,11 @@ namespace SlotMachineProtobuf {
         }
         ClassicRatePack.MergeFrom(other.ClassicRatePack);
       }
-      if (other.bonusPack_ != null) {
-        if (bonusPack_ == null) {
-          BonusPack = new global::SlotMachineProtobuf.BonusPack();
+      if (other.bonusPoolPack_ != null) {
+        if (bonusPoolPack_ == null) {
+          BonusPoolPack = new global::SlotMachineProtobuf.BonusPoolPack();
         }
-        BonusPack.MergeFrom(other.BonusPack);
+        BonusPoolPack.MergeFrom(other.BonusPoolPack);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -504,10 +508,10 @@ namespace SlotMachineProtobuf {
             break;
           }
           case 74: {
-            if (bonusPack_ == null) {
-              BonusPack = new global::SlotMachineProtobuf.BonusPack();
+            if (bonusPoolPack_ == null) {
+              BonusPoolPack = new global::SlotMachineProtobuf.BonusPoolPack();
             }
-            input.ReadMessage(BonusPack);
+            input.ReadMessage(BonusPoolPack);
             break;
           }
         }
@@ -880,291 +884,6 @@ namespace SlotMachineProtobuf {
   }
 
   /// <summary>
-  ///Dictionary&lt;int, int>
-  /// </summary>
-  public sealed partial class KeyIntValue : pb::IMessage<KeyIntValue> {
-    private static readonly pb::MessageParser<KeyIntValue> _parser = new pb::MessageParser<KeyIntValue>(() => new KeyIntValue());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<KeyIntValue> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::SlotMachineProtobuf.SlotMachineProtobufReflection.Descriptor.MessageTypes[3]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public KeyIntValue() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public KeyIntValue(KeyIntValue other) : this() {
-      key_ = other.key_;
-      value_ = other.value_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public KeyIntValue Clone() {
-      return new KeyIntValue(this);
-    }
-
-    /// <summary>Field number for the "key" field.</summary>
-    public const int KeyFieldNumber = 1;
-    private int key_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Key {
-      get { return key_; }
-      set {
-        key_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "value" field.</summary>
-    public const int ValueFieldNumber = 2;
-    private int value_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int Value {
-      get { return value_; }
-      set {
-        value_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as KeyIntValue);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(KeyIntValue other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Key != other.Key) return false;
-      if (Value != other.Value) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Key != 0) hash ^= Key.GetHashCode();
-      if (Value != 0) hash ^= Value.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Key != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(Key);
-      }
-      if (Value != 0) {
-        output.WriteRawTag(16);
-        output.WriteInt32(Value);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Key != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Key);
-      }
-      if (Value != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Value);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(KeyIntValue other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Key != 0) {
-        Key = other.Key;
-      }
-      if (other.Value != 0) {
-        Value = other.Value;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 8: {
-            Key = input.ReadInt32();
-            break;
-          }
-          case 16: {
-            Value = input.ReadInt32();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  /// <summary>
-  ///Dictionary&lt;int, List&lt;int>>
-  /// </summary>
-  public sealed partial class IntList : pb::IMessage<IntList> {
-    private static readonly pb::MessageParser<IntList> _parser = new pb::MessageParser<IntList>(() => new IntList());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<IntList> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::SlotMachineProtobuf.SlotMachineProtobufReflection.Descriptor.MessageTypes[4]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public IntList() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public IntList(IntList other) : this() {
-      values_ = other.values_.Clone();
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public IntList Clone() {
-      return new IntList(this);
-    }
-
-    /// <summary>Field number for the "values" field.</summary>
-    public const int ValuesFieldNumber = 1;
-    private static readonly pb::FieldCodec<int> _repeated_values_codec
-        = pb::FieldCodec.ForInt32(10);
-    private readonly pbc::RepeatedField<int> values_ = new pbc::RepeatedField<int>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<int> Values {
-      get { return values_; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as IntList);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(IntList other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if(!values_.Equals(other.values_)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      hash ^= values_.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      values_.WriteTo(output, _repeated_values_codec);
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      size += values_.CalculateSize(_repeated_values_codec);
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(IntList other) {
-      if (other == null) {
-        return;
-      }
-      values_.Add(other.values_);
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10:
-          case 8: {
-            values_.AddEntriesFrom(input, _repeated_values_codec);
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  /// <summary>
   ///經典模式賠率包
   /// </summary>
   public sealed partial class ClassicRatePack : pb::IMessage<ClassicRatePack> {
@@ -1175,7 +894,7 @@ namespace SlotMachineProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SlotMachineProtobuf.SlotMachineProtobufReflection.Descriptor.MessageTypes[5]; }
+      get { return global::SlotMachineProtobuf.SlotMachineProtobufReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1319,7 +1038,7 @@ namespace SlotMachineProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SlotMachineProtobuf.SlotMachineProtobufReflection.Descriptor.MessageTypes[6]; }
+      get { return global::SlotMachineProtobuf.SlotMachineProtobufReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1525,15 +1244,15 @@ namespace SlotMachineProtobuf {
   /// <summary>
   ///獎池包
   /// </summary>
-  public sealed partial class BonusPack : pb::IMessage<BonusPack> {
-    private static readonly pb::MessageParser<BonusPack> _parser = new pb::MessageParser<BonusPack>(() => new BonusPack());
+  public sealed partial class BonusPoolPack : pb::IMessage<BonusPoolPack> {
+    private static readonly pb::MessageParser<BonusPoolPack> _parser = new pb::MessageParser<BonusPoolPack>(() => new BonusPoolPack());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<BonusPack> Parser { get { return _parser; } }
+    public static pb::MessageParser<BonusPoolPack> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SlotMachineProtobuf.SlotMachineProtobufReflection.Descriptor.MessageTypes[7]; }
+      get { return global::SlotMachineProtobuf.SlotMachineProtobufReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1542,25 +1261,26 @@ namespace SlotMachineProtobuf {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public BonusPack() {
+    public BonusPoolPack() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public BonusPack(BonusPack other) : this() {
+    public BonusPoolPack(BonusPoolPack other) : this() {
       gameName_ = other.gameName_;
       bonusValue_ = other.bonusValue_;
       winNickName_ = other.winNickName_;
       winImgUrl_ = other.winImgUrl_;
       winValue_ = other.winValue_;
+      allPool_ = other.allPool_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public BonusPack Clone() {
-      return new BonusPack(this);
+    public BonusPoolPack Clone() {
+      return new BonusPoolPack(this);
     }
 
     /// <summary>Field number for the "gameName" field.</summary>
@@ -1633,13 +1353,26 @@ namespace SlotMachineProtobuf {
       }
     }
 
+    /// <summary>Field number for the "allPool" field.</summary>
+    public const int AllPoolFieldNumber = 6;
+    private static readonly pb::FieldCodec<global::SlotMachineProtobuf.KeyStrValue> _repeated_allPool_codec
+        = pb::FieldCodec.ForMessage(50, global::SlotMachineProtobuf.KeyStrValue.Parser);
+    private readonly pbc::RepeatedField<global::SlotMachineProtobuf.KeyStrValue> allPool_ = new pbc::RepeatedField<global::SlotMachineProtobuf.KeyStrValue>();
+    /// <summary>
+    ///所有獎池訊息
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as BonusPack);
+    public pbc::RepeatedField<global::SlotMachineProtobuf.KeyStrValue> AllPool {
+      get { return allPool_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(BonusPack other) {
+    public override bool Equals(object other) {
+      return Equals(other as BonusPoolPack);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(BonusPoolPack other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -1651,6 +1384,7 @@ namespace SlotMachineProtobuf {
       if (WinNickName != other.WinNickName) return false;
       if (WinImgUrl != other.WinImgUrl) return false;
       if (WinValue != other.WinValue) return false;
+      if(!allPool_.Equals(other.allPool_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1662,6 +1396,7 @@ namespace SlotMachineProtobuf {
       if (WinNickName.Length != 0) hash ^= WinNickName.GetHashCode();
       if (WinImgUrl.Length != 0) hash ^= WinImgUrl.GetHashCode();
       if (WinValue != 0L) hash ^= WinValue.GetHashCode();
+      hash ^= allPool_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1695,6 +1430,7 @@ namespace SlotMachineProtobuf {
         output.WriteRawTag(40);
         output.WriteInt64(WinValue);
       }
+      allPool_.WriteTo(output, _repeated_allPool_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1718,6 +1454,7 @@ namespace SlotMachineProtobuf {
       if (WinValue != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(WinValue);
       }
+      size += allPool_.CalculateSize(_repeated_allPool_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -1725,7 +1462,7 @@ namespace SlotMachineProtobuf {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(BonusPack other) {
+    public void MergeFrom(BonusPoolPack other) {
       if (other == null) {
         return;
       }
@@ -1744,6 +1481,7 @@ namespace SlotMachineProtobuf {
       if (other.WinValue != 0L) {
         WinValue = other.WinValue;
       }
+      allPool_.Add(other.allPool_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1773,6 +1511,455 @@ namespace SlotMachineProtobuf {
           }
           case 40: {
             WinValue = input.ReadInt64();
+            break;
+          }
+          case 50: {
+            allPool_.AddEntriesFrom(input, _repeated_allPool_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  ///工具類
+  /// </summary>
+  public sealed partial class KeyIntValue : pb::IMessage<KeyIntValue> {
+    private static readonly pb::MessageParser<KeyIntValue> _parser = new pb::MessageParser<KeyIntValue>(() => new KeyIntValue());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<KeyIntValue> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::SlotMachineProtobuf.SlotMachineProtobufReflection.Descriptor.MessageTypes[6]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public KeyIntValue() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public KeyIntValue(KeyIntValue other) : this() {
+      key_ = other.key_;
+      value_ = other.value_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public KeyIntValue Clone() {
+      return new KeyIntValue(this);
+    }
+
+    /// <summary>Field number for the "key" field.</summary>
+    public const int KeyFieldNumber = 1;
+    private int key_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Key {
+      get { return key_; }
+      set {
+        key_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "value" field.</summary>
+    public const int ValueFieldNumber = 2;
+    private int value_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Value {
+      get { return value_; }
+      set {
+        value_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as KeyIntValue);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(KeyIntValue other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Key != other.Key) return false;
+      if (Value != other.Value) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Key != 0) hash ^= Key.GetHashCode();
+      if (Value != 0) hash ^= Value.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Key != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Key);
+      }
+      if (Value != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Value);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Key != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Key);
+      }
+      if (Value != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Value);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(KeyIntValue other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Key != 0) {
+        Key = other.Key;
+      }
+      if (other.Value != 0) {
+        Value = other.Value;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Key = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            Value = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  ///工具類
+  /// </summary>
+  public sealed partial class KeyStrValue : pb::IMessage<KeyStrValue> {
+    private static readonly pb::MessageParser<KeyStrValue> _parser = new pb::MessageParser<KeyStrValue>(() => new KeyStrValue());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<KeyStrValue> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::SlotMachineProtobuf.SlotMachineProtobufReflection.Descriptor.MessageTypes[7]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public KeyStrValue() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public KeyStrValue(KeyStrValue other) : this() {
+      key_ = other.key_;
+      value_ = other.value_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public KeyStrValue Clone() {
+      return new KeyStrValue(this);
+    }
+
+    /// <summary>Field number for the "key" field.</summary>
+    public const int KeyFieldNumber = 1;
+    private string key_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Key {
+      get { return key_; }
+      set {
+        key_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "value" field.</summary>
+    public const int ValueFieldNumber = 2;
+    private long value_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long Value {
+      get { return value_; }
+      set {
+        value_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as KeyStrValue);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(KeyStrValue other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Key != other.Key) return false;
+      if (Value != other.Value) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Key.Length != 0) hash ^= Key.GetHashCode();
+      if (Value != 0L) hash ^= Value.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Key.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Key);
+      }
+      if (Value != 0L) {
+        output.WriteRawTag(16);
+        output.WriteInt64(Value);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Key.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Key);
+      }
+      if (Value != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Value);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(KeyStrValue other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Key.Length != 0) {
+        Key = other.Key;
+      }
+      if (other.Value != 0L) {
+        Value = other.Value;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Key = input.ReadString();
+            break;
+          }
+          case 16: {
+            Value = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  ///工具類
+  /// </summary>
+  public sealed partial class IntList : pb::IMessage<IntList> {
+    private static readonly pb::MessageParser<IntList> _parser = new pb::MessageParser<IntList>(() => new IntList());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<IntList> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::SlotMachineProtobuf.SlotMachineProtobufReflection.Descriptor.MessageTypes[8]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public IntList() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public IntList(IntList other) : this() {
+      values_ = other.values_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public IntList Clone() {
+      return new IntList(this);
+    }
+
+    /// <summary>Field number for the "values" field.</summary>
+    public const int ValuesFieldNumber = 1;
+    private static readonly pb::FieldCodec<int> _repeated_values_codec
+        = pb::FieldCodec.ForInt32(10);
+    private readonly pbc::RepeatedField<int> values_ = new pbc::RepeatedField<int>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<int> Values {
+      get { return values_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as IntList);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(IntList other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!values_.Equals(other.values_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= values_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      values_.WriteTo(output, _repeated_values_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += values_.CalculateSize(_repeated_values_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(IntList other) {
+      if (other == null) {
+        return;
+      }
+      values_.Add(other.values_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10:
+          case 8: {
+            values_.AddEntriesFrom(input, _repeated_values_codec);
             break;
           }
         }

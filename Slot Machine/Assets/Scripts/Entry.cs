@@ -20,6 +20,7 @@ public class Entry : MonoBehaviour
     private UIManager uIManager;
     private GPGSManager gpgsManager;
     private UnityAdsManager unityAdsManager;
+    private BonusPoolManager bonusPoolManager;
 
     /// <summary>
     /// 客戶訊息
@@ -38,6 +39,8 @@ public class Entry : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(this);
+
         UserInfo = new UserInfoData();
 
         uIManager = new UIManager();
@@ -45,12 +48,14 @@ public class Entry : MonoBehaviour
         requestManager = new RequestManager();
         gpgsManager = new GPGSManager();
         unityAdsManager = new UnityAdsManager();
+        bonusPoolManager = new BonusPoolManager();
 
         uIManager.OnInit();
         clientManager.OnInit();
         requestManager.OnInit();
         gpgsManager.OnInit();
         unityAdsManager.OnInit();
+        bonusPoolManager.OnInit();
 
 #if UNITY_EDITOR_WIN
         TestLogin();
@@ -149,6 +154,24 @@ public class Entry : MonoBehaviour
         uIManager.ShowLoading();
     }
 
+    /// <summary>
+    /// 設定所有獎池訊息
+    /// </summary>
+    /// <param name="pack"></param>
+    public void SetAllBonusInfo(MainPack pack)
+    {
+        bonusPoolManager.SetAllBonusInfo(pack);
+    }
+
+    /// <summary>
+    /// 添加獎池
+    /// </summary>
+    /// <param name="baseBonus"></param>
+    public void AddBonusPool(GameBonusPool baseBonus)
+    {
+        bonusPoolManager.AddBonusPool(baseBonus);
+    }
+
     private void OnDestroy()
     {
         clientManager.OnDestroy();
@@ -156,5 +179,6 @@ public class Entry : MonoBehaviour
         uIManager.OnDestroy();
         gpgsManager.OnDestroy();
         unityAdsManager.OnDestroy();
+        bonusPoolManager.OnDestroy();
     }
 }

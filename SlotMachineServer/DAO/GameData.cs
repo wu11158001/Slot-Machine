@@ -10,6 +10,54 @@ namespace SlotMachineServer.DAO
 {
     class GameData
     {
+        //獎池名稱
+        private List<string> bonusNameList = new()
+        {
+            "classic"
+        };
+
+        /// <summary>
+        /// 獲取所有獎池訊息
+        /// </summary>
+        /// <param name="mySqlConnection"></param>
+        /// <returns></returns>
+        public MainPack GetAllBonus(MySqlConnection mySqlConnection)
+        {
+            MainPack pack = new MainPack();
+            pack.RequestCode = RequestCode.Game;
+            pack.ActionCode = ActionCode.BonusPoolInfo;
+            BonusPoolPack bonusPoolPack = new BonusPoolPack();            
+
+            for (int i = 0; i < bonusNameList.Count; i++)
+            {
+                string sql = $"SELECT * FROM bonuspool WHERE poolname = @poolname";
+                MySqlCommand cmd = new MySqlCommand(sql, mySqlConnection);
+
+                cmd.Parameters.AddWithValue("@poolname", bonusNameList[i]);
+
+                // 使用 MySqlDataReader 來獲取完整的結果集
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        long bonus = Convert.ToInt32(reader["bonus"]);
+                        KeyStrValue keyStrValue = new KeyStrValue();
+                        keyStrValue.Key = bonusNameList[i];
+                        keyStrValue.Value = bonus;
+                        bonusPoolPack.AllPool.Add(keyStrValue);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"搜索獲取獎池錯誤");
+                        return null;
+                    }
+                }
+            }
+
+            pack.BonusPoolPack = bonusPoolPack;
+            return pack;
+        }
+
         /// <summary>
         /// 獲取獎池訊息
         /// </summary>

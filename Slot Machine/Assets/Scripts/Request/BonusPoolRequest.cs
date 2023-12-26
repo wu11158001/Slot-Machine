@@ -3,17 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using SlotMachineProtobuf;
 
-public class ClassicBonusPoolRequest : BaseRequest
+public class BonusPoolRequest : BaseRequest
 {
     private MainPack pack;
-
-    [SerializeField]
-    private GameClassicPanel gameClassicPanel;
 
     public override void Awake()
     {
         requestCode = RequestCode.Game;
-        actionCode = ActionCode.BonusInfo;
+        actionCode = ActionCode.BonusPoolInfo;
         base.Awake();
     }
 
@@ -21,7 +18,7 @@ public class ClassicBonusPoolRequest : BaseRequest
     {
         if (pack != null)
         {
-            gameClassicPanel.SetBonusPool(pack);
+            entry.SetAllBonusInfo(pack);
             pack = null;
         }
     }
@@ -38,16 +35,17 @@ public class ClassicBonusPoolRequest : BaseRequest
     /// <summary>
     /// 發送請求
     /// </summary>
-    public void SendRequest()
+    /// <param name="gameName">模式名稱</param>
+    public void SendRequest(string gameName)
     {
         MainPack pack = new MainPack();
         pack.RequestCode = requestCode;
         pack.ActionCode = actionCode;
 
-        BonusPack bonusPack = new BonusPack();
-        bonusPack.GameName = "classic";
+        BonusPoolPack bonusPoolPack = new BonusPoolPack();
+        bonusPoolPack.GameName = gameName;
 
-        pack.BonusPack = bonusPack;
+        pack.BonusPoolPack = bonusPoolPack;
         base.SendRequest(pack);
     }
 }

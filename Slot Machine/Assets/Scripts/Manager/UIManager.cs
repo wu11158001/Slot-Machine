@@ -20,6 +20,8 @@ public class UIManager : BaseManager
     //載入畫面
     private LoadingPanel loadingPanel;
     public LoadingPanel SetLoadingPanel { set { loadingPanel = value; } }
+    //獎池面板
+    private BonusPoolPanel bonusPoolPanel;
 
     public override void OnInit()
     {
@@ -29,6 +31,7 @@ public class UIManager : BaseManager
 
         PushPanel(PanelType.LoadingPanel);
         PushPanel(PanelType.TipPanel);
+        PushPanel(PanelType.BonusPoolPanel);
         startPanel = PushPanel(PanelType.StartPanel).GetComponent<StartPanel>();
     }
 

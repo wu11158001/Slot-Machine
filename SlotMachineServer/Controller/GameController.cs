@@ -46,9 +46,9 @@ namespace SlotMachineServer.Controller
         /// <param name="client"></param>
         /// <param name="pack"></param>
         /// <returns></returns>
-        public MainPack BonusInfo(Server servers, Client client, MainPack pack)
+        public MainPack BonusPoolInfo(Server servers, Client client, MainPack pack)
         {
-            pack.BonusPack.BonusValue = servers.GetGameData.GetBonusInfo(pack.BonusPack.GameName, client.GetMySqlConnection); ;
+            pack.BonusPoolPack.BonusValue = servers.GetGameData.GetBonusInfo(pack.BonusPoolPack.GameName, client.GetMySqlConnection); ;
             return pack;
         }
     }

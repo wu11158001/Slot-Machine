@@ -55,6 +55,8 @@ namespace SlotMachineServer.Controller
                 pack.ReturnCode = ReturnCode.Succeed;
                 client.UserInfo.UserId = pack.LoginPack.Userid;
 
+                client.Send(server.GetGameData.GetAllBonus(client.GetMySqlConnection));
+
                 Console.WriteLine($"{pack.LoginPack.Userid} => 進入遊戲");
             }
             else

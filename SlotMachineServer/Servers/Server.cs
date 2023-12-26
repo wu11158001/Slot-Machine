@@ -82,8 +82,8 @@ namespace SlotMachineServer.Servers
         /// <param name="mySqlConnection"></param>
         public void UpdateBonusPool(MainPack pack, MySqlConnection mySqlConnection)
         {
-            string poolName = pack.BonusPack.GameName;
-            long changeVal = pack.BonusPack.BonusValue;
+            string poolName = pack.BonusPoolPack.GameName;
+            long changeVal = pack.BonusPoolPack.BonusValue;
             gameData.UpdateBonusPool(poolName, changeVal, mySqlConnection);
 
             foreach (var c in clientList)

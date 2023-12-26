@@ -51,8 +51,8 @@ public class StartPanel : BasePanel
     {
         if (pack.ReturnCode == ReturnCode.Succeed)
         {
-            Invoke(nameof(IntoHall), 2);
             Debug.Log("登入成功");
+            Invoke(nameof(IntoHall), 2);            
         }
         else if (pack.ReturnCode == ReturnCode.DuplicateLogin)
         {

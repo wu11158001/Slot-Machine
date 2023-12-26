@@ -19,7 +19,7 @@ enum ActionCode
 	GetClassicRate = 4;		//獲取經典遊戲賠率
 	ClassicResult = 5;		//經典遊戲結果
 	
-	BonusInfo = 6;			//獎池訊息
+	BonusPoolInfo = 6;		//獎池訊息
 }
 
 enum ReturnCode
@@ -43,13 +43,13 @@ message MainPack
 	
 	ClassicPack classicPack = 7;
 	ClassicRatePack classicRatePack = 8;
-	BonusPack bonusPack = 9;
+	BonusPoolPack bonusPoolPack = 9;
 }
 
 //註冊/登入包
 message LoginPack
 {
-	string userid = 1;		//用戶Id
+	string userid = 1;	//用戶Id
 }
 
 //用戶訊息包
@@ -61,17 +61,6 @@ message UserInfoPack
 	int32 loginDay = 4;	//登入天數
 }
 
-//Dictionary<int, int>
-message KeyIntValue
-{
-	int32 key = 1;
-	int32 value = 2;
-}
-//Dictionary<int, List<int>>
-message IntList 
-{
-  repeated int32 values = 1;
-}
 //經典模式賠率包
 message ClassicRatePack
 {
@@ -89,11 +78,33 @@ message ClassicPack
 }
 
 //獎池包
-message BonusPack
+message BonusPoolPack
 {
-	string gameName = 1;		//模式名稱
-	int64 bonusValue = 2;		//獎池金額
-	string winNickName = 3;		//中獎人暱稱
-	string winImgUrl = 4;		//中獎人頭像
-	int64 winValue = 5;			//中獎金額
+	string gameName = 1;					//模式名稱
+	int64 bonusValue = 2;					//獎池金額
+	string winNickName = 3;					//中獎人暱稱
+	string winImgUrl = 4;					//中獎人頭像
+	int64 winValue = 5;						//中獎金額
+	
+	repeated KeyStrValue allPool = 6;		//所有獎池訊息
+}
+
+//工具類
+message KeyIntValue
+{
+	int32 key = 1;
+	int32 value = 2;
+}
+
+//工具類
+message KeyStrValue
+{
+	string key = 1;
+	int64 value = 2;
+}
+
+//工具類
+message IntList 
+{
+	repeated int32 values = 1;
 }

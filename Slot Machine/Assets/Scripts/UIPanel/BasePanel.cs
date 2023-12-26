@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class BasePanel : MonoBehaviour
 {
+    protected Entry entry { get { return Entry.Instance; } }
+
     protected UIManager uiManager;
     public UIManager SetUIManager { set { uiManager = value; } }
-
-    protected Entry entry { get { return Entry.Instance; } }
 
     /// <summary>
     /// UI面板開始

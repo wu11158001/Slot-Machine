@@ -85,12 +85,12 @@ namespace SlotMachineServer.Servers
             long curPoolVal = server.GetGameData.GetBonusInfo(poolName, client.GetMySqlConnection);
 
             MainPack mainPack = new MainPack();
-            mainPack.ActionCode = ActionCode.BonusInfo;
+            mainPack.ActionCode = ActionCode.BonusPoolInfo;
             mainPack.RequestCode = RequestCode.Game;
-            BonusPack bonusPack = new BonusPack();
-            bonusPack.GameName = poolName;
-            bonusPack.BonusValue = curPoolVal + takeVal;
-            mainPack.BonusPack = bonusPack;
+            BonusPoolPack bonusPoolPack = new BonusPoolPack();
+            bonusPoolPack.GameName = poolName;
+            bonusPoolPack.BonusValue = curPoolVal + takeVal;
+            mainPack.BonusPoolPack = bonusPoolPack;
             server.UpdateBonusPool(mainPack, client.GetMySqlConnection);
 
             //設定結果
