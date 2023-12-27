@@ -25,7 +25,7 @@ namespace SlotMachineProtobuf {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChlTbG90TWFjaGluZVByb3RvYnVmLnByb3RvEhNTbG90TWFjaGluZVByb3Rv",
-            "YnVmItUDCghNYWluUGFjaxI1CgtyZXF1ZXN0Q29kZRgBIAEoDjIgLlNsb3RN",
+            "YnVmIo4ECghNYWluUGFjaxI1CgtyZXF1ZXN0Q29kZRgBIAEoDjIgLlNsb3RN",
             "YWNoaW5lUHJvdG9idWYuUmVxdWVzdENvZGUSMwoKYWN0aW9uQ29kZRgCIAEo",
             "DjIfLlNsb3RNYWNoaW5lUHJvdG9idWYuQWN0aW9uQ29kZRIzCgpyZXR1cm5D",
             "b2RlGAMgASgOMh8uU2xvdE1hY2hpbmVQcm90b2J1Zi5SZXR1cm5Db2RlEjEK",
@@ -35,35 +35,38 @@ namespace SlotMachineProtobuf {
             "IAEoCzIgLlNsb3RNYWNoaW5lUHJvdG9idWYuQ2xhc3NpY1BhY2sSPQoPY2xh",
             "c3NpY1JhdGVQYWNrGAggASgLMiQuU2xvdE1hY2hpbmVQcm90b2J1Zi5DbGFz",
             "c2ljUmF0ZVBhY2sSOQoNYm9udXNQb29sUGFjaxgJIAEoCzIiLlNsb3RNYWNo",
-            "aW5lUHJvdG9idWYuQm9udXNQb29sUGFjayI9CglMb2dpblBhY2sSDgoGdXNl",
-            "cmlkGAEgASgJEhAKCG5pY2tOYW1lGAIgASgJEg4KBmltZ1VybBgDIAEoCSJK",
-            "CgxVc2VySW5mb1BhY2sSDQoFbGV2ZWwYASABKAUSCwoDZXhwGAIgASgFEgwK",
-            "BGNvaW4YAyABKAMSEAoIbG9naW5EYXkYBCABKAUi0AEKD0NsYXNzaWNSYXRl",
-            "UGFjaxIuCgRsaW5lGAEgAygLMiAuU2xvdE1hY2hpbmVQcm90b2J1Zi5LZXlJ",
-            "bnRWYWx1ZRJACgZhcHBlYXIYAiADKAsyMC5TbG90TWFjaGluZVByb3RvYnVm",
-            "LkNsYXNzaWNSYXRlUGFjay5BcHBlYXJFbnRyeRpLCgtBcHBlYXJFbnRyeRIL",
-            "CgNrZXkYASABKAUSKwoFdmFsdWUYAiABKAsyHC5TbG90TWFjaGluZVByb3Rv",
-            "YnVmLkludExpc3Q6AjgBIlUKC0NsYXNzaWNQYWNrEhAKCGJldFZhbHVlGAEg",
-            "ASgDEhIKCnJlc3VsdE51bXMYAiADKAUSDwoHd2luQ29pbhgDIAEoAxIPCgd3",
-            "aW5OdW1zGAQgAygFIrEBCg1Cb251c1Bvb2xQYWNrEhAKCGdhbWVOYW1lGAEg",
-            "ASgJEhIKCmJvbnVzVmFsdWUYAiABKAMSDQoFd2luSWQYAyABKAkSEwoLd2lu",
-            "Tmlja05hbWUYBCABKAkSEQoJd2luSW1nVXJsGAUgASgJEhAKCHdpblZhbHVl",
-            "GAYgASgDEjEKB2FsbFBvb2wYByADKAsyIC5TbG90TWFjaGluZVByb3RvYnVm",
-            "LktleVN0clZhbHVlIikKC0tleUludFZhbHVlEgsKA2tleRgBIAEoBRINCgV2",
-            "YWx1ZRgCIAEoBSIpCgtLZXlTdHJWYWx1ZRILCgNrZXkYASABKAkSDQoFdmFs",
-            "dWUYAiABKAMiGQoHSW50TGlzdBIOCgZ2YWx1ZXMYASADKAUqMgoLUmVxdWVz",
-            "dENvZGUSDwoLUmVxdWVzdE5vbmUQABIICgRVc2VyEAESCAoER2FtZRACKn0K",
-            "CkFjdGlvbkNvZGUSDgoKQWN0aW9uTm9uZRAAEgkKBUxvZ29uEAESCQoFTG9n",
-            "aW4QAhIPCgtHZXRVc2VySW5mbxADEhIKDkdldENsYXNzaWNSYXRlEAQSEQoN",
-            "Q2xhc3NpY1Jlc3VsdBAFEhEKDUJvbnVzUG9vbEluZm8QBipHCgpSZXR1cm5D",
-            "b2RlEg4KClJldHVybk5vbmUQABILCgdTdWNjZWVkEAESCAoERmFpbBACEhIK",
-            "DkR1cGxpY2F0ZUxvZ2luEANiBnByb3RvMw=="));
+            "aW5lUHJvdG9idWYuQm9udXNQb29sUGFjaxI3CgxhZFJld2FyZFBhY2sYCiAB",
+            "KAsyIS5TbG90TWFjaGluZVByb3RvYnVmLkFkUmV3YXJkUGFjayI9CglMb2dp",
+            "blBhY2sSDgoGdXNlcmlkGAEgASgJEhAKCG5pY2tOYW1lGAIgASgJEg4KBmlt",
+            "Z1VybBgDIAEoCSJKCgxVc2VySW5mb1BhY2sSDQoFbGV2ZWwYASABKAUSCwoD",
+            "ZXhwGAIgASgFEgwKBGNvaW4YAyABKAMSEAoIbG9naW5EYXkYBCABKAUiIgoM",
+            "QWRSZXdhcmRQYWNrEhIKCnJld2FyZENvaW4YASABKAMi0AEKD0NsYXNzaWNS",
+            "YXRlUGFjaxIuCgRsaW5lGAEgAygLMiAuU2xvdE1hY2hpbmVQcm90b2J1Zi5L",
+            "ZXlJbnRWYWx1ZRJACgZhcHBlYXIYAiADKAsyMC5TbG90TWFjaGluZVByb3Rv",
+            "YnVmLkNsYXNzaWNSYXRlUGFjay5BcHBlYXJFbnRyeRpLCgtBcHBlYXJFbnRy",
+            "eRILCgNrZXkYASABKAUSKwoFdmFsdWUYAiABKAsyHC5TbG90TWFjaGluZVBy",
+            "b3RvYnVmLkludExpc3Q6AjgBIlUKC0NsYXNzaWNQYWNrEhAKCGJldFZhbHVl",
+            "GAEgASgDEhIKCnJlc3VsdE51bXMYAiADKAUSDwoHd2luQ29pbhgDIAEoAxIP",
+            "Cgd3aW5OdW1zGAQgAygFIrEBCg1Cb251c1Bvb2xQYWNrEhAKCGdhbWVOYW1l",
+            "GAEgASgJEhIKCmJvbnVzVmFsdWUYAiABKAMSDQoFd2luSWQYAyABKAkSEwoL",
+            "d2luTmlja05hbWUYBCABKAkSEQoJd2luSW1nVXJsGAUgASgJEhAKCHdpblZh",
+            "bHVlGAYgASgDEjEKB2FsbFBvb2wYByADKAsyIC5TbG90TWFjaGluZVByb3Rv",
+            "YnVmLktleVN0clZhbHVlIikKC0tleUludFZhbHVlEgsKA2tleRgBIAEoBRIN",
+            "CgV2YWx1ZRgCIAEoBSIpCgtLZXlTdHJWYWx1ZRILCgNrZXkYASABKAkSDQoF",
+            "dmFsdWUYAiABKAMiGQoHSW50TGlzdBIOCgZ2YWx1ZXMYASADKAUqMgoLUmVx",
+            "dWVzdENvZGUSDwoLUmVxdWVzdE5vbmUQABIICgRVc2VyEAESCAoER2FtZRAC",
+            "KosBCgpBY3Rpb25Db2RlEg4KCkFjdGlvbk5vbmUQABIJCgVMb2dvbhABEgkK",
+            "BUxvZ2luEAISDwoLR2V0VXNlckluZm8QAxISCg5HZXRDbGFzc2ljUmF0ZRAE",
+            "EhEKDUNsYXNzaWNSZXN1bHQQBRIRCg1Cb251c1Bvb2xJbmZvEAYSDAoIQWRS",
+            "ZXdhcmQQBypHCgpSZXR1cm5Db2RlEg4KClJldHVybk5vbmUQABILCgdTdWNj",
+            "ZWVkEAESCAoERmFpbBACEhIKDkR1cGxpY2F0ZUxvZ2luEANiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::SlotMachineProtobuf.RequestCode), typeof(global::SlotMachineProtobuf.ActionCode), typeof(global::SlotMachineProtobuf.ReturnCode), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.MainPack), global::SlotMachineProtobuf.MainPack.Parser, new[]{ "RequestCode", "ActionCode", "ReturnCode", "LoginPack", "Str", "UserInfoPack", "ClassicPack", "ClassicRatePack", "BonusPoolPack" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.MainPack), global::SlotMachineProtobuf.MainPack.Parser, new[]{ "RequestCode", "ActionCode", "ReturnCode", "LoginPack", "Str", "UserInfoPack", "ClassicPack", "ClassicRatePack", "BonusPoolPack", "AdRewardPack" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.LoginPack), global::SlotMachineProtobuf.LoginPack.Parser, new[]{ "Userid", "NickName", "ImgUrl" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.UserInfoPack), global::SlotMachineProtobuf.UserInfoPack.Parser, new[]{ "Level", "Exp", "Coin", "LoginDay" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.AdRewardPack), global::SlotMachineProtobuf.AdRewardPack.Parser, new[]{ "RewardCoin" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.ClassicRatePack), global::SlotMachineProtobuf.ClassicRatePack.Parser, new[]{ "Line", "Appear" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.ClassicPack), global::SlotMachineProtobuf.ClassicPack.Parser, new[]{ "BetValue", "ResultNums", "WinCoin", "WinNums" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::SlotMachineProtobuf.BonusPoolPack), global::SlotMachineProtobuf.BonusPoolPack.Parser, new[]{ "GameName", "BonusValue", "WinId", "WinNickName", "WinImgUrl", "WinValue", "AllPool" }, null, null, null, null),
@@ -117,6 +120,10 @@ namespace SlotMachineProtobuf {
     ///獎池訊息
     /// </summary>
     [pbr::OriginalName("BonusPoolInfo")] BonusPoolInfo = 6,
+    /// <summary>
+    ///廣告獎勵
+    /// </summary>
+    [pbr::OriginalName("AdReward")] AdReward = 7,
   }
 
   public enum ReturnCode {
@@ -172,6 +179,7 @@ namespace SlotMachineProtobuf {
       classicPack_ = other.classicPack_ != null ? other.classicPack_.Clone() : null;
       classicRatePack_ = other.classicRatePack_ != null ? other.classicRatePack_.Clone() : null;
       bonusPoolPack_ = other.bonusPoolPack_ != null ? other.bonusPoolPack_.Clone() : null;
+      adRewardPack_ = other.adRewardPack_ != null ? other.adRewardPack_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -279,6 +287,17 @@ namespace SlotMachineProtobuf {
       }
     }
 
+    /// <summary>Field number for the "adRewardPack" field.</summary>
+    public const int AdRewardPackFieldNumber = 10;
+    private global::SlotMachineProtobuf.AdRewardPack adRewardPack_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::SlotMachineProtobuf.AdRewardPack AdRewardPack {
+      get { return adRewardPack_; }
+      set {
+        adRewardPack_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as MainPack);
@@ -301,6 +320,7 @@ namespace SlotMachineProtobuf {
       if (!object.Equals(ClassicPack, other.ClassicPack)) return false;
       if (!object.Equals(ClassicRatePack, other.ClassicRatePack)) return false;
       if (!object.Equals(BonusPoolPack, other.BonusPoolPack)) return false;
+      if (!object.Equals(AdRewardPack, other.AdRewardPack)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -316,6 +336,7 @@ namespace SlotMachineProtobuf {
       if (classicPack_ != null) hash ^= ClassicPack.GetHashCode();
       if (classicRatePack_ != null) hash ^= ClassicRatePack.GetHashCode();
       if (bonusPoolPack_ != null) hash ^= BonusPoolPack.GetHashCode();
+      if (adRewardPack_ != null) hash ^= AdRewardPack.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -365,6 +386,10 @@ namespace SlotMachineProtobuf {
         output.WriteRawTag(74);
         output.WriteMessage(BonusPoolPack);
       }
+      if (adRewardPack_ != null) {
+        output.WriteRawTag(82);
+        output.WriteMessage(AdRewardPack);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -399,6 +424,9 @@ namespace SlotMachineProtobuf {
       }
       if (bonusPoolPack_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(BonusPoolPack);
+      }
+      if (adRewardPack_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(AdRewardPack);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -452,6 +480,12 @@ namespace SlotMachineProtobuf {
           BonusPoolPack = new global::SlotMachineProtobuf.BonusPoolPack();
         }
         BonusPoolPack.MergeFrom(other.BonusPoolPack);
+      }
+      if (other.adRewardPack_ != null) {
+        if (adRewardPack_ == null) {
+          AdRewardPack = new global::SlotMachineProtobuf.AdRewardPack();
+        }
+        AdRewardPack.MergeFrom(other.AdRewardPack);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -513,6 +547,13 @@ namespace SlotMachineProtobuf {
               BonusPoolPack = new global::SlotMachineProtobuf.BonusPoolPack();
             }
             input.ReadMessage(BonusPoolPack);
+            break;
+          }
+          case 82: {
+            if (adRewardPack_ == null) {
+              AdRewardPack = new global::SlotMachineProtobuf.AdRewardPack();
+            }
+            input.ReadMessage(AdRewardPack);
             break;
           }
         }
@@ -947,6 +988,141 @@ namespace SlotMachineProtobuf {
   }
 
   /// <summary>
+  ///廣告獎勵包
+  /// </summary>
+  public sealed partial class AdRewardPack : pb::IMessage<AdRewardPack> {
+    private static readonly pb::MessageParser<AdRewardPack> _parser = new pb::MessageParser<AdRewardPack>(() => new AdRewardPack());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<AdRewardPack> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::SlotMachineProtobuf.SlotMachineProtobufReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public AdRewardPack() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public AdRewardPack(AdRewardPack other) : this() {
+      rewardCoin_ = other.rewardCoin_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public AdRewardPack Clone() {
+      return new AdRewardPack(this);
+    }
+
+    /// <summary>Field number for the "rewardCoin" field.</summary>
+    public const int RewardCoinFieldNumber = 1;
+    private long rewardCoin_;
+    /// <summary>
+    ///獎勵金幣數量
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long RewardCoin {
+      get { return rewardCoin_; }
+      set {
+        rewardCoin_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as AdRewardPack);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(AdRewardPack other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (RewardCoin != other.RewardCoin) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (RewardCoin != 0L) hash ^= RewardCoin.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (RewardCoin != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(RewardCoin);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (RewardCoin != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(RewardCoin);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(AdRewardPack other) {
+      if (other == null) {
+        return;
+      }
+      if (other.RewardCoin != 0L) {
+        RewardCoin = other.RewardCoin;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            RewardCoin = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
   ///經典模式賠率包
   /// </summary>
   public sealed partial class ClassicRatePack : pb::IMessage<ClassicRatePack> {
@@ -957,7 +1133,7 @@ namespace SlotMachineProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SlotMachineProtobuf.SlotMachineProtobufReflection.Descriptor.MessageTypes[3]; }
+      get { return global::SlotMachineProtobuf.SlotMachineProtobufReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1101,7 +1277,7 @@ namespace SlotMachineProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SlotMachineProtobuf.SlotMachineProtobufReflection.Descriptor.MessageTypes[4]; }
+      get { return global::SlotMachineProtobuf.SlotMachineProtobufReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1315,7 +1491,7 @@ namespace SlotMachineProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SlotMachineProtobuf.SlotMachineProtobufReflection.Descriptor.MessageTypes[5]; }
+      get { return global::SlotMachineProtobuf.SlotMachineProtobufReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1628,7 +1804,7 @@ namespace SlotMachineProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SlotMachineProtobuf.SlotMachineProtobufReflection.Descriptor.MessageTypes[6]; }
+      get { return global::SlotMachineProtobuf.SlotMachineProtobufReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1788,7 +1964,7 @@ namespace SlotMachineProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SlotMachineProtobuf.SlotMachineProtobufReflection.Descriptor.MessageTypes[7]; }
+      get { return global::SlotMachineProtobuf.SlotMachineProtobufReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1948,7 +2124,7 @@ namespace SlotMachineProtobuf {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::SlotMachineProtobuf.SlotMachineProtobufReflection.Descriptor.MessageTypes[8]; }
+      get { return global::SlotMachineProtobuf.SlotMachineProtobufReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

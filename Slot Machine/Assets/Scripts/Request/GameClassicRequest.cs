@@ -8,7 +8,7 @@ public class GameClassicRequest : BaseRequest
     private MainPack pack;
 
     [SerializeField]
-    private GameClassicPanel classicPanel;
+    private GameClassicPanel gameClassicPanel;
 
     public override void Awake()
     {
@@ -21,7 +21,10 @@ public class GameClassicRequest : BaseRequest
     {
         if (pack != null)
         {
-            classicPanel.GetResult(pack);
+            gameClassicPanel.GetResult(pack);
+            entry.SetLeaderboard(GPGSIds.leaderboard_wealth_accumulation, pack.UserInfoPack.Coin);
+            entry.OnLuckPlayTime();
+            entry.OnLuckGetCoin(pack.ClassicPack.WinCoin);
             pack = null;
         }
     }

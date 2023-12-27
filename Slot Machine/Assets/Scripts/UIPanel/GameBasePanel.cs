@@ -13,7 +13,7 @@ public class GameBasePanel : BasePanel
     /// <param name="isSpin"></param>
     protected virtual void SetSpinState(bool isSpin)
     {
-        entry.IsGameSpinning = isSpin;
+        StateManger.IsGameSpinning = isSpin;
     }
 
     /// <summary>

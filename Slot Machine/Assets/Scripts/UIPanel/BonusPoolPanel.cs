@@ -124,7 +124,7 @@ public class BonusPoolPanel : BasePanel
     /// <returns></returns>
     private IEnumerator WaitSpinState()
     {
-        yield return new WaitUntil(() => entry.IsGameSpinning == false);
+        yield return new WaitUntil(() => StateManger.IsGameSpinning == false);
     }
 
     /// <summary>

@@ -97,5 +97,21 @@ namespace SlotMachineServer.Controller
         {
             return client.GetUserData.GetUserInfo(pack, client.GetMySqlConnection);
         }
+
+        /// <summary>
+        /// 廣告獎勵
+        /// </summary>
+        /// <returns></returns>
+        public MainPack AdReward(Server server, Client client, MainPack pack)
+        {
+            long rewardCoin = server.GetRewardData.GetRewardInfo("adreward", client.GetMySqlConnection);
+            client.GetUserData.AddUserInfo(client.GetMySqlConnection, client.UserInfo.UserId, "coin", rewardCoin);
+
+            AdRewardPack adRewardPack = new AdRewardPack();
+            adRewardPack.RewardCoin = rewardCoin;
+            pack.AdRewardPack = adRewardPack;
+
+            return pack;
+        }
     }
 }

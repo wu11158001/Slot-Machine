@@ -27,6 +27,15 @@ public class UserCoin : BasePanel
     }
 
     /// <summary>
+    /// 無效果變化
+    /// </summary>
+    /// <param name="coin"></param>
+    public void NoEffect(long coin)
+    {
+        coin_Txt.text = Tools.SetCoinStr(coin);
+    }
+
+    /// <summary>
     /// 變更金幣
     /// </summary>
     public void ChangeCoin(long target)

@@ -21,13 +21,17 @@ namespace SlotMachineServer.Servers
         public List<Client> GetClientList { get { return clientList; } }
 
         private ControllerManager controllerManager;
+        
         private GameData gameData;
         public GameData GetGameData { get { return gameData; } }
+        private RewardData rewardData;
+        public RewardData GetRewardData { get { return rewardData; } }
 
         public Server(int port)
         {
             controllerManager = new ControllerManager(this);
             gameData = new GameData();
+            rewardData = new RewardData();
 
             //Socket初始化
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);

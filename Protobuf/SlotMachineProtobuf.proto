@@ -20,6 +20,7 @@ enum ActionCode
 	ClassicResult = 5;		//經典遊戲結果
 	
 	BonusPoolInfo = 6;		//獎池訊息
+	AdReward = 7;			//廣告獎勵
 }
 
 enum ReturnCode
@@ -44,6 +45,7 @@ message MainPack
 	ClassicPack classicPack = 7;
 	ClassicRatePack classicRatePack = 8;
 	BonusPoolPack bonusPoolPack = 9;
+	AdRewardPack adRewardPack = 10;
 }
 
 //註冊/登入包
@@ -61,6 +63,12 @@ message UserInfoPack
 	int32 exp = 2;		//經驗值
 	int64 coin = 3;		//金幣
 	int32 loginDay = 4;	//登入天數
+}
+
+//廣告獎勵包
+message AdRewardPack
+{
+	int64 rewardCoin = 1;	//獎勵金幣數量
 }
 
 //經典模式賠率包

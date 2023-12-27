@@ -24,8 +24,10 @@
 
 public static class GPGSIds
 {
-        public const string achievement_firstlogin = "CgkI3Ny2nN4FEAIQAg"; // <GPGSID>
-        public const string leaderboard_wealthaccumulation = "CgkI3Ny2nN4FEAIQAQ"; // <GPGSID>
+        public const string achievement_first_time_get_100000 = "CgkI3Ny2nN4FEAIQBA"; // <GPGSID>
+        public const string achievement_first_login = "CgkI3Ny2nN4FEAIQAg"; // <GPGSID>
+        public const string leaderboard_wealth_accumulation = "CgkI3Ny2nN4FEAIQAQ"; // <GPGSID>
+        public const string achievement_play_five_time = "CgkI3Ny2nN4FEAIQAw"; // <GPGSID>
 
 }
 

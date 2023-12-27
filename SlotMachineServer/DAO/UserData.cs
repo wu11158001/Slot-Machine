@@ -38,7 +38,7 @@ namespace SlotMachineServer.DAO
                 MySqlCommand comd = new MySqlCommand(sql, mySqlConnection);
 
                 comd.Parameters.AddWithValue("@userId", userId);
-                comd.Parameters.AddWithValue("@coin", 10000);
+                comd.Parameters.AddWithValue("@coin", 1000000);
                 comd.Parameters.AddWithValue("@level", 1);
                 comd.Parameters.AddWithValue("@exp", 0);
                 comd.Parameters.AddWithValue("@loginday", 1);

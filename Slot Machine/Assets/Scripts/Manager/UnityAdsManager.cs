@@ -7,7 +7,7 @@ public class UnityAdsManager : BaseManager,  IUnityAdsInitializationListener, IU
 {
     private const string androidAdUnitId = "Rewarded_Android";
     private const string androidGameId = "5502091";
-    private bool testMode = true;
+    private bool testMode = false;
 
     public override void OnInit()
     {
@@ -44,7 +44,7 @@ public class UnityAdsManager : BaseManager,  IUnityAdsInitializationListener, IU
     public void LoadAd()
     {
         Debug.Log("載入廣告: " + androidGameId);
-        entry.isAdComplete = false;        
+        StateManger.isAdComplete = false;        
         Advertisement.Load(androidAdUnitId, this);
     }
 
@@ -55,7 +55,7 @@ public class UnityAdsManager : BaseManager,  IUnityAdsInitializationListener, IU
     public void OnUnityAdsAdLoaded(string adUnitId)
     {
         Debug.Log("載入廣告完成: " + adUnitId);
-        entry.isAdComplete = true;
+        StateManger.isAdComplete = true;
         if (adUnitId.Equals(androidGameId))
         {
             //_showAdButton.onClick.AddListener(ShowAd);
@@ -80,6 +80,7 @@ public class UnityAdsManager : BaseManager,  IUnityAdsInitializationListener, IU
     /// </summary>
     public void ShowAd()
     {
+        StateManger.isAdActing = true;
         Advertisement.Show(androidAdUnitId, this);
         LoadAd();
     }
@@ -93,6 +94,7 @@ public class UnityAdsManager : BaseManager,  IUnityAdsInitializationListener, IU
     {
         if (adUnitId.Equals(androidAdUnitId) && showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED))
         {
+            StateManger.isAdActing = false;
             Debug.Log("廣告結束");
         }
     }

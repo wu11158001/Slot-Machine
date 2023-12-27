@@ -37,11 +37,6 @@ public class Entry : MonoBehaviour
     }
     public UserInfoData UserInfo { get; set; }
 
-    //遊戲是否正在進行
-    public bool IsGameSpinning;
-    //廣告是否載入完成
-    public bool isAdComplete;
-
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -72,9 +67,9 @@ public class Entry : MonoBehaviour
     /// </summary>
     void TestLogin()
     {
-        UserInfo.UserId = "123456";
+        UserInfo.UserId = "550101";
         UserInfo.NickName = "Test Account";
-        UserInfo.ImgUrl = "222";
+        UserInfo.ImgUrl = "Null";
         StartLogin();
     }
 
@@ -186,6 +181,49 @@ public class Entry : MonoBehaviour
     public void SetBroadcastWinner(MainPack pack)
     {
         uIManager.SetBroadcastWinner(pack);
+    }
+
+    /// <summary>
+    /// 顯示成就
+    /// </summary>
+    public void ShowAchievement()
+    {
+        gpgsManager.ShowAchievement();
+    }
+
+    /// <summary>
+    /// 解鎖遊玩次數
+    /// </summary>
+    public void OnLuckPlayTime()
+    {
+        gpgsManager.OnLuckPlayTime();
+    }
+
+    /// <summary>
+    /// 解鎖獲得金幣
+    /// </summary>
+    /// <param name="coin"></param>
+    public void OnLuckGetCoin(long coin)
+    {
+        gpgsManager.OnLuckGetCoin(coin);
+    }
+
+    /// <summary>
+    /// 顯示排行榜
+    /// </summary>
+    public void ShowLeaderboard()
+    {
+        gpgsManager.ShowLeaderboard();
+    }
+
+    /// <summary>
+    /// 設定排行榜分數
+    /// </summary>
+    /// <param name="id">GPGSId</param>
+    /// <param name="val">更換植</param>
+    public void SetLeaderboard(string id, long val)
+    {
+        gpgsManager.SetLeaderboard(id, val);
     }
 
     private void OnDestroy()
