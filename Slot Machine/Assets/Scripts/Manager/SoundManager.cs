@@ -17,15 +17,16 @@ public class SoundManager : BaseManager
     /// 播放音效
     /// </summary>
     /// <param name="soundType"></param>
-    public void PlaySound(SoundType soundType)
+    /// <param name="volume"></param>
+    public void PlaySound(SoundType soundType, float volume = 1)
     {
-
         bool isFind = soundClips.ToList().Where(x => x.name == soundType.ToString()).Count() > 0;
         if (isFind)
         {
             GameObject obj = new GameObject();
             AudioSource source = obj.AddComponent<AudioSource>();
             source.clip = soundClips.ToList().Where(x => x.name == soundType.ToString()).First();
+            source.volume = volume;
             source.Play();
 
             RemoveSound(source);

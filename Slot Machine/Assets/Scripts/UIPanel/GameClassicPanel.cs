@@ -74,6 +74,7 @@ public class GameClassicPanel : GameBasePanel
         {
             entry.PlaySound(SoundType.ButtonClick);
             uiManager.PushPanel(PanelType.HallPanel);
+            uiManager.ShowLoading();
         });
 
         //旋轉按鈕

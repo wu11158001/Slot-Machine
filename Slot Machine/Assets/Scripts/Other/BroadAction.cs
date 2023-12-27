@@ -125,7 +125,7 @@ public class BroadAction : BasePanel
 
                     if (result.Value.Item1.anchoredPosition.y < -size * 2)
                     {
-                        entry.PlaySound(SoundType.TurnTable);
+                        entry.PlaySound(SoundType.TurnTable, 0.1f);
                         result.Value.Item1.anchoredPosition = new Vector2(0, size);
                         result.Value.Item2.sprite = resultSprites[UnityEngine.Random.Range(0, resultSprites.Length)];
                     }

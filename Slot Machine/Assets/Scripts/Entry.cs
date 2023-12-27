@@ -17,7 +17,7 @@ public class Entry : MonoBehaviour
 
     private ClientManager clientManager;
     private RequestManager requestManager;
-    private UIManager uIManager;
+    private UIManager uiManager;
     private GPGSManager gpgsManager;
     private UnityAdsManager unityAdsManager;
     private BonusPoolManager bonusPoolManager;
@@ -44,7 +44,7 @@ public class Entry : MonoBehaviour
 
         UserInfo = new UserInfoData();
 
-        uIManager = new UIManager();
+        uiManager = new UIManager();
         clientManager = new ClientManager();
         requestManager = new RequestManager();
         gpgsManager = new GPGSManager();
@@ -52,7 +52,7 @@ public class Entry : MonoBehaviour
         bonusPoolManager = new BonusPoolManager();
         soundManager = new SoundManager();
 
-        uIManager.OnInit();
+        uiManager.OnInit();
         clientManager.OnInit();
         requestManager.OnInit();
         gpgsManager.OnInit();
@@ -118,7 +118,7 @@ public class Entry : MonoBehaviour
     /// <param name="str">文本內容</param>
     public void ShowTip(string str)
     {
-        uIManager.ShowTip(str);
+        uiManager.ShowTip(str);
     }
 
     /// <summary>
@@ -134,7 +134,7 @@ public class Entry : MonoBehaviour
     /// </summary>
     public void StartLogin()
     {
-        uIManager.GetStartPanel.Login();
+        uiManager.GetStartPanel.Login();
     }
 
     /// <summary>
@@ -155,8 +155,8 @@ public class Entry : MonoBehaviour
     /// <param name="gamePanel"></param>
     public void EnterGame(PanelType gamePanel)
     {
-        uIManager.PushPanel(gamePanel);
-        uIManager.ShowLoading();
+        uiManager.PushPanel(gamePanel);
+        uiManager.ShowLoading();
     }
 
     /// <summary>
@@ -183,7 +183,7 @@ public class Entry : MonoBehaviour
     /// <param name="pack"></param>
     public void SetBroadcastWinner(MainPack pack)
     {
-        uIManager.SetBroadcastWinner(pack);
+        uiManager.SetBroadcastWinner(pack);
     }
 
     /// <summary>
@@ -233,16 +233,17 @@ public class Entry : MonoBehaviour
     /// 播放音效
     /// </summary>
     /// <param name="soundType"></param>
-    public void PlaySound(SoundType soundType)
+    /// <param name="volume"></param>
+    public void PlaySound(SoundType soundType, float volume = 1)
     {
-        soundManager.PlaySound(soundType);
+        soundManager.PlaySound(soundType, volume);
     }
 
     private void OnDestroy()
     {
         clientManager.OnDestroy();
         requestManager.OnDestroy();
-        uIManager.OnDestroy();
+        uiManager.OnDestroy();
         gpgsManager.OnDestroy();
         unityAdsManager.OnDestroy();
         bonusPoolManager.OnDestroy();
