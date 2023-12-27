@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System;
 using SlotMachineProtobuf;
 
-public class BroadAction : MonoBehaviour
+public class BroadAction : BasePanel
 {
     private Animator animator;
 
@@ -125,6 +125,7 @@ public class BroadAction : MonoBehaviour
 
                     if (result.Value.Item1.anchoredPosition.y < -size * 2)
                     {
+                        entry.PlaySound(SoundType.TurnTable);
                         result.Value.Item1.anchoredPosition = new Vector2(0, size);
                         result.Value.Item2.sprite = resultSprites[UnityEngine.Random.Range(0, resultSprites.Length)];
                     }
@@ -146,15 +147,15 @@ public class BroadAction : MonoBehaviour
         try
         {
             //設定結果
+            entry.PlaySound(SoundType.TurnOver);
             isAction = false;
             int index = GetResultNum(resultNum);
             resultDic[0].Item2.sprite = resultSprites[index];
-
             for (int i = -1; i <= 1; i++)
             {
                 resultDic[i].Item1.anchoredPosition = new Vector2(0, size * i);
                 if (i != 0)
-                {
+                { 
                     resultDic[i].Item2.sprite = resultSprites[GetResultNum()];
                 }
             }
@@ -175,7 +176,7 @@ public class BroadAction : MonoBehaviour
             while (resultDic[0].Item1.anchoredPosition.y < 0)
             {
                 foreach (var result in resultDic.Values)
-                {
+                {                    
                     float posY = result.Item1.anchoredPosition.y + 200 * Time.deltaTime;
                     result.Item1.anchoredPosition = new Vector2(0, posY);
                 }

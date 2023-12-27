@@ -21,6 +21,7 @@ public class Entry : MonoBehaviour
     private GPGSManager gpgsManager;
     private UnityAdsManager unityAdsManager;
     private BonusPoolManager bonusPoolManager;
+    private SoundManager soundManager;
 
     /// <summary>
     /// 客戶訊息
@@ -49,6 +50,7 @@ public class Entry : MonoBehaviour
         gpgsManager = new GPGSManager();
         unityAdsManager = new UnityAdsManager();
         bonusPoolManager = new BonusPoolManager();
+        soundManager = new SoundManager();
 
         uIManager.OnInit();
         clientManager.OnInit();
@@ -56,6 +58,7 @@ public class Entry : MonoBehaviour
         gpgsManager.OnInit();
         unityAdsManager.OnInit();
         bonusPoolManager.OnInit();
+        soundManager.OnInit();
 
 #if UNITY_EDITOR_WIN
         TestLogin();
@@ -224,6 +227,15 @@ public class Entry : MonoBehaviour
     public void SetLeaderboard(string id, long val)
     {
         gpgsManager.SetLeaderboard(id, val);
+    }
+
+    /// <summary>
+    /// 播放音效
+    /// </summary>
+    /// <param name="soundType"></param>
+    public void PlaySound(SoundType soundType)
+    {
+        soundManager.PlaySound(soundType);
     }
 
     private void OnDestroy()

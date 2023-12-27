@@ -47,6 +47,7 @@ public class HallPanel : BasePanel
         //廣告獎勵按鈕
         ad_Btn.onClick.AddListener(() =>
         {
+            entry.PlaySound(SoundType.ButtonClick);
             adRewardRequest.SendRequest();
             entry.ShowAd();
         });
@@ -54,18 +55,21 @@ public class HallPanel : BasePanel
         //成就按鈕
         achievement_Btn.onClick.AddListener(() =>
         {
+            entry.PlaySound(SoundType.ButtonClick);
             entry.ShowAchievement();
         });
 
         //排行按鈕
         Rank_Btn.onClick.AddListener(() =>
         {
+            entry.PlaySound(SoundType.ButtonClick);
             entry.ShowLeaderboard();
         });
 
         //遊戲_經典
         gameClassic_Btn.onClick.AddListener(() =>
         {
+            entry.PlaySound(SoundType.IntoGame);
             entry.EnterGame(PanelType.GameClassicPanel);
         });
    

@@ -45,8 +45,13 @@ public class BonusPoolPanel : BasePanel
 
     private void Start()
     {
-        thisRt = GetComponent<RectTransform>();
+        bigWinConfirm_Btn.onClick.AddListener(() =>
+        {
+            entry.PlaySound(SoundType.ButtonClick);
+            bigWinObj.gameObject.SetActive(false);
+        });
 
+        thisRt = GetComponent<RectTransform>();
         broadcastSize = broadcastObj.rect.width;
         broadcastObj.gameObject.SetActive(false);
         bigWinObj.gameObject.SetActive(false);
@@ -98,11 +103,8 @@ public class BonusPoolPanel : BasePanel
     {
         yield return StartCoroutine(WaitSpinState());
 
+        entry.PlaySound(SoundType.BigWin);
         bigWinObj.gameObject.SetActive(true);
-        bigWinConfirm_Btn.onClick.AddListener(() =>
-        {
-            bigWinObj.gameObject.SetActive(false);
-        });
 
         // 金幣效果
         float startTime = Time.time;

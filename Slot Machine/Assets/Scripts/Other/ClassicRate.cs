@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using SlotMachineProtobuf;
 using System.Linq;
 
-public class ClassicRate : MonoBehaviour
+public class ClassicRate : BasePanel
 {
     [SerializeField]
     private ClassicRateRequest classicRateRequest;
@@ -37,6 +37,7 @@ public class ClassicRate : MonoBehaviour
         rateRight_Btn.onClick.AddListener(delegate { ChangePage(1); });
         back_Btn.onClick.AddListener(() =>
         {
+            entry.PlaySound(SoundType.ButtonClick);
             gameObject.SetActive(false);
         });
 
@@ -55,6 +56,7 @@ public class ClassicRate : MonoBehaviour
     /// <param name="dic"></param>
     private void ChangePage(int dic)
     {
+        entry.PlaySound(SoundType.ButtonClick);
         dic = dic >= 0 ? 1 : -1;
 
         curPage += dic;

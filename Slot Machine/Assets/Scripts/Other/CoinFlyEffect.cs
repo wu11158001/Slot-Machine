@@ -84,6 +84,7 @@ public class CoinFlyEffect : BasePanel
         count++;
         long effectVal = entry.UserInfo.Coin + (increaseCoin / createCount) * count;
         userCoin.NoEffect(effectVal);
+        entry.PlaySound(SoundType.Coin);
         Destroy(obj.gameObject);
     }
 

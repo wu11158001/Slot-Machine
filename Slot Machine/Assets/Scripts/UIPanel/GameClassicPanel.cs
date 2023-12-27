@@ -72,12 +72,14 @@ public class GameClassicPanel : GameBasePanel
         //返回大廳
         home_Btn.onClick.AddListener(() =>
         {
+            entry.PlaySound(SoundType.ButtonClick);
             uiManager.PushPanel(PanelType.HallPanel);
         });
 
         //旋轉按鈕
         spin_Btn.onClick.AddListener(() =>
         {
+            entry.PlaySound(SoundType.SpinClick);
             if (isSpin) StopSpin();
             else StartSpinning();
         });
@@ -85,12 +87,14 @@ public class GameClassicPanel : GameBasePanel
         //賠率與規則按鈕
         rateAndRule_Btn.onClick.AddListener(()=>
         {
+            entry.PlaySound(SoundType.ButtonClick);
             rateObj.SetActive(true);
         });
 
         //押注+按鈕
         betPlus_Btn.onClick.AddListener(() =>
         {
+            entry.PlaySound(SoundType.ButtonClick);
             betLevel++;
             SetBetVal();
         });
@@ -98,6 +102,7 @@ public class GameClassicPanel : GameBasePanel
         //押注-按鈕
         betMinus_Btn.onClick.AddListener(() =>
         {
+            entry.PlaySound(SoundType.ButtonClick);
             betLevel--;
             SetBetVal();
         });
@@ -105,6 +110,7 @@ public class GameClassicPanel : GameBasePanel
         //押注最大按鈕
         betMax_Btn.onClick.AddListener(() =>
         {
+            entry.PlaySound(SoundType.ButtonClick);
             betLevel = 10;
             SetBetVal();
         });
@@ -268,6 +274,7 @@ public class GameClassicPanel : GameBasePanel
         //顯示贏分效果
         if (winNums.Count > 0)
         {
+            entry.PlaySound(SoundType.Winning);
             foreach (var broadAction in resultDic.Values)
             {
                 if (winNums.Contains(broadAction.resultNum))

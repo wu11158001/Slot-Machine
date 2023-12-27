@@ -83,10 +83,11 @@ namespace SlotMachineServer.Servers
             ClassicPack classicPack = new ClassicPack();
             Random random = new Random();
             List<int> resultList = new();
-            /*for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 9; i++)
             {
                 resultList.Add(random.Next(0, 8));
-            }*/
+            }
+            /*resultList.Add(7);
             resultList.Add(7);
             resultList.Add(7);
             resultList.Add(7);
@@ -94,8 +95,7 @@ namespace SlotMachineServer.Servers
             resultList.Add(7);
             resultList.Add(7);
             resultList.Add(7);
-            resultList.Add(7);
-            resultList.Add(7);
+            resultList.Add(7);*/
 
             //獎池更新
             string poolName = "classic";
