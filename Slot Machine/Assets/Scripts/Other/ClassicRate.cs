@@ -82,7 +82,7 @@ public class ClassicRate : MonoBehaviour
             Image img = lineObj.transform.Find($"Icon_Img").GetComponent<Image>();
             img.sprite = resultSprites[keyValue.Key];
             Text txt = lineObj.transform.Find($"Rate_Txt").GetComponent<Text>();
-            txt.text = $"<color=#2A3031>3</color><color=#4ADBDB> {keyValue.Value}</color>";
+            txt.text = $"<color=#FFFFFF>3</color><color=#FFEC01>   {keyValue.Value}</color>";
         }
         lineSample.SetActive(false);
 
@@ -100,7 +100,7 @@ public class ClassicRate : MonoBehaviour
             Text[] txts = new Text[7];
             for (int i = 0; i < txts.Length; i++)
             {
-                txts[i] = appearObj.transform.Find($"{i + 3}_Txt").GetComponent<Text>();
+                txts[i] = appearObj.transform.Find($"Txt/{i + 3}_Txt").GetComponent<Text>();
                 txts[i].text = classicAppearRate[key][i].ToString();
             }
         }

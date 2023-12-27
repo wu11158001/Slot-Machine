@@ -45,7 +45,7 @@ public class BroadAction : MonoBehaviour
     /// </summary>
     private void Initializer()
     {
-        size = result_Img.GetComponent<RectTransform>().rect.height + 18;
+        size = result_Img.GetComponent<RectTransform>().rect.height + 29;
 
         //產生轉盤內容
         for (int i = -1; i <= 1; i++)

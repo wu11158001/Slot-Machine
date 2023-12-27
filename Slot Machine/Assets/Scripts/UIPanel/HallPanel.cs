@@ -20,7 +20,7 @@ public class HallPanel : BasePanel
     [SerializeField]
     private Image avatar_Img, lvProcess_Img;
     [SerializeField]
-    private Button gameClassic_Btn;
+    private Button gameClassic_Btn, ad_Btn;
 
     public override void OnEnter()
     {        
@@ -41,6 +41,12 @@ public class HallPanel : BasePanel
     {
         userInfoRequset.SendRequest(entry.UserInfo.UserId);
 
+        //廣告獎勵按鈕
+        ad_Btn.onClick.AddListener(() =>
+        {
+            entry.ShowAd();
+        });
+
         //遊戲_經典
         gameClassic_Btn.onClick.AddListener(() =>
         {
@@ -48,6 +54,11 @@ public class HallPanel : BasePanel
         });
    
         SetAvatarAndNickName();
+    }
+
+    private void Update()
+    {
+        ad_Btn.interactable = entry.isAdComplete;
     }
 
     /// <summary>

@@ -44,6 +44,7 @@ public class UnityAdsManager : BaseManager,  IUnityAdsInitializationListener, IU
     public void LoadAd()
     {
         Debug.Log("載入廣告: " + androidGameId);
+        entry.isAdComplete = false;        
         Advertisement.Load(androidAdUnitId, this);
     }
 
@@ -54,7 +55,7 @@ public class UnityAdsManager : BaseManager,  IUnityAdsInitializationListener, IU
     public void OnUnityAdsAdLoaded(string adUnitId)
     {
         Debug.Log("載入廣告完成: " + adUnitId);
-
+        entry.isAdComplete = true;
         if (adUnitId.Equals(androidGameId))
         {
             //_showAdButton.onClick.AddListener(ShowAd);

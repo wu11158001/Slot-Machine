@@ -12,21 +12,19 @@ public class TipContent : MonoBehaviour
     [SerializeField]
     private Text tipText;
 
-    private float speed = 300;
-
+    private const float speed = 300;
+    private const float targetY = -90;
     /// <summary>
     /// 顯示
     /// </summary>
     /// <param name="str"></param>
     public async void Show(string str)
-    {
-        float targetY = -50;
-
+    {       
         tipText.text = str;
         float posY = rt.rect.height;   
         rt.offsetMin = Vector2.zero;
         rt.offsetMax = Vector2.zero;
-        rt.anchoredPosition = new Vector2(0, 10);
+        rt.anchoredPosition = new Vector2(0, -35);
         rt.localScale = Vector3.one;
         transform.SetSiblingIndex(100);
 

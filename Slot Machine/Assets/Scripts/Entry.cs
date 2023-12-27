@@ -37,6 +37,11 @@ public class Entry : MonoBehaviour
     }
     public UserInfoData UserInfo { get; set; }
 
+    //遊戲是否正在進行
+    public bool IsGameSpinning;
+    //廣告是否載入完成
+    public bool isAdComplete;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);

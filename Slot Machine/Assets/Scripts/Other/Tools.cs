@@ -71,7 +71,7 @@ public static class Tools
     /// <param name="level">押注等級</param>
     /// <param name="userCoin">用戶金幣</param>
     /// <returns></returns>
-    public static long JudgeBetValue(int level, long userCoin)
+    public static long JudgeBetValue(ref int level, long userCoin)
     {
         //防呆限制
         if (level <= 0) level = 1;

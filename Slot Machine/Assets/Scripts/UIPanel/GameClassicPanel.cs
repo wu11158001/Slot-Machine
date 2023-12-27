@@ -61,6 +61,12 @@ public class GameClassicPanel : GameBasePanel
         gameObject.SetActive(false);
     }
 
+    public override void OnExit()
+    {
+        StopAllCoroutines();
+        CancelInvoke();
+    }
+
     private void Start()
     {
         //返回大廳
@@ -104,10 +110,19 @@ public class GameClassicPanel : GameBasePanel
         });
 
         //轉盤參數
-        isSpin = false;
         spin_Txt.text = "開始";
         delayTime = initDelayTime;
         rateObj.SetActive(false);
+    }
+
+    /// <summary>
+    /// 設定轉盤狀態
+    /// </summary>
+    /// <param name="isSpin"></param>
+    protected override void SetSpinState(bool isSpin)
+    {
+        this.isSpin = isSpin;
+        base.SetSpinState(isSpin);
     }
 
     /// <summary>
@@ -115,7 +130,7 @@ public class GameClassicPanel : GameBasePanel
     /// </summary>
     private void SetBetVal()
     {
-        betValue = Tools.JudgeBetValue(betLevel, entry.UserInfo.Coin);
+        betValue = Tools.JudgeBetValue(ref betLevel, entry.UserInfo.Coin);
         bet_Txt.text = Tools.SetCoinStr(betValue);
     }
 
@@ -145,7 +160,7 @@ public class GameClassicPanel : GameBasePanel
         gameClassicRequest.SendRequest(betValue);
 
         if (usingCoroutine != null) StopCoroutine(usingCoroutine);
-        isSpin = true;
+        SetSpinState(true);
         spin_Txt.text = "停止";
         winScore_Txt.text = "";
         winNums.Clear();
@@ -222,8 +237,7 @@ public class GameClassicPanel : GameBasePanel
                 await Task.Delay(delayTime);
             }            
         }
-
-        isSpin = false;
+        
         isStoping = false;
         spin_Txt.text = "開始"; 
         delayTime = initDelayTime;
@@ -264,6 +278,8 @@ public class GameClassicPanel : GameBasePanel
 
             usingCoroutine = StartCoroutine(nameof(IScoreEffect));
         }
+
+        SetSpinState(false);
     }
 
     /// <summary>
@@ -280,9 +296,9 @@ public class GameClassicPanel : GameBasePanel
             delayTime = 0;
             CancelInvoke();
             DelayStopSpin();
-        }       
+        }
 
-        isSpin = false;
+        usingCoroutine = StartCoroutine(nameof(IScoreEffect));
         spin_Txt.text = "開始";
     }
 

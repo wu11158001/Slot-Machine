@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class GameBasePanel : BasePanel
 {
-    [SerializeField]
     //(結果編號,腳本)
     protected Dictionary<int, BroadAction> resultDic = new Dictionary<int, BroadAction>();
+
+    /// <summary>
+    /// 設定轉盤狀態
+    /// </summary>
+    /// <param name="isSpin"></param>
+    protected virtual void SetSpinState(bool isSpin)
+    {
+        entry.IsGameSpinning = isSpin;
+    }
 
     /// <summary>
     /// 設定轉盤

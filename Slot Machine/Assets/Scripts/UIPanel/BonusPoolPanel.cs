@@ -63,7 +63,7 @@ public class BonusPoolPanel : BasePanel
         //用戶中獎
         if (pack.BonusPoolPack.WinId == entry.UserInfo.UserId)
         {
-            BigWinEffect(pack.BonusPoolPack.WinValue);
+            StartBigWinEffect(pack.BonusPoolPack.WinValue);
             return;
         }
 
@@ -81,36 +81,50 @@ public class BonusPoolPanel : BasePanel
     }
 
     /// <summary>
+    /// 開始中獎效果
+    /// </summary>
+    /// <param name="winCoin"></param>
+    private void StartBigWinEffect(long winCoin)
+    {
+        StartCoroutine(BigWinEffectCoroutine(winCoin));
+    }
+
+    /// <summary>
     /// 中獎效果
     /// </summary>
     /// <param name="winCoin"></param>
-    private async void BigWinEffect(long winCoin)
+    /// <returns></returns>
+    private IEnumerator BigWinEffectCoroutine(long winCoin)
     {
-        try
+        yield return StartCoroutine(WaitSpinState());
+
+        bigWinObj.gameObject.SetActive(true);
+        bigWinConfirm_Btn.onClick.AddListener(() =>
         {
-            bigWinObj.gameObject.SetActive(true);
-            bigWinConfirm_Btn.onClick.AddListener(() =>
-            {
-                bigWinObj.gameObject.SetActive(false);
-            });
+            bigWinObj.gameObject.SetActive(false);
+        });
 
-            //移動效果
-            float startTime = Time.time;
-            long val = 0;
-            while (Time.time - startTime < bigWinTime)
-            {
-                float progress = (Time.time - startTime) / bigWinTime;
-                val = (long)Mathf.Round(Mathf.Lerp(0, winCoin, progress));
-                bigWinCoin_Txt.text = $"{Tools.SetCoinStr(val)}";
-                await Task.Delay(1);
-            }
-
-            bigWinCoin_Txt.text = $"{winCoin}";
+        // 金幣效果
+        float startTime = Time.time;
+        long val = 0;
+        while (Time.time - startTime < bigWinTime)
+        {
+            float progress = (Time.time - startTime) / bigWinTime;
+            val = (long)Mathf.Round(Mathf.Lerp(0, winCoin, progress));
+            bigWinCoin_Txt.text = $"{Tools.SetCoinStr(val)}";
+            yield return null;
         }
-        catch (System.Exception)
-        {
 
-        }        
+        bigWinCoin_Txt.text = $"{winCoin}";
+    }
+
+    /// <summary>
+    /// 等待旋轉結束
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator WaitSpinState()
+    {
+        yield return new WaitUntil(() => entry.IsGameSpinning == false);
     }
 
     /// <summary>
@@ -122,23 +136,24 @@ public class BonusPoolPanel : BasePanel
         {
             while (winnerList.Count > 0)
             {
+                string gameName = "";
+                PanelType panelType = PanelType.GameClassicPanel;
+                switch (winnerList[0].GameName)
+                {
+                    case "classic":
+                        panelType = PanelType.GameClassicPanel;
+                        gameName = "經典狂熱";
+                        break;
+                    default:
+                        Debug.LogError("廣播贏家,沒有找到面板!!!");
+                        break;
+                }
                 broadcast_Btn.onClick.AddListener(() =>
                 {
-                    PanelType panelType = PanelType.GameClassicPanel;
-                    switch (winnerList[0].GameName)
-                    {
-                        case "classic":
-                            panelType = PanelType.GameClassicPanel;
-                            break;
-                        default:
-                            Debug.LogError("廣播贏家,沒有找到面板!!!");
-                            break;
-                    }
-
                     entry.EnterGame(panelType);
                 });
                 nickName_Txt.text = winnerList[0].NickName;
-                gameName_Txt.text = winnerList[0].GameName;
+                gameName_Txt.text = gameName;
                 bonusVal_Txt.text = $"{Tools.SetCoinStr(winnerList[0].WinCoinVal)}";
                 avatar_Img.sprite = await Tools.ImageUrlToSprite(winnerList[0].ImgUrl);
                 broadcastObj.gameObject.SetActive(true);
