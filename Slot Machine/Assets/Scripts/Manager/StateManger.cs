@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class StateManger
 {
-    //遊戲是否正在進行
+    //轉盤是否正在進行
     public static bool IsGameSpinning;
     //廣告是否載入完成
     public static bool isAdComplete;

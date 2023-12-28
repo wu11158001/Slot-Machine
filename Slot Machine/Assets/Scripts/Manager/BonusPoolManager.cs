@@ -31,7 +31,7 @@ public class BonusPoolManager : BaseManager
             else
             {
                 bonusInfoDic.Add(pool.Key, pool.Value);
-            }            
+            }
         }
 
         //各別獎池

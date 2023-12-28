@@ -44,6 +44,8 @@ public class GameClassicPanel : GameBasePanel
     private int betLevel = 1;
     private long betValue;
 
+    private int playTime;
+
     private Coroutine usingCoroutine;
 
     public override void OnEnter()
@@ -163,6 +165,12 @@ public class GameClassicPanel : GameBasePanel
             return;
         }
 
+        playTime++;
+        if (playTime == 5)
+        {
+            entry.OnLuckPlayTime();
+        }
+
         userCoin.ChangeCoin(entry.UserInfo.Coin - betValue);
         gameClassicRequest.SendRequest(betValue);
 
@@ -218,7 +226,7 @@ public class GameClassicPanel : GameBasePanel
     {
         spin_Btn.interactable = true;
     }
-
+    
     /// <summary>
     /// 延遲停止選轉
     /// </summary>
@@ -227,7 +235,7 @@ public class GameClassicPanel : GameBasePanel
         isStoping = true;
 
         //單獨延遲停止事件
-        bool isEven = UnityEngine.Random.Range(0, 100) < 100;
+        bool isEven = UnityEngine.Random.Range(0, 100) < 10;
         int evenNum = UnityEngine.Random.Range(0, resultDic.Count);
 
         //停止旋轉
@@ -259,7 +267,7 @@ public class GameClassicPanel : GameBasePanel
     /// <param name="evenBroad"></param>
     private async void EvenEffecf(BroadAction evenBroad)
     {
-        await Task.Delay(delayTime * 10);
+        await Task.Delay(delayTime * 15);
         evenBroad.StopSpin();
         TurnTableOver();
     }

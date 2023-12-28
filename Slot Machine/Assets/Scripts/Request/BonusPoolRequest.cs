@@ -18,7 +18,7 @@ public class BonusPoolRequest : BaseRequest
     {
         if (pack != null)
         {
-            entry.SetAllBonusInfo(pack);
+            StartCoroutine(IWaitSpinState(pack));
             pack = null;
         }
     }
@@ -30,5 +30,15 @@ public class BonusPoolRequest : BaseRequest
     public override void OnResponse(MainPack pack)
     {
         this.pack = pack;
+    }
+
+    /// <summary>
+    /// 等待轉盤結束
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator IWaitSpinState(MainPack pack)
+    {
+        yield return new WaitUntil(() => StateManger.IsGameSpinning == false);
+        entry.SetAllBonusInfo(pack);
     }
 }

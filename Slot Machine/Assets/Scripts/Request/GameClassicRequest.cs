@@ -23,7 +23,6 @@ public class GameClassicRequest : BaseRequest
         {
             gameClassicPanel.GetResult(pack);
             entry.SetLeaderboard(GPGSIds.leaderboard_wealth_accumulation, pack.UserInfoPack.Coin);
-            entry.OnLuckPlayTime();
             entry.OnLuckGetCoin(pack.ClassicPack.WinCoin);
             pack = null;
         }

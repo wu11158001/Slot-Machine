@@ -6,10 +6,6 @@ using UnityEngine;
 
 public class GPGSManager : BaseManager
 {
-    //遊玩次數
-    private const int targetPlayTime = 5;
-    private int playTime;
-
     //獲得目標金幣
     private const long targetCoin = 100000;
 
@@ -91,8 +87,7 @@ public class GPGSManager : BaseManager
     {
         if (!IsAuthenticated()) return;
 
-        playTime++;
-        OnLuckAchievement(GPGSIds.achievement_play_five_time, (float)playTime / targetPlayTime);
+        OnLuckAchievement(GPGSIds.achievement_play_five_time, 100.0f);
     }
 
     /// <summary>

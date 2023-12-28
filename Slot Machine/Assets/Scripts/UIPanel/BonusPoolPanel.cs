@@ -117,7 +117,7 @@ public class BonusPoolPanel : BasePanel
             yield return null;
         }
 
-        bigWinCoin_Txt.text = $"{winCoin}";
+        bigWinCoin_Txt.text = $"{Tools.SetCoinStr(winCoin)}";
     }
 
     /// <summary>
@@ -157,7 +157,8 @@ public class BonusPoolPanel : BasePanel
                 nickName_Txt.text = winnerList[0].NickName;
                 gameName_Txt.text = gameName;
                 bonusVal_Txt.text = $"{Tools.SetCoinStr(winnerList[0].WinCoinVal)}";
-                avatar_Img.sprite = await Tools.ImageUrlToSprite(winnerList[0].ImgUrl);
+                Sprite sprite = await Tools.ImageUrlToSprite(winnerList[0].ImgUrl);
+                if(sprite != null) avatar_Img.sprite = sprite;
                 broadcastObj.gameObject.SetActive(true);
 
                 //移動效果
@@ -166,7 +167,7 @@ public class BonusPoolPanel : BasePanel
                 while (Time.time - startTime < broadcastMoveTime)
                 {
                     float progress = (Time.time - startTime) / broadcastMoveTime;
-                    posX = (long)Mathf.Round(Mathf.Lerp(broadcastSize, 0, progress));
+                    posX = (long)Mathf.Round(Mathf.Lerp(broadcastSize, -20, progress));
                     broadcastObj.anchoredPosition = new Vector2(posX, broadcastObj.anchoredPosition.y);
                     await Task.Delay(1);
                 }

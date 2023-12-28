@@ -69,7 +69,6 @@ namespace SlotMachineServer.Servers
             return pack;
         }
 
-
         /// <summary>
         /// 遊戲結果_經典
         /// </summary>
@@ -87,15 +86,6 @@ namespace SlotMachineServer.Servers
             {
                 resultList.Add(random.Next(0, 8));
             }
-            /*resultList.Add(7);
-            resultList.Add(7);
-            resultList.Add(7);
-            resultList.Add(7);
-            resultList.Add(7);
-            resultList.Add(7);
-            resultList.Add(7);
-            resultList.Add(7);
-            resultList.Add(7);*/
 
             //獎池更新
             string poolName = "classic";
