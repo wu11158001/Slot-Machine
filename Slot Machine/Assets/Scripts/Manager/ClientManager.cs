@@ -9,7 +9,7 @@ public class ClientManager : BaseManager
 {
     private Socket socket;
     private Message message;
-    private const string ip = "192.168.1.172";
+    private string ip;
     private const int port = 5501;
 
     /// <summary>
@@ -18,6 +18,13 @@ public class ClientManager : BaseManager
     public override void OnInit()
     {
         base.OnInit();
+
+#if UNITY_EDITOR
+        ip = "127.0.0.1";
+#elif UNITY_ANDROID
+        ip = "192.168.5.176";
+#endif
+
         message = new Message();
         InitSocket();
     }

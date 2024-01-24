@@ -69,6 +69,8 @@ namespace SlotMachineServer.Servers
             return pack;
         }
 
+        int count = 0;
+
         /// <summary>
         /// 遊戲結果_經典
         /// </summary>
@@ -82,10 +84,26 @@ namespace SlotMachineServer.Servers
             ClassicPack classicPack = new ClassicPack();
             Random random = new Random();
             List<int> resultList = new();
+
             for (int i = 0; i < 9; i++)
             {
                 resultList.Add(random.Next(0, 8));
             }
+
+            //Demo用
+            count++;
+            switch (count)
+            {
+                case 2:
+                    resultList = new List<int>() { 1, 2, 3, 1, 2, 3, 4, 4, 3 };
+                    break;
+                case 3:
+                    resultList = new List<int>() { 1, 2, 3 , 1, 2, 3, 1, 2, 3};
+                    break;
+                case 5:
+                    resultList = new List<int>() { 7, 7, 7, 7, 7, 7, 7, 7, 7 };
+                    break;
+            }            
 
             //獎池更新
             string poolName = "classic";
